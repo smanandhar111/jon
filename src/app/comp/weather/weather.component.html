@@ -1,0 +1,10 @@
+
+<div class="weather-billboard-con" *ngIf="weatherInfo">
+  <h5>{{weatherInfo.name}}</h5>
+  <span>{{temp}}</span>
+  <img src="../../../assets/img/clear-night.gif" alt="">
+</div>
+<div class="edit-weather">
+  <input type="text" [(ngModel)]="inputCity">
+  <button (click)="updatelocation(inputCity)">Update</button>
+</div>
