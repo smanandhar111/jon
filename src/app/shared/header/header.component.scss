@@ -1,0 +1,43 @@
+.mat-toolbar {
+  justify-content: space-between;
+  box-shadow: 0px 5px 21px -2px #ff4081;
+  nav {
+
+  }
+  .log-con {
+
+  }
+  .user-info {
+    display: flex;
+
+    .user-name {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .mat-button {
+      z-index: 123;
+      font-size: 10px;
+    }
+    .user-img-cont {
+      border-radius: 94px;
+      border: 1.5px solid #ff4081;
+      width: 35px;
+      height: 35px;
+      display: inline-block;
+
+      img {
+        width: 35px;
+        border-radius: 99px;
+      }
+    }
+  }
+}
+
+.mat-menu-item {
+  font-size: 12px;
+  font-weight: 500;
+
+}
+
+
+

@@ -1,7 +1,37 @@
 <mat-toolbar>
-  <button mat-button>Just</button>
-  <button mat-button>Build</button>
+  <!--navigation-->
+  <nav>
+    <button mat-button>Just</button>
+    <button mat-button>Build</button>
+  </nav>
+
+  <!--loginBtn-->
+  <div class="log-con">
+    <button *ngIf="!authService.authenticated" mat-raised-button
+            color="accent" (click)="login()">Login
+    </button>
+  </div>
+
+  <!--userInfo-->
+  <div class="user-info" *ngIf="authService.authenticated">
+    <span class="user-name"
+          *ngIf="authService.currentUser">{{authService.currentUser.displayName}}
+    </span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <a class="user-img-cont">
+        <img src="{{authService.currentUser.photoURL}}" alt="">
+      </a>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item
+              (click)="logout()">Logout
+      </button>
+      <button mat-menu-item>Settings</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
+
+
 
 
 
