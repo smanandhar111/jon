@@ -13,7 +13,7 @@ export class PassComponent implements OnInit {
 
   ngOnInit() {
     this.passDbService.getData().subscribe(data => {
-      console.log('>>>', data);
+      this.passData = data;
     });
   }
 
