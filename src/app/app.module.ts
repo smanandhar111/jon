@@ -17,6 +17,7 @@ import { HeaderComponent } from './shared/header/header.component';
 // angular-fire
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
 
 import {AuthService} from './services/auth.service';
@@ -24,6 +25,7 @@ import { PassComponent } from './comp/pass/pass.component';
 import { DialogxComponent } from './comp/dialogx/dialogx.component';
 import { WeatherComponent } from './comp/weather/weather.component';
 import {FormsModule} from '@angular/forms';
+import {PassDataService} from './services/pass-data.service';
 
 @NgModule({
   declarations: [
@@ -45,10 +47,11 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PassDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
