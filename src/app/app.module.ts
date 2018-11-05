@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatDialogModule,
   MatMenuModule, MatCheckboxModule, MatToolbarModule,
-  MatFormFieldModule, MatCardModule
+  MatFormFieldModule, MatExpansionModule, MatInputModule, MatGridListModule
 } from '@angular/material';
 
 import 'hammerjs';
@@ -45,7 +45,9 @@ import {PassDataService} from './services/pass-data.service';
     MatDialogModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatCardModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatGridListModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
