@@ -25,7 +25,11 @@ export class PassComponent implements OnInit {
   }
 
   onSubmit(event, item) {
-    this.passDbService.addItem(item);
+    if(this.item.outlet !== null && this.item.password !== null) {
+      this.passDbService.addItem(this.item);
+      this.item.outlet = '';
+      this.item.password = '';
+    }
   }
 
 }

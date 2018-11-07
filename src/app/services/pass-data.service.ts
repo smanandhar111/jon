@@ -24,7 +24,7 @@ export class PassDataService {
   getData() {
     return this.passData;
   }
-  addItem() {
-
+  addItem(item: PassModel[]) {
+    this.passDataCollection.add(item);
   }
 }

@@ -27,18 +27,24 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-    <div class="add-pass col-sm-7">
+    <div class="add-pass col-sm-5">
       <h3>Save your passwords</h3>
       <span>A safe and secure way to never loose your password and have a quick and easy access.</span>
 
       <form (ngSubmit)="onSubmit($event, item)">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Outlet" [(ngModel)]="item.outlet">
+          <input matInput placeholder="Outlet" name="outlet" [(ngModel)]="item.outlet">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Leave a comment"></textarea>
+          <input matInput placeholder="Password" name="password" [(ngModel)]="item.password">
         </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" name="hint" [(ngModel)]="item.hint">
+        </mat-form-field>
+
+        <input type="submit" value="Submit">
       </form>
     </div>
   </div>
