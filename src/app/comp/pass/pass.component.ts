@@ -11,12 +11,21 @@ import {MatFormFieldControl} from '@angular/material';
 export class PassComponent implements OnInit {
   passData: PassModel[];
   panelOpenState = false;
+  item: PassModel = {
+    outlet: '',
+    password: '',
+    hint: ''
+  };
   constructor(private passDbService: PassDataService) { }
 
   ngOnInit() {
     this.passDbService.getData().subscribe(data => {
       this.passData = data;
     });
+  }
+
+  onSubmit(event, item) {
+    this.passDbService.addItem(item);
   }
 
 }

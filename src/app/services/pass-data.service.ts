@@ -24,4 +24,7 @@ export class PassDataService {
   getData() {
     return this.passData;
   }
+  addItem() {
+
+  }
 }

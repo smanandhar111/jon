@@ -28,7 +28,18 @@
       </mat-accordion>
     </div>
     <div class="add-pass col-sm-7">
+      <h3>Save your passwords</h3>
+      <span>A safe and secure way to never loose your password and have a quick and easy access.</span>
 
+      <form (ngSubmit)="onSubmit($event, item)">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Outlet" [(ngModel)]="item.outlet">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+      </form>
     </div>
   </div>
   <!--Add Item-->
