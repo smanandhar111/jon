@@ -1,42 +1,35 @@
 
-<div class="PassComp">
-  <mat-grid-list cols="4" rowHeight="100px" gutterSize="10px">
+<div class="PassComp container">
+  <!--Display Item-->
+  <div class="row">
+    <div class="display-pass col-sm-5">
+      <mat-accordion *ngFor="let pass of passData">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{pass.outlet}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="username-co">
+            <label>Username</label>
+            <span>:{{pass.username}}</span>
+          </div>
 
-    <!--Display Item-->
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
-      <div class="display-pass">
-        <mat-accordion *ngFor="let pass of passData">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{pass.outlet}}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="username-co">
-              <label>Username</label>
-              <span>:{{pass.username}}</span>
-            </div>
+          <div class="password-co">
+            <label>Password</label>
+            <span>:{{pass.password}}</span>
+          </div>
 
-            <div class="password-co">
-              <label>Password</label>
-              <span>:{{pass.password}}</span>
-            </div>
+          <div class="hint-co">
+            <label>Hint</label>
+            <span>:{{pass.hint}}</span>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="add-pass col-sm-7">
 
-            <div class="hint-co">
-              <label>Hint</label>
-              <span>:{{pass.hint}}</span>
-            </div>
-          </mat-expansion-panel>
-
-        </mat-accordion>
-      </div>
-    </mat-grid-tile>
-
-    <!--Add Item-->
-    <mat-grid-tile [colspan]="3" [rowspan]="2">
-      <div class="add-pass"></div>
-    </mat-grid-tile>
-
-
-  </mat-grid-list>
+    </div>
+  </div>
+  <!--Add Item-->
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { PassModel } from '../models/passModel'
+import { PassModel } from '../models/passModel';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
