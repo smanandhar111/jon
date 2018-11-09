@@ -13,6 +13,7 @@ export class PassComponent implements OnInit {
   panelOpenState = false;
   item: PassModel = {
     outlet: '',
+    username: '',
     password: '',
     hint: ''
   };
@@ -25,7 +26,7 @@ export class PassComponent implements OnInit {
   }
 
   onSubmit(event, item) {
-    if(this.item.outlet !== null && this.item.password !== null) {
+    if (this.item.outlet !== '' && this.item.password !== '') {
       this.passDbService.addItem(this.item);
       this.item.outlet = '';
       this.item.password = '';
