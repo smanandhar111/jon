@@ -1,6 +1,8 @@
 .PassComp {
+  margin-top: 20px;
+  margin-bottom: 20px;
   .mat-expansion-panel-content {
-    z-index: 123123!important;
+
   }
   .add-pass, .display-pass {
     width: 100%;
@@ -8,33 +10,15 @@
   .display-pass {
 
     .mat-accordion {
-      z-index: 123;
-
-      .ng-trigger-bodyExpansion {
-        z-index: 123;
-      }
-
       .mat-expansion-panel {
         background: rgba(0,0,0,.04);
         box-shadow: 0 5px 21px -2px #cccccc;
         margin-bottom: 25px;
 
         .username-co {
-          z-index: 11;
           margin-top: 10px;
         }
-        .ng-trigger-bodyExpansion {
-          z-index: 12;
-        }
 
-        .mat-expansion-panel-header {
-          z-index: 111;
-
-
-          .mat-content {
-            z-index: 11115;
-          }
-        }
 
         &.mat-expanded {
           z-index: 123123123;
@@ -69,6 +53,30 @@
       span {
         position: absolute;
         left: 100px;
+      }
+    }
+  }
+
+  .add-pass {
+    margin-left: 20px;
+    .example-full-width {
+      display: block;
+    }
+
+    input.mat-input-element {
+      z-index: 123;
+      border-bottom-color: #ff4081;
+
+    }
+
+    .mat-focused {
+      z-index: 111122;
+      border-bottom-color: #ff4081;
+
+      input.mat-input-element {
+        z-index: 123;
+        border-bottom-color: #ff4081;
+
       }
     }
   }
