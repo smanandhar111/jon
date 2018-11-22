@@ -3,8 +3,8 @@
   <!--Display Item-->
   <div class="row">
     <div class="display-pass col-sm-5">
-      <mat-accordion *ngFor="let pass of passData">
-        <mat-expansion-panel>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let pass of passData" >
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{pass.outlet}}
@@ -34,7 +34,8 @@
 
       <form (ngSubmit)="onSubmit($event, item)">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Outlet" name="outlet" [(ngModel)]="item.outlet">
+          <input matInput placeholder="Outlet"
+                 name="outlet" [(ngModel)]="item.outlet">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -43,14 +44,16 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password" name="password" [(ngModel)]="item.password">
+          <input matInput placeholder="Password"
+                 name="password" [(ngModel)]="item.password">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Hint" name="hint" [(ngModel)]="item.hint">
+          <input matInput placeholder="Hint"
+                 name="hint" [(ngModel)]="item.hint">
         </mat-form-field>
 
-        <input type="submit" value="Submit">
+        <button type="submit" mat-raised-button color="primary">Submit</button>
       </form>
     </div>
   </div>

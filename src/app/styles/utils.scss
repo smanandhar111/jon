@@ -181,3 +181,12 @@
   }
 
 }
+
+.fx {
+  display: flex;
+
+  &.fx-cl {
+    flex-direction: column;
+  }
+}
+

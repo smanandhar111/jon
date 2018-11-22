@@ -15,7 +15,7 @@ export class PassDataService {
     this.passDataCollection = this.afs.collection('pass');
     this.passData = this.passDataCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
-        const data = a.payload.doc.data() as PassModel;
+        const data = a.payload.doc.data() as PassModel[];
         data.id = a.payload.doc.id;
         return data;
       });

@@ -21,8 +21,6 @@
 
 
         &.mat-expanded {
-          z-index: 123123123;
-          //background: red;
 
           .mat-expansion-panel-header {
             background: #bde0ff;
@@ -33,15 +31,12 @@
           }
 
           .mat-expansion-panel-body {
-            z-index: 123123!important;
           }
 
           .mat-expansion-panel-content {
-            z-index: 123;
             margin-top: 10px;
           }
           .mat-expansion-panel-content, div {
-            z-index: 1231!important;
           }
         }
 
