@@ -30,6 +30,8 @@ export class PassComponent implements OnInit {
       this.passDbService.addItem(this.item);
       this.item.outlet = '';
       this.item.password = '';
+      this.item.username = '';
+      this.item.hint = '';
     }
   }
 
