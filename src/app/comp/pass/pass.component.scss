@@ -6,11 +6,11 @@
   }
   .add-pass, .display-pass {
     width: 100%;
+    text-align: center;
   }
   .display-pass {
 
     .mat-accordion {
-
       /deep/ mat-expansion-panel {
         background: rgba(0,0,0,.04);
         box-shadow: 0 5px 21px -2px #cccccc;
@@ -46,14 +46,6 @@
         }
       }
     }
-
-    //div[class$="-co"] {
-    //  position: relative;
-    //  span {
-    //    position: absolute;
-    //    left: 100px;
-    //  }
-    //}
   }
 
   .add-pass {
@@ -61,17 +53,25 @@
     .example-full-width {
       display: block;
     }
+    form.add-pass-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 25px;
+      /deep/ mat-form-field {
+        &.example-full-width {
+          display: block;
+          z-index: 111;
 
-    input.mat-input-element {
-      border-bottom-color: #ff4081;
-
-    }
-    .mat-focused {
-      border-bottom-color: #ff4081;
-
-      input.mat-input-element {
-        border-bottom-color: #ff4081;
-
+          input {
+            text-align: center;
+          }
+          span.mat-form-field-label-wrapper label {
+            text-align: center;
+          }
+        }
+      }
+      button {
+        margin-top: 25px;
       }
     }
   }

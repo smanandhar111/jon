@@ -40,23 +40,23 @@
       <h3>Save your passwords</h3>
       <span>A safe and secure way to never loose your password and have a quick and easy access.</span>
 
-      <form (ngSubmit)="onSubmit($event, item)">
-        <mat-form-field class="example-full-width">
+      <form (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
+        <mat-form-field class="example-full-width outlet">
           <input matInput placeholder="Outlet"
                  name="outlet" [(ngModel)]="item.outlet">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width username">
           <input matInput placeholder="Username" name="username"
                  [(ngModel)]="item.username">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width passowrd">
           <input matInput placeholder="Password"
                  name="password" [(ngModel)]="item.password">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width hint">
           <input matInput placeholder="Hint"
                  name="hint" [(ngModel)]="item.hint">
         </mat-form-field>
