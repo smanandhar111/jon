@@ -35,4 +35,8 @@ export class PassComponent implements OnInit {
     }
   }
 
+  removeCred(event, item) {
+    this.passDbService.removeItem(item);
+  }
+
 }

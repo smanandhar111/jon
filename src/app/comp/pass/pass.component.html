@@ -5,25 +5,33 @@
     <div class="display-pass col-sm-5">
       <mat-accordion>
         <mat-expansion-panel *ngFor="let pass of passData" >
+
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{pass.outlet}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="username-co">
+
+          <span class="cred-container">
+            <div class="username-co">
             <label>Username</label>
             <span>:{{pass.username}}</span>
           </div>
+            <div class="password-co">
+              <label>Password</label>
+              <span>:{{pass.password}}</span>
+            </div>
+            <div class="hint-co">
+              <label>Hint</label>
+              <span>:{{pass.hint}}</span>
+            </div>
+          </span>
 
-          <div class="password-co">
-            <label>Password</label>
-            <span>:{{pass.password}}</span>
-          </div>
+          <button mat-button class="remove-cred" color="accent"
+                  (click)="removeCred($event,item)">
+            <i class="fa fa-close"></i>
+          </button>
 
-          <div class="hint-co">
-            <label>Hint</label>
-            <span>:{{pass.hint}}</span>
-          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
