@@ -9,6 +9,7 @@ import {map} from 'rxjs/operators';
 })
 export class PassDataService {
   passDataCollection: AngularFirestoreCollection<PassModel[]>;
+  passDataDoc: AngularFirestoreDocument<PassModel>;
   passData: Observable<PassModel[]>;
   // constructor
   constructor(public afs: AngularFirestore) {
@@ -26,5 +27,9 @@ export class PassDataService {
   }
   addItem(item: PassModel[]) {
     this.passDataCollection.add(item);
+  }
+  removeItem(item: PassModel[]) {
+    // this.passDataDoc = this.afs.doc(`pass/${item.id}`);
+    console.log(`${this.passData.id}`);
   }
 }

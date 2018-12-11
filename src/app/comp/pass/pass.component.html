@@ -5,25 +5,33 @@
     <div class="display-pass col-sm-5">
       <mat-accordion>
         <mat-expansion-panel *ngFor="let pass of passData" >
+
           <mat-expansion-panel-header>
             <mat-panel-title>
               {{pass.outlet}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="username-co">
+
+          <span class="cred-container">
+            <div class="username-co">
             <label>Username</label>
             <span>:{{pass.username}}</span>
           </div>
+            <div class="password-co">
+              <label>Password</label>
+              <span>:{{pass.password}}</span>
+            </div>
+            <div class="hint-co">
+              <label>Hint</label>
+              <span>:{{pass.hint}}</span>
+            </div>
+          </span>
 
-          <div class="password-co">
-            <label>Password</label>
-            <span>:{{pass.password}}</span>
-          </div>
+          <button mat-button class="remove-cred" color="accent"
+                  (click)="removeCred($event,item)">
+            <i class="fa fa-close"></i>
+          </button>
 
-          <div class="hint-co">
-            <label>Hint</label>
-            <span>:{{pass.hint}}</span>
-          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -32,23 +40,23 @@
       <h3>Save your passwords</h3>
       <span>A safe and secure way to never loose your password and have a quick and easy access.</span>
 
-      <form (ngSubmit)="onSubmit($event, item)">
-        <mat-form-field class="example-full-width">
+      <form (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
+        <mat-form-field class="example-full-width outlet">
           <input matInput placeholder="Outlet"
                  name="outlet" [(ngModel)]="item.outlet">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width username">
           <input matInput placeholder="Username" name="username"
                  [(ngModel)]="item.username">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width passowrd">
           <input matInput placeholder="Password"
                  name="password" [(ngModel)]="item.password">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width hint">   s
           <input matInput placeholder="Hint"
                  name="hint" [(ngModel)]="item.hint">
         </mat-form-field>

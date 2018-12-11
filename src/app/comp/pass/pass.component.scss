@@ -6,48 +6,44 @@
   }
   .add-pass, .display-pass {
     width: 100%;
+    text-align: center;
   }
   .display-pass {
 
     .mat-accordion {
-      .mat-expansion-panel {
+      /deep/ mat-expansion-panel {
         background: rgba(0,0,0,.04);
         box-shadow: 0 5px 21px -2px #cccccc;
         margin-bottom: 25px;
 
-        .username-co {
-          margin-top: 10px;
-        }
-
-
         &.mat-expanded {
-
           .mat-expansion-panel-header {
             background: #bde0ff;
-
-            .mat-expansion-panel-header-title {
-              color: #ffff;
-            }
           }
-
           .mat-expansion-panel-body {
-          }
+            margin-top: 15px;
+            padding-bottom: 0 !important;
+            padding-right: 0;
+            display: flex;
+            justify-content: space-between;
 
-          .mat-expansion-panel-content {
-            margin-top: 10px;
-          }
-          .mat-expansion-panel-content, div {
+            .cred-container {
+              padding-bottom: 15px;
+            }
+
+            button.remove-cred {
+              height: 33px;
+              align-self: flex-end;
+              min-height: 40px;
+
+              i.fa-close {
+                font-size: 18px;
+                color: #ffa2c2;
+              }
+            }
+
           }
         }
-
-      }
-    }
-
-    div[class$="-co"] {
-      position: relative;
-      span {
-        position: absolute;
-        left: 100px;
       }
     }
   }
@@ -57,21 +53,25 @@
     .example-full-width {
       display: block;
     }
+    form.add-pass-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 25px;
+      /deep/ mat-form-field {
+        &.example-full-width {
+          display: block;
+          z-index: 111;
 
-    input.mat-input-element {
-      z-index: 123;
-      border-bottom-color: #ff4081;
-
-    }
-
-    .mat-focused {
-      z-index: 111122;
-      border-bottom-color: #ff4081;
-
-      input.mat-input-element {
-        z-index: 123;
-        border-bottom-color: #ff4081;
-
+          input {
+            text-align: center;
+          }
+          span.mat-form-field-label-wrapper label {
+            text-align: center;
+          }
+        }
+      }
+      button {
+        margin-top: 25px;
       }
     }
   }
