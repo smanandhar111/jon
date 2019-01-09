@@ -1,15 +1,12 @@
 .PassComp {
   margin-top: 20px;
   margin-bottom: 20px;
-  .mat-expansion-panel-content {
 
-  }
-  .add-pass, .display-pass {
+  .add-prod, .preview-prod {
     width: 100%;
     text-align: center;
   }
-  .add-pass {
-    margin-left: 20px;
+  .add-prod {
     .example-full-width {
       display: block;
     }
@@ -23,12 +20,61 @@
           display: flex;
         }
         a.clear-input {
+          border: 1px solid transparent;
           cursor: pointer;
+          padding: 0 2px;
+          transition: border-color .08s ease;
+          &:hover {
+            border-color: #ff4081;
+            border-radius: 99px;
+          }
+          &:before {
+            position: relative;
+            bottom: 1px;
+          }
         }
       }
 
       button {
         margin-top: 25px;
+      }
+    }
+  }
+  .preview-prod {
+    h3 {}
+    .prod-preview-container {
+      display: flex;
+      justify-content: center;
+      .circle {
+        height: 180px;
+        width: 180px;
+        border-radius: 100px;
+        border: 3px solid #108bc8;
+        cursor: pointer;
+        margin: 20px 30px;
+        outline: none;
+        transition: transform 1s ease;
+        transform: scale(0.9);
+
+        &:hover {
+          transform: scale(1);
+          box-shadow: 3px 3px 8px #8e8e8e;
+        }
+      }
+      .prod-details {
+        text-align: left;
+        padding-top: 20px;
+
+        h5.prod-name {
+
+        }
+        h5.prod-price {
+          display: inline;
+        }
+        p.prod-description {
+          max-width: 200px;
+          font-size: 12px;
+        }
       }
     }
   }

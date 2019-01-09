@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import { PassDataService} from '../../services/pass-data.service';
 import {ProductInputModel, ProductTypes} from '../../models/allModel';
 import {MatFormFieldControl} from '@angular/material';
@@ -45,7 +45,20 @@ export class PassComponent implements OnInit {
     this.passDbService.removeItem(item);
   }
 
-  clearInput(input) {
+  clearInput(e) {
+    const inputName = e.target.previousElementSibling.name;
+    if (inputName === 'title') {
+      this.item.title = '';
+    }
+    if (inputName === 'description') {
+      this.item.description = '';
+    }
+    if (inputName === 'price') {
+      this.item.price = '';
+    }
+    if (inputName === 'imageUrl') {
+      this.item.imageUrl = '';
+    }
   }
 
 }

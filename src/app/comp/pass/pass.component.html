@@ -1,11 +1,8 @@
 
 <div class="PassComp container">
-  <!--Display Item-->
   <div class="row">
-
-    <div class="add-pass col-sm-5">
+    <div class="add-prod col-sm-5">
       <h3>Add a Product</h3>
-      <!--<span>A safe and secure way to never loose your password and have a quick and easy access.</span>-->
 
       <form name="addProd" (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
         <!--TYPE-->
@@ -18,42 +15,64 @@
         </mat-form-field>
 
         <!--PRODUCT TITLE-->
-        <mat-form-field class="example-full-width outlet">
+        <mat-form-field class="example-full-width">
           <input matInput placeholder="Title"
-                 name="outlet" [(ngModel)]="item.title">
-          <a *ngIf="item.title" (click)="clearInput(item.title)"
+                 name="title" [(ngModel)]="item.title">
+          <a *ngIf="item.title" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
         <!--DESCRIPTION-->
-        <mat-form-field class="example-full-width username">
-          <input matInput placeholder="Description" name="username"
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Description" name="description"
                  [(ngModel)]="item.description">
           <a *ngIf="item.description"
-             (click)="clearInput(item.description)"
+             (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
         <!--PRICE-->
-        <mat-form-field class="example-full-width passowrd">
+        <mat-form-field class="example-full-width">
           <input matInput placeholder="Price"
-                 name="password" [(ngModel)]="item.price">
-          <a *ngIf="item.price" (click)="clearInput(item.price)"
+                 type="number"
+                 name="price" [(ngModel)]="item.price">
+          <a *ngIf="item.price" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
         <!--IMAGE URL-->
-        <mat-form-field class="example-full-width hint">
-          <input matInput placeholder="Image Url"
-                 name="hint" [(ngModel)]="item.imageUrl">
-          <a *ngIf="item.imageUrl" (click)="clearInput(item.imageUrl)"
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Image Url" file-browser
+                 name="imageUrl" [(ngModel)]="item.imageUrl">
+          <a *ngIf="item.imageUrl" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
         <!--SUBMIT-->
-        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <button type="submit" mat-raised-button color="accent">Preview</button>
       </form>
     </div>
+
+    <!--OFFSET DIV-->
+    <div class="col-sm-1"></div>
+    <div class="preview-prod col-sm-5">
+      <h3>Product Preview</h3>
+
+      <div class="prod-preview-container">
+        <div class="circle">
+          <!--image-->
+          <div class="prod-image" style="background: url('../../../assets/img/{{item.imageUrl}}.jpg');
+                                         width: 100%;height: 100%; background-size:cover; outline: none; border-radius: 100px; background-position: center; ">
+
+          </div>
+        </div>
+        <div class="prod-details">
+          <h4 class="prod-name">{{item.title}}</h4>
+          <span *ngIf="item.price">Rs. </span><h5 class="prod-price">{{item.price}}</h5>
+          <p class="prod-description">{{item.description}}</p>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <!--Add Item-->
 </div>
