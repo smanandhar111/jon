@@ -8,46 +8,6 @@
     width: 100%;
     text-align: center;
   }
-  .display-pass {
-
-    .mat-accordion {
-      /deep/ mat-expansion-panel {
-        background: rgba(0,0,0,.04);
-        box-shadow: 0 5px 21px -2px #cccccc;
-        margin-bottom: 25px;
-
-        &.mat-expanded {
-          .mat-expansion-panel-header {
-            background: #bde0ff;
-          }
-          .mat-expansion-panel-body {
-            margin-top: 15px;
-            padding-bottom: 0 !important;
-            padding-right: 0;
-            display: flex;
-            justify-content: space-between;
-
-            .cred-container {
-              padding-bottom: 15px;
-            }
-
-            button.remove-cred {
-              height: 33px;
-              align-self: flex-end;
-              min-height: 40px;
-
-              i.fa-close {
-                font-size: 18px;
-                color: #ffa2c2;
-              }
-            }
-
-          }
-        }
-      }
-    }
-  }
-
   .add-pass {
     margin-left: 20px;
     .example-full-width {
@@ -57,19 +17,16 @@
       display: flex;
       flex-direction: column;
       margin-top: 25px;
-      /deep/ mat-form-field {
-        &.example-full-width {
-          display: block;
-          z-index: 111;
 
-          input {
-            text-align: center;
-          }
-          span.mat-form-field-label-wrapper label {
-            text-align: center;
-          }
+      /deep/ mat-form-field {
+        .mat-form-field-infix {
+          display: flex;
+        }
+        a.clear-input {
+          cursor: pointer;
         }
       }
+
       button {
         margin-top: 25px;
       }

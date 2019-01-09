@@ -2,65 +2,55 @@
 <div class="PassComp container">
   <!--Display Item-->
   <div class="row">
-    <div class="display-pass col-sm-5">
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let pass of passData" >
 
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{pass.outlet}}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <span class="cred-container">
-            <div class="username-co">
-            <label>Username</label>
-            <span>:{{pass.username}}</span>
-          </div>
-            <div class="password-co">
-              <label>Password</label>
-              <span>:{{pass.password}}</span>
-            </div>
-            <div class="hint-co">
-              <label>Hint</label>
-              <span>:{{pass.hint}}</span>
-            </div>
-          </span>
-
-          <button mat-button class="remove-cred" color="accent"
-                  (click)="removeCred($event,item)">
-            <i class="fa fa-close"></i>
-          </button>
-
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-    <div class="col-sm-1"></div>
     <div class="add-pass col-sm-5">
-      <h3>Save your passwords</h3>
-      <span>A safe and secure way to never loose your password and have a quick and easy access.</span>
+      <h3>Add a Product</h3>
+      <!--<span>A safe and secure way to never loose your password and have a quick and easy access.</span>-->
 
-      <form (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
+      <form name="addProd" (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
+        <!--TYPE-->
+        <mat-form-field>
+          <mat-select placeholder="Type of Product">
+            <mat-option *ngFor="let type of prodTypes" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--PRODUCT TITLE-->
         <mat-form-field class="example-full-width outlet">
-          <input matInput placeholder="Outlet"
-                 name="outlet" [(ngModel)]="item.outlet">
+          <input matInput placeholder="Title"
+                 name="outlet" [(ngModel)]="item.title">
+          <a *ngIf="item.title" (click)="clearInput(item.title)"
+             class="clear-input fa fa-times"></a>
         </mat-form-field>
 
+        <!--DESCRIPTION-->
         <mat-form-field class="example-full-width username">
-          <input matInput placeholder="Username" name="username"
-                 [(ngModel)]="item.username">
+          <input matInput placeholder="Description" name="username"
+                 [(ngModel)]="item.description">
+          <a *ngIf="item.description"
+             (click)="clearInput(item.description)"
+             class="clear-input fa fa-times"></a>
         </mat-form-field>
 
+        <!--PRICE-->
         <mat-form-field class="example-full-width passowrd">
-          <input matInput placeholder="Password"
-                 name="password" [(ngModel)]="item.password">
+          <input matInput placeholder="Price"
+                 name="password" [(ngModel)]="item.price">
+          <a *ngIf="item.price" (click)="clearInput(item.price)"
+             class="clear-input fa fa-times"></a>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width hint">   s
-          <input matInput placeholder="Hint"
-                 name="hint" [(ngModel)]="item.hint">
+        <!--IMAGE URL-->
+        <mat-form-field class="example-full-width hint">
+          <input matInput placeholder="Image Url"
+                 name="hint" [(ngModel)]="item.imageUrl">
+          <a *ngIf="item.imageUrl" (click)="clearInput(item.imageUrl)"
+             class="clear-input fa fa-times"></a>
         </mat-form-field>
 
+        <!--SUBMIT-->
         <button type="submit" mat-raised-button color="primary">Submit</button>
       </form>
     </div>

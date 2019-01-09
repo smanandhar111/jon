@@ -29,7 +29,5 @@ export class PassDataService {
     this.passDataCollection.add(item);
   }
   removeItem(item: PassModel[]) {
-    // this.passDataDoc = this.afs.doc(`pass/${item.id}`);
-    console.log(`${this.passData.id}`);
   }
 }

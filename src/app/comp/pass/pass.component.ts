@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PassDataService} from '../../services/pass-data.service';
-import {PassModel} from '../../models/passModel';
+import {ProductInputModel, ProductTypes} from '../../models/allModel';
 import {MatFormFieldControl} from '@angular/material';
 
 @Component({
@@ -9,14 +9,20 @@ import {MatFormFieldControl} from '@angular/material';
   styleUrls: ['./pass.component.scss']
 })
 export class PassComponent implements OnInit {
-  passData: PassModel[];
+  passData: ProductInputModel[];
   panelOpenState = false;
-  item: PassModel = {
-    outlet: '',
-    username: '',
-    password: '',
-    hint: ''
+  item: ProductInputModel = {
+    title: '',
+    description: '',
+    price: '',
+    imageUrl: ''
   };
+  prodTypes: ProductTypes[] = [
+    {value: 'earring', viewValue: 'Earring'},
+    {value: 'necklace', viewValue: 'Necklace'},
+    {value: 'bracelet', viewValue: 'Bracelet'},
+    {value: 'clothing', viewValue: 'Clothing'},
+  ];
   constructor(private passDbService: PassDataService) { }
 
   ngOnInit() {
@@ -26,17 +32,20 @@ export class PassComponent implements OnInit {
   }
 
   onSubmit(event, item) {
-    if (this.item.outlet !== '' && this.item.password !== '') {
+    if (this.item.title !== '' && this.item.description !== '') {
       this.passDbService.addItem(this.item);
-      this.item.outlet = '';
-      this.item.password = '';
-      this.item.username = '';
-      this.item.hint = '';
+      this.item.title = '';
+      this.item.description = '';
+      this.item.price = '';
+      this.item.imageUrl = '';
     }
   }
 
   removeCred(event, item) {
     this.passDbService.removeItem(item);
+  }
+
+  clearInput(input) {
   }
 
 }

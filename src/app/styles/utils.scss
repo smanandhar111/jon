@@ -190,3 +190,17 @@
   }
 }
 
+// Material Form Field
+/deep/ mat-form-field {
+  &.example-full-width {
+    display: block;
+
+    input {
+      text-align: center;
+    }
+    span.mat-form-field-label-wrapper label {
+      text-align: center;
+    }
+  }
+}
+
