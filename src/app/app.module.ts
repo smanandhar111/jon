@@ -24,8 +24,9 @@ import {AuthService} from './services/auth.service';
 import { PassComponent } from './comp/pass/pass.component';
 import { DialogxComponent } from './comp/dialogx/dialogx.component';
 import { WeatherComponent } from './comp/weather/weather.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {PassDataService} from './services/pass-data.service';
+import {ProditemService} from './services/proditem.service';
 
 @NgModule({
   declarations: [
@@ -54,9 +55,9 @@ import {PassDataService} from './services/pass-data.service';
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [AuthService, PassDataService],
+  providers: [AuthService, PassDataService, ProditemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

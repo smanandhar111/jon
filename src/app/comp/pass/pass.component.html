@@ -4,10 +4,10 @@
     <div class="add-prod col-sm-5">
       <h3>Add a Product</h3>
 
-      <form name="addProd" #addProdForm="ngForm" (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
+      <form  name="addProd" #addProdForm="ngForm" (ngSubmit)="onSubmit()" class="add-pass-form">
         <!--TYPE-->
         <mat-form-field>
-          <mat-select required placeholder="Type of Product">
+          <mat-select required placeholder="Type of Product" name="type" [(ngModel)]="item.type" >
             <mat-option *ngFor="let type of prodTypes" [value]="type.value">
               {{type.viewValue}}
             </mat-option>
@@ -49,7 +49,9 @@
         </mat-form-field>
 
         <span>form Valid : {{addProdForm.valid}}</span>
-
+        <!--SUBMIT-->
+        <button *ngIf="addProdForm.valid" type="submit"
+                mat-raised-button color="accent">Add Product</button>
       </form>
     </div>
 
@@ -70,9 +72,11 @@
 
         </div>
       </div>
-      <!--SUBMIT-->
-      <button *ngIf="addProdForm.valid" type="submit"
-              mat-raised-button color="accent">Add Product</button>
+
     </div>
   </div>
+</div>
+
+<div *ngFor="let item of proditemData" class="hello">
+  <li>{{item.id}}: {{item.title}}: {{item.description}}: {{item.price}}: {{item.imageUrl}} {{item.type}}</li>
 </div>

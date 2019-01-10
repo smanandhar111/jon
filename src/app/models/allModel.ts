@@ -1,5 +1,6 @@
 export interface ProductInputModel {
   id?: string;
+  type: string;
   title: string;
   description: string;
   price: string;
