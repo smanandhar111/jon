@@ -4,52 +4,52 @@
     <div class="add-prod col-sm-5">
       <h3>Add a Product</h3>
 
-      <form name="addProd" (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
+      <form name="addProd" #addProdForm="ngForm" (ngSubmit)="onSubmit($event, item)" class="add-pass-form">
         <!--TYPE-->
         <mat-form-field>
-          <mat-select placeholder="Type of Product">
+          <mat-select required placeholder="Type of Product">
             <mat-option *ngFor="let type of prodTypes" [value]="type.value">
               {{type.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-
-        <!--PRODUCT TITLE-->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Title"
-                 name="title" [(ngModel)]="item.title">
-          <a *ngIf="item.title" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
-
-        <!--DESCRIPTION-->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Description" name="description"
-                 [(ngModel)]="item.description">
-          <a *ngIf="item.description"
-             (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
-
-        <!--PRICE-->
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Price"
-                 type="number"
-                 name="price" [(ngModel)]="item.price">
-          <a *ngIf="item.price" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
-
         <!--IMAGE URL-->
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Image Url" file-browser
+          <input matInput required placeholder="Image Url"
                  name="imageUrl" [(ngModel)]="item.imageUrl">
           <a *ngIf="item.imageUrl" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
-        <!--SUBMIT-->
-        <button type="submit" mat-raised-button color="accent">Preview</button>
+        <!--PRODUCT TITLE-->
+        <mat-form-field class="example-full-width">
+          <input matInput required placeholder="Title"
+                 type="text"  name="title"
+                 [(ngModel)]="item.title">
+          <a *ngIf="item.title" (click)="clearInput($event)"
+          class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
+        <!--DESCRIPTION-->
+        <mat-form-field class="example-full-width">
+          <input matInput required  placeholder="Description"
+                 name="description" type="text"
+                 [(ngModel)]="item.description">
+          <a *ngIf="item.description" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
+        <!--PRICE-->
+        <mat-form-field class="example-full-width">
+          <input matInput required placeholder="Price"
+                 type="number" name="price"
+                 [(ngModel)]="item.price">
+          <a *ngIf="item.price" (click)="clearInput($event)"
+          class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
+        <span>form Valid : {{addProdForm.valid}}</span>
+
       </form>
     </div>
 
@@ -59,12 +59,9 @@
       <h3>Product Preview</h3>
 
       <div class="prod-preview-container">
-        <div class="circle">
-          <!--image-->
-          <div class="prod-image" style="background: url('../../../assets/img/{{item.imageUrl}}.jpg');
-                                         width: 100%;height: 100%; background-size:cover; outline: none; border-radius: 100px; background-position: center; ">
-
-          </div>
+        <!--image-->
+        <div *ngIf="item.imageUrl" class="circle">
+          <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="">
         </div>
         <div class="prod-details">
           <h4 class="prod-name">{{item.title}}</h4>
@@ -73,6 +70,9 @@
 
         </div>
       </div>
+      <!--SUBMIT-->
+      <button *ngIf="addProdForm.valid" type="submit"
+              mat-raised-button color="accent">Add Product</button>
     </div>
   </div>
 </div>

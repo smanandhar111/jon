@@ -26,9 +26,9 @@ export class PassComponent implements OnInit {
   constructor(private passDbService: PassDataService) { }
 
   ngOnInit() {
-    this.passDbService.getData().subscribe(data => {
-      this.passData = data;
-    });
+    // this.passDbService.getData().subscribe(data => {
+    //   this.passData = data;
+    // });
   }
 
   onSubmit(event, item) {
@@ -39,10 +39,6 @@ export class PassComponent implements OnInit {
       this.item.price = '';
       this.item.imageUrl = '';
     }
-  }
-
-  removeCred(event, item) {
-    this.passDbService.removeItem(item);
   }
 
   clearInput(e) {
