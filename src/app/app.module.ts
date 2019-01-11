@@ -27,6 +27,7 @@ import { WeatherComponent } from './comp/weather/weather.component';
 import { FormsModule } from '@angular/forms';
 import {PassDataService} from './services/pass-data.service';
 import {ProditemService} from './services/proditem.service';
+import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {ProditemService} from './services/proditem.service';
     PassComponent,
     DialogxComponent,
     WeatherComponent,
+    ProddisplayComponent,
   ],
   imports: [
     BrowserModule,
