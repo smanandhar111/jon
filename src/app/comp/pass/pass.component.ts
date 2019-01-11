@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { ProditemService } from '../../services/proditem.service';
 import {ProductInputModel, ProductTypes} from '../../models/allModel';
 import {MatFormFieldControl} from '@angular/material';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-pass',
@@ -32,13 +33,9 @@ export class PassComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(addProdForm: NgForm) {
       this.proditemService.addItem(this.item);
-      this.item.type = '';
-      this.item.title = '';
-      this.item.description = '';
-      this.item.price = '';
-      this.item.imageUrl = '';
+      addProdForm.resetForm();
   }
 
   clearInput(e) {

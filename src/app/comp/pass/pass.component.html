@@ -4,7 +4,7 @@
     <div class="add-prod col-sm-5">
       <h3>Add a Product</h3>
 
-      <form  name="addProd" #addProdForm="ngForm" (ngSubmit)="onSubmit()" class="add-pass-form">
+      <form  name="addProd" #addProdForm="ngForm" (ngSubmit)="onSubmit(addProdForm)" class="add-pass-form">
         <!--TYPE-->
         <mat-form-field>
           <mat-select required placeholder="Type of Product" name="type" [(ngModel)]="item.type" >
