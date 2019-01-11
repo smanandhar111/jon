@@ -10,8 +10,6 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./pass.component.scss']
 })
 export class PassComponent implements OnInit {
-  proditemData: ProductInputModel[];
-  panelOpenState = false;
   item: ProductInputModel = {
     type: '',
     title: '',
@@ -25,16 +23,12 @@ export class PassComponent implements OnInit {
     {value: 'bracelet', viewValue: 'Bracelet'},
     {value: 'clothing', viewValue: 'Clothing'},
   ];
-  constructor(private proditemService: ProditemService) { }
+  constructor(private prodItemService: ProditemService) { }
 
-  ngOnInit() {
-    this.proditemService.getItems().subscribe(data => {
-      this.proditemData = data;
-    });
-  }
+  ngOnInit() {}
 
   onSubmit(addProdForm: NgForm) {
-      this.proditemService.addItem(this.item);
+      this.prodItemService.addItem(this.item);
       addProdForm.resetForm();
   }
 

@@ -1,0 +1,10 @@
+<div class="ProdDisplay container">
+  <div class="row">
+    <div class="repeater" *ngFor="let item of proditemData">
+      <div class="circle">
+        <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="">
+        <h5>{{item.title}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
