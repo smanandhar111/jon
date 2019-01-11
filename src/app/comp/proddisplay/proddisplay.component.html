@@ -1,6 +1,32 @@
 <div class="ProdDisplay container">
   <div class="row">
-    <div class="repeater" *ngFor="let item of proditemData">
+    <div class="col-sm">
+      <!--TYPE FILTER-->
+      <mat-form-field>
+        <mat-select placeholder="Filter by Type"
+                    name="type" [(ngModel)]="filterType">
+          <mat-option *ngFor="let type of prodTypes" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <a *ngIf="filterType" (click)="clearFilterType()" class="clear-input fa fa-times"></a>
+
+      <!--PRICE FILTER-->
+      <mat-form-field>
+        <mat-select placeholder="Filter by Price"
+                    name="price" [(ngModel)]="filterPrice">
+          <mat-option *ngFor="let type of prodPrices" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <a *ngIf="filterPrice" (click)="clearFilterType()" class="clear-input fa fa-times"></a>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType">
       <div class="circle">
         <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="">
         <h5>{{item.title}}</h5>

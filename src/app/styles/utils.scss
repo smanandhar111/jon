@@ -235,3 +235,18 @@ body {
   }
 }
 
+a.clear-input {
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: border-color .08s ease;
+  &:hover {
+    border-color: #ff4081;
+    border-radius: 99px;
+  }
+  &:before {
+    position: relative;
+    bottom: 1px;
+  }
+}
+

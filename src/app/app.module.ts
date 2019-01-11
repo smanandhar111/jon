@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import {PassDataService} from './services/pass-data.service';
 import {ProditemService} from './services/proditem.service';
 import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
+import {ProddisplayFilterPipe} from './comp/proddisplay/proddisplay-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
     DialogxComponent,
     WeatherComponent,
     ProddisplayComponent,
+    ProddisplayFilterPipe
   ],
   imports: [
     BrowserModule,
