@@ -10,7 +10,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <a *ngIf="filterType" (click)="clearFilterType()" class="clear-input fa fa-times"></a>
+      <a *ngIf="filterType" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
 
       <!--PRICE FILTER-->
       <mat-form-field>
@@ -21,12 +21,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <a *ngIf="filterPrice" (click)="clearFilterType()" class="clear-input fa fa-times"></a>
+      <a *ngIf="filterPrice" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
 
     </div>
   </div>
   <div class="row">
-    <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType">
+    <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter:filterPrice">
       <div class="circle">
         <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="">
         <h5>{{item.title}}</h5>

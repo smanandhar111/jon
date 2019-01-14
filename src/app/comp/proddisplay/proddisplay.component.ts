@@ -19,7 +19,9 @@ export class ProddisplayComponent implements OnInit {
   ];
   prodPrices: ProductTypes[] = [
     {value: 'lessThan100', viewValue: 'Less Than Rs.100'},
-    {value: 'MoreThan100', viewValue: 'More Than Rs.100'}
+    {value: '100-500', viewValue: 'Rs.100 - Rs.500'},
+    {value: '500-1000', viewValue: 'Rs.500 - Rs1000'},
+    {value: 'MoreThan1000', viewValue: 'More Than Rs.1000'}
   ];
   constructor(private prodItemService: ProditemService) { }
 
@@ -29,8 +31,16 @@ export class ProddisplayComponent implements OnInit {
     });
   }
 
-  clearFilterType() {
-   this.filterType = '';
+  clearFilterType(e) {
+    const placeholder = e.target.previousElementSibling.lastElementChild
+                         .firstElementChild.firstElementChild.firstElementChild
+                         .getAttribute('placeholder');
+    if (placeholder === 'Filter by Type') {
+      this.filterType = '';
+    }
+    if (placeholder === 'Filter by Price') {
+      this.filterPrice = '';
+    }
   }
 
 }

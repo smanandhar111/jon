@@ -3,7 +3,7 @@ export interface ProductInputModel {
   type: string;
   title: string;
   description: string;
-  price: string;
+  price: number;
   imageUrl: string;
 }
 

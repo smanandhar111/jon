@@ -14,7 +14,7 @@ export class PassComponent implements OnInit {
     type: '',
     title: '',
     description: '',
-    price: '',
+    price: null,
     imageUrl: ''
   };
   prodTypes: ProductTypes[] = [
@@ -41,7 +41,7 @@ export class PassComponent implements OnInit {
       this.item.description = '';
     }
     if (inputName === 'price') {
-      this.item.price = '';
+      this.item.price = null;
     }
     if (inputName === 'imageUrl') {
       this.item.imageUrl = '';
