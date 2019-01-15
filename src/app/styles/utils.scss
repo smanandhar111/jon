@@ -239,10 +239,14 @@ a.clear-input {
   border: 1px solid transparent;
   cursor: pointer;
   padding: 0 2px;
-  transition: border-color .08s ease;
+  border-radius: 99px;
+  transition: color 0.3s ease, border-color 0.8s ease;
+  &.fa-times {
+    color: #0d0d0d;
+  }
   &:hover {
-    border-color: #ff4081;
-    border-radius: 99px;
+    border-color: #f44336;
+    color: #f44336;
   }
   &:before {
     position: relative;

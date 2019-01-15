@@ -18,6 +18,7 @@ export class PassComponent implements OnInit {
     imageUrl: '',
     imageUrlTwo: '',
     imageUrlThree: '',
+    imageUrlFour: '',
     primeColor: ''
   };
   prodTypes: ProductTypes[] = [
@@ -26,8 +27,7 @@ export class PassComponent implements OnInit {
     {value: 'bracelet', viewValue: 'Bracelet'},
     {value: 'clothing', viewValue: 'Clothing'},
   ];
-  showAddImageTwo = false;
-  showAddImageThree = false;
+  imgCount =  1;
   constructor(private prodItemService: ProditemService) { }
 
   ngOnInit() {}
@@ -61,11 +61,7 @@ export class PassComponent implements OnInit {
       this.item.primeColor = '';
     }
   }
-
-  showAddImgTwo(): void {
-    this.showAddImageTwo = true;
-  }
-  showAddImgThree(): void {
-    this.showAddImageThree = true;
+  changeCount(val) {
+    this.imgCount = val;
   }
 }

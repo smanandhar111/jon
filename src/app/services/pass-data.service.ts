@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { PassModel } from '../models/passModel';
+import { ProductInputModel } from '../models/allModel';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -8,15 +8,15 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PassDataService {
-  passDataCollection: AngularFirestoreCollection<PassModel[]>;
-  passDataDoc: AngularFirestoreDocument<PassModel>;
-  passData: Observable<PassModel[]>;
+  passDataCollection: AngularFirestoreCollection<ProductInputModel[]>;
+  passDataDoc: AngularFirestoreDocument<ProductInputModel>;
+  passData: Observable<ProductInputModel[]>;
   // constructor
   constructor(public afs: AngularFirestore) {
     this.passDataCollection = this.afs.collection('pass');
     this.passData = this.passDataCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
-        const data = a.payload.doc.data() as PassModel[];
+        const data = a.payload.doc.data() as ProductInputModel[];
         data.id = a.payload.doc.id;
         return data;
       });
@@ -25,9 +25,9 @@ export class PassDataService {
   getData() {
     return this.passData;
   }
-  addItem(item: PassModel[]) {
+  addItem(item: ProductInputModel[]) {
     this.passDataCollection.add(item);
   }
-  removeItem(item: PassModel[]) {
+  removeItem(item: ProductInputModel[]) {
   }
 }

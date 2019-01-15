@@ -46,7 +46,7 @@ export class ProddisplayComponent implements OnInit {
   }
 
   getProdDetails(title: string) {
-    this.router.navigate(['/proddetails', title]);
+    this.router.navigate(['/prod-details', title]);
   }
 
 }

@@ -6,6 +6,47 @@
 
       <form  name="addProd" #addProdForm="ngForm"
              (ngSubmit)="onSubmit(addProdForm)" class="add-pass-form">
+
+        <!--IMAGE URL-->
+        <mat-form-field class="example-full-width">
+          <input matInput required placeholder="Image Url"
+                 name="imageUrl" [(ngModel)]="item.imageUrl">
+          <a *ngIf="item.imageUrl" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+        </mat-form-field>
+        <!--IMAGE COUNT INDICATOR-->
+        <div class="image-count">
+          <label>No.of images :{{item.title}}</label>
+          <a class="img-count-link" (click)="changeCount(1)" [ngClass]="{'active': imgCount === 1}">1</a>
+          <a class="img-count-link" (click)="changeCount(2)" [ngClass]="{'active': imgCount === 2}">2</a>
+          <a class="img-count-link" (click)="changeCount(3)" [ngClass]="{'active': imgCount === 3}">3</a>
+          <a class="img-count-link" (click)="changeCount(4)" [ngClass]="{'active': imgCount === 4}">4</a>
+        </div>
+
+        <!--IMAGE URL-->
+        <mat-form-field class="example-full-width" *ngIf="imgCount > 1">
+          <input matInput placeholder="2nd Image Url"
+                 name="imageUrl" [(ngModel)]="item.imageUrlTwo">
+          <a *ngIf="item.imageUrlTwo" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
+        <!--IMAGE URL-->
+        <mat-form-field class="example-full-width" *ngIf="imgCount > 2">
+          <input matInput placeholder="3rd Image Url"
+                 name="imageUrl" [(ngModel)]="item.imageUrlThree">
+          <a *ngIf="item.imageUrlThree" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
+        <!--IMAGE URL-->
+        <mat-form-field class="example-full-width" *ngIf="imgCount > 3">
+          <input matInput placeholder="4th Image Url"
+                 name="imageUrl" [(ngModel)]="item.imageUrlFour">
+          <a *ngIf="item.imageUrlFour" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
         <!--TYPE-->
         <mat-form-field>
           <mat-select required placeholder="Type of Product"
@@ -18,39 +59,6 @@
 
        <!--Todo: Add Id as a Property of Product to use in Param-->
 
-        <!--IMAGE URL-->
-        <mat-form-field class="example-full-width">
-          <input matInput required placeholder="Image Url"
-                 name="imageUrl" [(ngModel)]="item.imageUrl">
-          <a *ngIf="item.imageUrl" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
-
-        <a mat-raised-button class="add-img-btn"
-           *ngIf="item.imageUrl && !showAddImageTwo" (click)="showAddImgTwo()">
-          <i class="fa fa-plus"></i>
-        </a>
-
-        <!--IMAGE URL TWO-->
-        <mat-form-field class="example-full-width" *ngIf="showAddImageTwo">
-          <input matInput placeholder="Additional Image Url"
-                 name="imageUrlTwo" [(ngModel)]="item.imageUrlTwo">
-          <a *ngIf="item.imageUrlTwo" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
-
-        <a mat-raised-button class="add-img-btn"
-           *ngIf="item.imageUrlTwo && !showAddImageThree" (click)="showAddImgThree()">
-          <i class="fa fa-plus"></i>
-        </a>
-
-        <!--IMAGE URL THREE-->
-        <mat-form-field class="example-full-width" *ngIf="showAddImageThree">
-          <input matInput placeholder="Additional Image Url"
-                 name="imageUrlTwo" [(ngModel)]="item.imageUrlThree">
-          <a *ngIf="item.imageUrlThree" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
 
 
         <!--PRODUCT TITLE-->

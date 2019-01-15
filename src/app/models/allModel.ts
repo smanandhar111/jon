@@ -5,8 +5,9 @@ export interface ProductInputModel {
   description: string;
   price: number;
   imageUrl: string;
-  imageUrlTwo: string;
-  imageUrlThree: string;
+  imageUrlTwo?: string;
+  imageUrlThree?: string;
+  imageUrlFour?: string;
   primeColor: string;
 }
 

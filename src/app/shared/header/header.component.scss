@@ -1,8 +1,11 @@
 .mat-toolbar {
   justify-content: space-between;
-  box-shadow: 0px 5px 21px -2px #cccccc;
+  box-shadow: 0 5px 21px -2px #cccccc;
   nav {
-
+    button.active {
+      border-bottom: 2px solid #ff4081;
+      border-radius: 0;
+    }
   }
   .log-con {
 

@@ -1,4 +1,13 @@
 .ProdDisplay {
+  .filter-container {
+    /deep/ mat-form-field {
+      margin-right: 20px;
+    }
+    a.clear-input {
+      position: relative;
+      right: 15px;
+    }
+  }
   .repeater {
     .circle {
       h5 {
