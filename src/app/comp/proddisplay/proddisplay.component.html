@@ -27,7 +27,7 @@
   </div>
   <div class="row">
     <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter: filterPrice">
-      <div class="circle">
+      <div class="circle" (click)="getProdDetails(item.title)">
         <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="">
         <h5>{{item.title}}</h5>
       </div>

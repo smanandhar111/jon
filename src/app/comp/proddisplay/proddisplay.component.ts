@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductInputModel, ProductTypes} from '../../models/allModel';
 import { ProditemService } from '../../services/proditem.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-proddisplay',
@@ -23,7 +24,8 @@ export class ProddisplayComponent implements OnInit {
     {value: '500-1000', viewValue: 'Rs.500 - Rs1000'},
     {value: 'MoreThan1000', viewValue: 'More Than Rs.1000'}
   ];
-  constructor(private prodItemService: ProditemService) { }
+  constructor(private prodItemService: ProditemService,
+              private router: Router) { }
 
   ngOnInit() {
     this.prodItemService.getItems().subscribe(data => {
@@ -41,6 +43,10 @@ export class ProddisplayComponent implements OnInit {
     if (placeholder === 'price') {
       this.filterPrice = '';
     }
+  }
+
+  getProdDetails(title: string) {
+    this.router.navigate(['/proddetails', title]);
   }
 
 }

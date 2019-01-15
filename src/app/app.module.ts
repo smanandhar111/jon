@@ -30,6 +30,7 @@ import {ProditemService} from './services/proditem.service';
 import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
 import {ProddisplayFilterPipe} from './comp/proddisplay/proddisplay-filter.pipe';
 import {ProddisplayPricefilterPipe} from './comp/proddisplay/proddisplay-pricefilter.pipe';
+import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ProddisplayPricefilterPipe} from './comp/proddisplay/proddisplay-pricefi
     WeatherComponent,
     ProddisplayComponent,
     ProddisplayFilterPipe,
-    ProddisplayPricefilterPipe
+    ProddisplayPricefilterPipe,
+    ProddetailsComponent
   ],
   imports: [
     BrowserModule,
