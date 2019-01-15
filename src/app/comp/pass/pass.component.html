@@ -1,11 +1,10 @@
-
 <div class="PassComp container">
   <div class="row">
     <div class="add-prod col-sm-5">
       <h3>Add a Product</h3>
 
-      <form  name="addProd" #addProdForm="ngForm"
-             (ngSubmit)="onSubmit(addProdForm)" class="add-pass-form">
+      <form name="addProd" #addProdForm="ngForm"
+            (ngSubmit)="onSubmit(addProdForm)" class="add-pass-form">
 
         <!--IMAGE URL-->
         <mat-form-field class="example-full-width">
@@ -16,7 +15,7 @@
         </mat-form-field>
         <!--IMAGE COUNT INDICATOR-->
         <div class="image-count">
-          <label>No.of images :{{item.title}}</label>
+          <label>No.of images :</label>
           <a class="img-count-link" (click)="changeCount(1)" [ngClass]="{'active': imgCount === 1}">1</a>
           <a class="img-count-link" (click)="changeCount(2)" [ngClass]="{'active': imgCount === 2}">2</a>
           <a class="img-count-link" (click)="changeCount(3)" [ngClass]="{'active': imgCount === 3}">3</a>
@@ -25,7 +24,7 @@
 
         <!--IMAGE URL-->
         <mat-form-field class="example-full-width" *ngIf="imgCount > 1">
-          <input matInput placeholder="2nd Image Url"
+          <input matInput required placeholder="2nd Image Url"
                  name="imageUrl" [(ngModel)]="item.imageUrlTwo">
           <a *ngIf="item.imageUrlTwo" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
@@ -33,7 +32,7 @@
 
         <!--IMAGE URL-->
         <mat-form-field class="example-full-width" *ngIf="imgCount > 2">
-          <input matInput placeholder="3rd Image Url"
+          <input matInput required placeholder="3rd Image Url"
                  name="imageUrl" [(ngModel)]="item.imageUrlThree">
           <a *ngIf="item.imageUrlThree" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
@@ -41,7 +40,7 @@
 
         <!--IMAGE URL-->
         <mat-form-field class="example-full-width" *ngIf="imgCount > 3">
-          <input matInput placeholder="4th Image Url"
+          <input matInput required placeholder="4th Image Url"
                  name="imageUrl" [(ngModel)]="item.imageUrlFour">
           <a *ngIf="item.imageUrlFour" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
@@ -50,29 +49,38 @@
         <!--TYPE-->
         <mat-form-field>
           <mat-select required placeholder="Type of Product"
-                      name="type" [(ngModel)]="item.type" >
+                      name="type" [(ngModel)]="item.type">
             <mat-option *ngFor="let type of prodTypes" [value]="type.value">
               {{type.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-       <!--Todo: Add Id as a Property of Product to use in Param-->
-
+        <!--UNIQUE ID-->
+        <mat-form-field class="example-full-width uid">
+          <input matInput required placeholder="Unique ID"
+                 type="number"  name="uid"
+                 [(ngModel)]="item.uid">
+          <a *ngIf="item.uid" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+          <div class="last-uid">
+            <span>Last used Unique ID: {{lastCreatedUid}}</span>
+          </div>
+        </mat-form-field>
 
 
         <!--PRODUCT TITLE-->
         <mat-form-field class="example-full-width">
           <input matInput required placeholder="Title"
-                 type="text"  name="title"
+                 type="text" name="title"
                  [(ngModel)]="item.title">
           <a *ngIf="item.title" (click)="clearInput($event)"
-          class="clear-input fa fa-times"></a>
+             class="clear-input fa fa-times"></a>
         </mat-form-field>
 
         <!--DESCRIPTION-->
         <mat-form-field class="example-full-width">
-          <input matInput required  placeholder="Description"
+          <input matInput required placeholder="Description"
                  name="description" type="text"
                  [(ngModel)]="item.description">
           <a *ngIf="item.description" (click)="clearInput($event)"
@@ -85,7 +93,7 @@
                  type="number" name="price"
                  [(ngModel)]="item.price">
           <a *ngIf="item.price" (click)="clearInput($event)"
-          class="clear-input fa fa-times"></a>
+             class="clear-input fa fa-times"></a>
         </mat-form-field>
 
         <!--PRIME COLOR-->
@@ -99,7 +107,8 @@
 
         <!--SUBMIT-->
         <button class="add-prod-btn" *ngIf="addProdForm.valid" type="submit"
-                mat-raised-button color="accent">Add Product</button>
+                mat-raised-button color="accent">Add Product
+        </button>
       </form>
     </div>
 

@@ -8,6 +8,7 @@ export interface ProductInputModel {
   imageUrlTwo?: string;
   imageUrlThree?: string;
   imageUrlFour?: string;
+  uid: number;
   primeColor: string;
 }
 

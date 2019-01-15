@@ -20,6 +20,17 @@
         .mat-form-field-infix {
           display: flex;
         }
+        &.uid {
+          position: relative;
+
+          .last-uid {
+            position: absolute;
+            top: 35px;
+            color: #515152;
+            font-size: 12px;
+            left: 351px;
+          }
+        }
       }
 
       button.add-prod-btn {
@@ -54,7 +65,6 @@
           &.active {
             background: #108bc8;
             color: #ffffff;
-            font-size: 12px;
           }
         }
       }

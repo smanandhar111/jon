@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ProditemService } from '../../services/proditem.service';
 import {ProductInputModel, ProductTypes} from '../../models/allModel';
-import {MatFormFieldControl} from '@angular/material';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -19,6 +18,7 @@ export class PassComponent implements OnInit {
     imageUrlTwo: '',
     imageUrlThree: '',
     imageUrlFour: '',
+    uid: null,
     primeColor: ''
   };
   prodTypes: ProductTypes[] = [
@@ -28,6 +28,7 @@ export class PassComponent implements OnInit {
     {value: 'clothing', viewValue: 'Clothing'},
   ];
   imgCount =  1;
+  lastCreatedUid: number;
   constructor(private prodItemService: ProditemService) { }
 
   ngOnInit() {}
@@ -35,6 +36,9 @@ export class PassComponent implements OnInit {
   onSubmit(addProdForm: NgForm) {
       this.prodItemService.addItem(this.item);
       addProdForm.resetForm();
+      debugger;
+      // setting the last created Uid
+      this.item.uid = this.lastCreatedUid;
   }
 
   clearInput(e): void {
@@ -57,8 +61,14 @@ export class PassComponent implements OnInit {
     if (inputName === 'imageUrlThree') {
       this.item.imageUrlThree = '';
     }
+    if (inputName === 'imageUrlFour') {
+      this.item.imageUrlFour = '';
+    }
     if (inputName === 'primeColor') {
       this.item.primeColor = '';
+    }
+    if (inputName === 'uid') {
+      this.item.uid = null;
     }
   }
   changeCount(val) {
