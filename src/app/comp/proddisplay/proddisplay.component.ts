@@ -34,11 +34,11 @@ export class ProddisplayComponent implements OnInit {
   clearFilterType(e) {
     const placeholder = e.target.previousElementSibling.lastElementChild
                          .firstElementChild.firstElementChild.firstElementChild
-                         .getAttribute('placeholder');
-    if (placeholder === 'Filter by Type') {
+                         .getAttribute('name');
+    if (placeholder === 'type') {
       this.filterType = '';
     }
-    if (placeholder === 'Filter by Price') {
+    if (placeholder === 'price') {
       this.filterPrice = '';
     }
   }

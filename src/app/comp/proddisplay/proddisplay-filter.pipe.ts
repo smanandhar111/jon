@@ -5,12 +5,13 @@ import { ProductInputModel} from '../../models/allModel';
   name: 'prodFilter'
 })
 export class ProddisplayFilterPipe implements PipeTransform {
-  transform (proditemData: ProductInputModel[], searchTerm: string) {
-    if (!proditemData || !searchTerm) {
+  transform(proditemData: ProductInputModel[], filterType: string) {
+    if (!proditemData || !filterType) {
       return proditemData;
     } else {
       return proditemData.filter(prod =>
-        prod.type.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+        // Todo: prod is returning null
+        prod.type.toLowerCase().indexOf(filterType.toLowerCase()) !== -1);
     }
   }
 }

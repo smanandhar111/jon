@@ -21,8 +21,14 @@
         }
       }
 
-      button {
+      button.add-prod-btn {
         margin-top: 25px;
+      }
+      a.add-img-btn {
+        border-radius: 100px;
+        margin: 0 auto;
+        padding: 0 13px;
+        min-width: 15px;
       }
     }
   }

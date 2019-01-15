@@ -15,7 +15,10 @@ export class PassComponent implements OnInit {
     title: '',
     description: '',
     price: null,
-    imageUrl: ''
+    imageUrl: '',
+    imageUrlTwo: '',
+    imageUrlThree: '',
+    primeColor: ''
   };
   prodTypes: ProductTypes[] = [
     {value: 'earring', viewValue: 'Earring'},
@@ -23,6 +26,8 @@ export class PassComponent implements OnInit {
     {value: 'bracelet', viewValue: 'Bracelet'},
     {value: 'clothing', viewValue: 'Clothing'},
   ];
+  showAddImageTwo = false;
+  showAddImageThree = false;
   constructor(private prodItemService: ProditemService) { }
 
   ngOnInit() {}
@@ -32,7 +37,7 @@ export class PassComponent implements OnInit {
       addProdForm.resetForm();
   }
 
-  clearInput(e) {
+  clearInput(e): void {
     const inputName = e.target.previousElementSibling.name;
     if (inputName === 'title') {
       this.item.title = '';
@@ -46,6 +51,21 @@ export class PassComponent implements OnInit {
     if (inputName === 'imageUrl') {
       this.item.imageUrl = '';
     }
+    if (inputName === 'imageUrlTwo') {
+      this.item.imageUrlTwo = '';
+    }
+    if (inputName === 'imageUrlThree') {
+      this.item.imageUrlThree = '';
+    }
+    if (inputName === 'primeColor') {
+      this.item.primeColor = '';
+    }
   }
 
+  showAddImgTwo(): void {
+    this.showAddImageTwo = true;
+  }
+  showAddImgThree(): void {
+    this.showAddImageThree = true;
+  }
 }
