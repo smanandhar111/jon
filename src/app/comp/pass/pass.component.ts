@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ProditemService } from '../../services/proditem.service';
-import {ProductInputModel, ProductTypes} from '../../models/allModel';
+import {ItemInfoModel, ProductInputModel, ProductTypes} from '../../models/allModel';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -28,17 +28,27 @@ export class PassComponent implements OnInit {
     {value: 'clothing', viewValue: 'Clothing'},
   ];
   imgCount =  1;
-  lastCreatedUid: number;
+  itemInfo;
   constructor(private prodItemService: ProditemService) { }
 
   ngOnInit() {}
 
   onSubmit(addProdForm: NgForm) {
       this.prodItemService.addItem(this.item);
+      this.itemInfo = {
+        uid: this.item.uid
+      };
+      this.prodItemService.updateLatestUid(this.itemInfo);
       addProdForm.resetForm();
-      debugger;
-      // setting the last created Uid
-      this.item.uid = this.lastCreatedUid;
+  }
+  autoFill(): any {
+    this.item.type = 'earring';
+    this.item.imageUrl = 'star';
+    this.item.uid =  Math.random();
+    this.item.title = 'Auto Generated Title';
+    this.item.description = 'To generate random number between two numbers is so simple.';
+    this.item.price = Math.random();
+    this.item.primeColor = 'Blue';
   }
 
   clearInput(e): void {

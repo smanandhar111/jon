@@ -16,3 +16,8 @@ export interface ProductTypes {
   value: string;
   viewValue: string;
 }
+
+export interface ItemInfoModel {
+  title: string;
+  uid: number;
+}

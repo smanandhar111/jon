@@ -35,6 +35,11 @@
 
       button.add-prod-btn {
         margin-top: 25px;
+        background: #ffded8;
+
+        &.valid {
+          background: #ff5e40;
+        }
       }
       a.add-img-btn {
         border-radius: 100px;

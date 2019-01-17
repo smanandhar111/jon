@@ -64,7 +64,7 @@
           <a *ngIf="item.uid" (click)="clearInput($event)"
              class="clear-input fa fa-times"></a>
           <div class="last-uid">
-            <span>Last used Unique ID: {{lastCreatedUid}}</span>
+            <span>Last used Unique ID: </span>
           </div>
         </mat-form-field>
 
@@ -105,8 +105,10 @@
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
+        <button mat-raised-button color="accent" (click)="autoFill()">AutoFill</button>
+
         <!--SUBMIT-->
-        <button class="add-prod-btn" *ngIf="addProdForm.valid" type="submit"
+        <button class="add-prod-btn" [ngClass]="{'valid': addProdForm.valid}" type="submit"
                 mat-raised-button color="accent">Add Product
         </button>
       </form>

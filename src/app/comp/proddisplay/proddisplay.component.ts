@@ -28,7 +28,8 @@ export class ProddisplayComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.prodItemService.getItems().subscribe(data => {
+    this.prodItemService.getItems();
+    this.prodItemService.items.subscribe(data => {
       this.proditemData = data;
     });
   }
@@ -45,8 +46,8 @@ export class ProddisplayComponent implements OnInit {
     }
   }
 
-  getProdDetails(title: string) {
-    this.router.navigate(['/prod-details', title]);
+  getProdDetails(uid: number) {
+    this.router.navigate(['/prod-details', uid]);
   }
 
 }
