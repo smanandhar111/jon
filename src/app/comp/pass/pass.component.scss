@@ -33,12 +33,27 @@
         }
       }
 
-      button.add-prod-btn {
-        margin-top: 25px;
-        background: #ffded8;
+      button {
+        &.add-prod-btn {
+          margin-top: 25px;
+          background: #ffded8;
 
-        &.valid {
-          background: #ff5e40;
+          &.valid {
+            background: #ff5e40;
+          }
+        }
+      }
+      a.auto-fill {
+        position: absolute;
+        left: 0;
+        top: -50px;
+        background: #2bc687;
+        border-radius: 99px;
+        width: 1px;
+        padding: 0;
+        min-width: 36px;
+        i {
+          font-size: 18px;
         }
       }
       a.add-img-btn {

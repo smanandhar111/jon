@@ -105,10 +105,11 @@
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
-        <button mat-raised-button color="accent" (click)="autoFill()">AutoFill</button>
+        <!--Todo: For testing purposes only-->
+        <a mat-raised-button class="auto-fill" (click)="autoFill()"><i class="fa fa-id-card-o"></i></a>
 
         <!--SUBMIT-->
-        <button class="add-prod-btn" [ngClass]="{'valid': addProdForm.valid}" type="submit"
+        <button [disabled]="!addProdForm.valid" class="add-prod-btn" [ngClass]="{'valid': addProdForm.valid}" type="submit"
                 mat-raised-button color="accent">Add Product
         </button>
       </form>

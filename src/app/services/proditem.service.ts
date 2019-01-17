@@ -30,7 +30,6 @@ export class ProditemService {
     this.itemsCollection.add(item);
   }
   updateLatestUid(field: ItemInfoModel) {
-    debugger;
     this.itemInfoCollection.add(field);
   }
 }
