@@ -28,7 +28,7 @@ export class ProddisplayComponent implements OnInit {
   prodColors: ProductTypes[] = [
     {value: 'gold', viewValue: 'Gold'},
     {value: 'silver', viewValue: 'Silver'},
-    {value: 'red', viewValue: 'Red'},
+    {value: 'blue', viewValue: 'Blue'},
     {value: 'pink', viewValue: 'Pink'}
   ];
   constructor(private prodItemService: ProditemService,
