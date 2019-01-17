@@ -1,3 +1,6 @@
-<p>
-  proddetails works!
-</p>
+<div *ngIf="prodSpData" class="display">
+  <p>title: {{prodSpData.title}}</p>
+  <p> type: {{prodSpData.type}}</p>
+  <p>price: {{prodSpData.price}}</p>
+  <img class="prod-img" src="../../../assets/img/{{prodSpData.imageUrl}}.jpg" alt="">
+</div>

@@ -35,13 +35,13 @@ export class ProddisplayComponent implements OnInit {
   }
 
   clearFilterType(e) {
-    const placeholder = e.target.previousElementSibling.lastElementChild
+    const elementName = e.target.previousElementSibling.lastElementChild
                          .firstElementChild.firstElementChild.firstElementChild
                          .getAttribute('name');
-    if (placeholder === 'type') {
+    if (elementName === 'type') {
       this.filterType = '';
     }
-    if (placeholder === 'price') {
+    if (elementName === 'price') {
       this.filterPrice = '';
     }
   }

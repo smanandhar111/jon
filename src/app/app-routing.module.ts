@@ -6,7 +6,7 @@ import {PassComponent} from './comp/pass/pass.component';
 
 const routes: Routes = [
   { path: 'display', component: ProddisplayComponent },
-  { path: 'prod-details/:title', component: ProddetailsComponent },
+  { path: 'prod-details/:id', component: ProddetailsComponent },
   { path: 'add-product', component: PassComponent },
   { path: '', redirectTo: '/add-product', pathMatch: 'full'}
 ];

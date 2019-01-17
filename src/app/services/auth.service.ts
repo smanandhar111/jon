@@ -11,13 +11,13 @@ export class AuthService {
   currentUser;
   // public authenticated: Observable <boolean>;
   public authenticated: boolean;
-  constructor(public af: AngularFireAuth) {
+  constructor(public af: AngularFireAuth) {}
+  checkAuthState() {
     this.af.authState.subscribe(
       (auth) => {
         if (auth != null) {
-          this.user = af.authState;
-          // this.authenticated = true;
-          this.currentUser = af.auth.currentUser;
+          this.user = this.af.authState;
+          this.currentUser = this.af.auth.currentUser;
         }
       }
     );
