@@ -42,6 +42,9 @@
             background: #ff5e40;
           }
         }
+        &[disabled] {
+          color: #ffffff;
+        }
       }
       a.auto-fill {
         position: absolute;

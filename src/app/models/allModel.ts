@@ -8,16 +8,10 @@ export interface ProductInputModel {
   imageUrlTwo?: string;
   imageUrlThree?: string;
   imageUrlFour?: string;
-  uid: number;
   primeColor: string;
 }
 
 export interface ProductTypes {
   value: string;
   viewValue: string;
-}
-
-export interface ItemInfoModel {
-  title: string;
-  uid: number;
 }

@@ -46,8 +46,8 @@ export class ProddisplayComponent implements OnInit {
     }
   }
 
-  getProdDetails(uid: number) {
-    this.router.navigate(['/prod-details', uid]);
+  getProdDetails(id: number) {
+    this.router.navigate(['/prod-details', id]);
   }
 
 }

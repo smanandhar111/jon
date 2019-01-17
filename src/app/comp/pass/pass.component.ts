@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { ProditemService } from '../../services/proditem.service';
-import {ItemInfoModel, ProductInputModel, ProductTypes} from '../../models/allModel';
+import {ProductInputModel, ProductTypes} from '../../models/allModel';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -18,7 +18,6 @@ export class PassComponent implements OnInit {
     imageUrlTwo: '',
     imageUrlThree: '',
     imageUrlFour: '',
-    uid: null,
     primeColor: ''
   };
   prodTypes: ProductTypes[] = [
@@ -28,29 +27,22 @@ export class PassComponent implements OnInit {
     {value: 'clothing', viewValue: 'Clothing'},
   ];
   imgCount =  1;
-  itemInfo;
   constructor(private prodItemService: ProditemService) { }
 
   ngOnInit() {}
 
   onSubmit(addProdForm: NgForm) {
       this.prodItemService.addItem(this.item);
-      this.itemInfo = {
-        uid: this.item.uid
-      };
-      this.prodItemService.updateLatestUid(this.itemInfo);
       addProdForm.resetForm();
   }
   autoFill(): any {
     this.item.type = 'earring';
     this.item.imageUrl = 'star';
-    this.item.uid =  Math.random();
     this.item.title = 'Auto Generated Title';
     this.item.description = 'To generate random number between two numbers is so simple.';
-    this.item.price = Math.random();
+    this.item.price = Math.floor(Math.random() * 1000) + 1;
     this.item.primeColor = 'Blue';
   }
-
   clearInput(e): void {
     const inputName = e.target.previousElementSibling.name;
     if (inputName === 'title') {
@@ -76,9 +68,6 @@ export class PassComponent implements OnInit {
     }
     if (inputName === 'primeColor') {
       this.item.primeColor = '';
-    }
-    if (inputName === 'uid') {
-      this.item.uid = null;
     }
   }
   changeCount(val) {

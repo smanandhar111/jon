@@ -56,19 +56,6 @@
           </mat-select>
         </mat-form-field>
 
-        <!--UNIQUE ID-->
-        <mat-form-field class="example-full-width uid">
-          <input matInput required placeholder="Unique ID"
-                 type="number"  name="uid"
-                 [(ngModel)]="item.uid">
-          <a *ngIf="item.uid" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-          <div class="last-uid">
-            <span>Last used Unique ID: </span>
-          </div>
-        </mat-form-field>
-
-
         <!--PRODUCT TITLE-->
         <mat-form-field class="example-full-width">
           <input matInput required placeholder="Title"

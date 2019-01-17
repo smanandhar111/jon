@@ -25,7 +25,6 @@ import { PassComponent } from './comp/pass/pass.component';
 import { DialogxComponent } from './comp/dialogx/dialogx.component';
 import { WeatherComponent } from './comp/weather/weather.component';
 import { FormsModule } from '@angular/forms';
-import {PassDataService} from './services/pass-data.service';
 import {ProditemService} from './services/proditem.service';
 import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
 import {ProddisplayFilterPipe} from './comp/proddisplay/proddisplay-filter.pipe';
@@ -65,7 +64,7 @@ import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails
     HttpClientModule,
     FormsModule,
   ],
-  providers: [AuthService, PassDataService, ProditemService],
+  providers: [AuthService, ProditemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
