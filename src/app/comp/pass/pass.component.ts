@@ -43,6 +43,9 @@ export class PassComponent implements OnInit {
     this.item.price = Math.floor(Math.random() * 1000) + 1;
     this.item.primeColor = 'Blue';
   }
+  clearAll(addProdForm): any {
+    addProdForm.resetForm();
+  }
   clearInput(e): void {
     const inputName = e.target.previousElementSibling.name;
     if (inputName === 'title') {

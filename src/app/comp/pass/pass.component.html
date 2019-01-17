@@ -93,7 +93,9 @@
         </mat-form-field>
 
         <!--Todo: For testing purposes only-->
-        <a mat-raised-button class="auto-fill" (click)="autoFill()"><i class="fa fa-id-card-o"></i></a>
+        <a mat-raised-button class="auto-fill" *ngIf="addProdForm.pristine" (click)="autoFill()"><i class="fa fa-id-card-o"></i></a>
+
+        <a mat-raised-button class="clear-form" *ngIf="!addProdForm.pristine || addProdForm.valid" (click)="clearAll(addProdForm)"><i class="fa fa-times-circle-o"></i></a>
 
         <!--SUBMIT-->
         <button [disabled]="!addProdForm.valid" class="add-prod-btn" [ngClass]="{'valid': addProdForm.valid}" type="submit"

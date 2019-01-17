@@ -57,6 +57,21 @@
         min-width: 36px;
         i {
           font-size: 18px;
+          color: #ffffff;
+        }
+      }
+      a.clear-form {
+        position: absolute;
+        right: 0;
+        top: -50px;
+        border-radius: 99px;
+        width: 1px;
+        padding: 0;
+        min-width: 36px;
+        background: #f44336;
+        i {
+          font-size: 22px;
+          color: #ffffff;
         }
       }
       a.add-img-btn {
