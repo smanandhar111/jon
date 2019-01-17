@@ -12,6 +12,7 @@ export class ProddisplayComponent implements OnInit {
   proditemData: ProductInputModel[];
   filterType: string;
   filterPrice: string;
+  filterColor: string;
   prodTypes: ProductTypes[] = [
     {value: 'earring', viewValue: 'Earring'},
     {value: 'necklace', viewValue: 'Necklace'},
@@ -23,6 +24,12 @@ export class ProddisplayComponent implements OnInit {
     {value: '100-500', viewValue: 'Rs.100 - Rs.500'},
     {value: '500-1000', viewValue: 'Rs.500 - Rs1000'},
     {value: 'MoreThan1000', viewValue: 'More Than Rs.1000'}
+  ];
+  prodColors: ProductTypes[] = [
+    {value: 'gold', viewValue: 'Gold'},
+    {value: 'silver', viewValue: 'Silver'},
+    {value: 'red', viewValue: 'Red'},
+    {value: 'pink', viewValue: 'Pink'}
   ];
   constructor(private prodItemService: ProditemService,
               private router: Router) { }
@@ -43,6 +50,9 @@ export class ProddisplayComponent implements OnInit {
     }
     if (elementName === 'price') {
       this.filterPrice = '';
+    }
+    if (elementName === 'color') {
+      this.filterColor = '';
     }
   }
 

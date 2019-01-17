@@ -20,9 +20,9 @@ export class ProddetailsComponent implements OnInit {
     this.prodItemService.getItems();
     this.prodItemService.items.subscribe(data => {
       this.proditemData = data;
-      this.proditemData.forEach(data => {
-        if (data.id === this.uid) {
-          this.prodSpData = data;
+      this.proditemData.forEach( result => {
+        if (result.id === this.uid) {
+          this.prodSpData = result;
         }
       });
     });

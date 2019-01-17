@@ -30,6 +30,7 @@ import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
 import {ProddisplayFilterPipe} from './comp/proddisplay/proddisplay-filter.pipe';
 import {ProddisplayPricefilterPipe} from './comp/proddisplay/proddisplay-pricefilter.pipe';
 import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails.component';
+import {ProddisplayColorfilterPipe} from './comp/proddisplay/proddisplay-colorfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails
     ProddisplayComponent,
     ProddisplayFilterPipe,
     ProddisplayPricefilterPipe,
+    ProddisplayColorfilterPipe,
     ProddetailsComponent
   ],
   imports: [

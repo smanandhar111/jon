@@ -10,7 +10,6 @@ export class ProddisplayFilterPipe implements PipeTransform {
       return proditemData;
     } else {
       return proditemData.filter(prod =>
-        // Todo: prod is returning null
         prod.type.toLowerCase().indexOf(filterType.toLowerCase()) !== -1);
     }
   }
