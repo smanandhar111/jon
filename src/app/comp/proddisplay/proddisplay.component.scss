@@ -1,17 +1,20 @@
-.ProdDisplay {
-  .filter-container {
-    /deep/ mat-form-field {
-      margin-right: 20px;
+.ProdDisplayComp {
+  .row {
+    justify-content: center;
+    .filter-container {
+      /deep/ mat-form-field {
+        margin-right: 20px;
+      }
+      a.clear-input {
+        position: relative;
+        right: 15px;
+      }
     }
-    a.clear-input {
-      position: relative;
-      right: 15px;
-    }
-  }
-  .repeater {
-    .circle {
-      h5 {
-        text-align: center;
+    .repeater {
+      .circle {
+        h5 {
+          text-align: center;
+        }
       }
     }
   }

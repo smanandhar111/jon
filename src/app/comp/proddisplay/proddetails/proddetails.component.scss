@@ -1,0 +1,25 @@
+.ProdDisplayComp {
+  .img-container {
+    display: flex;
+    img {
+      width: 120%;
+      box-shadow: 3px 3px 12px #cccccc;
+      border: 1px solid #cccccc;
+    }
+    .extra-img-thumbnails {
+      a.extra-img-link {
+        margin-right: 5px;
+        cursor: pointer;
+        &.active {
+          img {
+            border: 2px solid #108bc8;
+          }
+        }
+        img {
+          width: 15%;
+        }
+      }
+
+    }
+  }
+}

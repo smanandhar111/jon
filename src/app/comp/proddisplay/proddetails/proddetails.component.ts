@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {ProditemService} from '../../../services/proditem.service';
 import { ActivatedRoute } from '@angular/router';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-proddetails',
   templateUrl: './proddetails.component.html',
-  styleUrls: ['./proddetails.component.css']
+  styleUrls: ['./proddetails.component.scss']
 })
 export class ProddetailsComponent implements OnInit {
   proditemData;
   prodSpData;
   target;
   uid: string;
+  imgCaro = 1;
   constructor(private prodItemService: ProditemService,
               private route: ActivatedRoute) { }
 
@@ -31,5 +31,7 @@ export class ProddetailsComponent implements OnInit {
       this.uid = params['id'];
     });
   }
-
+  imgCaros(numb) {
+    this.imgCaro = numb;
+  }
 }
