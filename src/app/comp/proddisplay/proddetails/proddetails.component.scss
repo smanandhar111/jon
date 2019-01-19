@@ -12,6 +12,8 @@
         cursor: pointer;
         &.active {
           img {
+            position: relative;
+            top: 1px;
             border: 2px solid #108bc8;
           }
         }
