@@ -18,6 +18,7 @@ export class AuthService {
         if (auth != null) {
           this.user = this.af.authState;
           this.currentUser = this.af.auth.currentUser;
+          sessionStorage.setItem('auth', 'true');
         }
       }
     );
@@ -30,6 +31,7 @@ export class AuthService {
   logout() {
     this.af.auth.signOut().then(() => {
       this.authenticated = false;
+      sessionStorage.setItem('auth', 'false');
     });
   }
 }
