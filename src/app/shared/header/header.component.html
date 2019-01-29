@@ -7,13 +7,13 @@
 
   <!--loginBtn-->
   <div class="log-con">
-    <button *ngIf="!authService.authenticated" mat-raised-button
+    <button *ngIf="!checkAuth()" mat-raised-button
             color="accent" (click)="login()">Login
     </button>
   </div>
 
   <!--userInfo-->
-  <div class="user-info" *ngIf="authService.authenticated">
+  <div class="user-info" *ngIf="checkAuth()">
     <span class="user-name"
           *ngIf="authService.currentUser">{{authService.currentUser.displayName}}
     </span>

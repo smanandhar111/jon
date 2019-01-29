@@ -21,11 +21,20 @@ export class HeaderComponent implements OnInit {
     // this.authService.currentUser.subscribe(data => {
     //   this.userData = data;
     // });
+    this.checkAuth();
   }
   login() {
     this.authService.login();
   }
   logout() {
     this.authService.logout();
+  }
+  checkAuth() {
+    const authCondition = sessionStorage.getItem('auth');
+    if (authCondition === 'true') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
