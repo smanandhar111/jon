@@ -1,8 +1,13 @@
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Muli');
+@import 'weather-font';
 
 body {
   font-family: 'Muli',sans-serif;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .container {

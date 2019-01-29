@@ -1,10 +1,29 @@
 .weather-billboard-con {
+
   h5 {
-    text-align: center;
-    margin-bottom: 8px;
+    margin: 0;
   }
-  img {
-    width: 100px;
-    border-radius: 58px;
+  .weather-icon {
+    i {
+      font-size: 30px;
+    }
+  }
+  .temp-format {
+    font-size: 12px;
+  }
+  .city-name {
+    width: 125px;
+    margin-top: 10px;
+  }
+  form.edit-city {
+
+    .example-full-width {
+      position: relative;
+      font-size: 12px;
+      width: 125px;
+    }
+    a.clear-input {
+      position: absolute;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import {PipeTransform, Pipe} from '@angular/core';
-import {ProductInputModel} from '../../models/allModel';
+import {ProductInputModel} from '../../../models/allModel';
 
 @Pipe({
   name: 'prodColorFilter'

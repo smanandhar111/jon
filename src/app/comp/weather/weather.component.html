@@ -1,10 +1,26 @@
 
 <div class="weather-billboard-con" *ngIf="weatherInfo">
-  <h5>{{weatherInfo.name}}</h5>
+  <div class="weather-icon">
+    <i [ngClass]="{'i-cloudy': weatherConditions === 'Clouds' || weatherConditions === 'Haze' || weatherConditions === 'Mist',
+                   'i-snow': weatherConditions === 'Snow',
+                   'i-sunny': weatherConditions === 'Sunny'}">
+    </i>
+  </div>
   <span>{{temp}}</span>
-  <img src="../../../assets/img/clear-night.gif" alt="">
+  <span class="temp-format i-celcius"></span>
+  <h5 class="city-name" (dblclick)="editCityActive()" *ngIf="!editCity">{{weatherInfo.name}}</h5>
+
+  <form #editCityForm="ngForm" class="edit-city" *ngIf="editCity" (ngSubmit)="updatelocation(inputCity)" >
+    <mat-form-field class="example-full-width">
+      <input matInput required placeholder="City" [(ngModel)]="inputCity"
+             name="City" >
+      <a *ngIf="!editCityForm.valid" (click)="clearEdit()"
+         class="clear-input fa fa-times"></a>
+    </mat-form-field>
+  </form>
+
 </div>
-<div class="edit-weather">
-  <input type="text" [(ngModel)]="inputCity">
-  <button (click)="updatelocation(inputCity)">Update</button>
-</div>
+
+
+
+

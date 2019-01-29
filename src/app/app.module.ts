@@ -27,10 +27,10 @@ import { WeatherComponent } from './comp/weather/weather.component';
 import { FormsModule } from '@angular/forms';
 import {ProditemService} from './services/proditem.service';
 import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
-import {ProddisplayFilterPipe} from './comp/proddisplay/proddisplay-filter.pipe';
-import {ProddisplayPricefilterPipe} from './comp/proddisplay/proddisplay-pricefilter.pipe';
+import {ProddisplayFilterPipe} from './comp/proddisplay/pipes/proddisplay-filter.pipe';
+import {ProddisplayPricefilterPipe} from './comp/proddisplay/pipes/proddisplay-pricefilter.pipe';
 import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails.component';
-import {ProddisplayColorfilterPipe} from './comp/proddisplay/proddisplay-colorfilter.pipe';
+import {ProddisplayColorfilterPipe} from './comp/proddisplay/pipes/proddisplay-colorfilter.pipe';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,7 @@
 
 <div class="ProdDisplayComp container" *ngIf="prodSpData">
     <div class="row">
-
       <div class="col-sm-4 img-container row">
-
         <div class="primary-img">
           <img *ngIf="imgCaro === 1" class="prod-img" src="../../../assets/img/{{prodSpData.imageUrl}}.jpg"
                alt="{{prodSpData.title}}">
@@ -14,7 +12,6 @@
           <img *ngIf="imgCaro === 4" class="prod-img" src="../../../assets/img/{{prodSpData.imageUrlFour}}.jpg"
                alt="{{prodSpData.title}}">
         </div>
-
 
         <div class="extra-img-thumbnails">
           <a class="extra-img-link" [ngClass]="{'active': imgCaro === 1}" *ngIf="prodSpData.imageUrl" (click)="imgCaros(1)">
@@ -39,14 +36,8 @@
                  alt="{{prodSpData.title}}">
           </a>
         </div>
-      </div>
+      </div> 
     </div>
 </div>
 
-<!--<div *ngIf="prodSpData" class="display">-->
-  <!--<p>title: {{prodSpData.title}}</p>-->
-  <!--<p> type: {{prodSpData.type}}</p>-->
-  <!--<p>price: {{prodSpData.price}}</p>-->
-  <!--<p>color: {{prodSpData.primeColor}}</p>-->
-  <!--<img class="prod-img" src="../../../assets/img/{{prodSpData.imageUrl}}.jpg" alt="{{prodSpData.title}}">-->
-<!--</div>-->
+
