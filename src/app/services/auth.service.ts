@@ -16,7 +16,6 @@ export class AuthService {
     this.af.authState.subscribe(
       (auth) => {
         if (auth != null) {
-          debugger;
           this.user = this.af.authState;
           this.currentUser = this.af.auth.currentUser;
         }
