@@ -2,6 +2,7 @@
 <div class="weather-billboard-con" *ngIf="weatherInfo">
   <div class="weather-icon">
     <i [ngClass]="{'i-cloudy': weatherConditions === 'Clouds' || weatherConditions === 'Haze' || weatherConditions === 'Mist',
+                    'i-clear-night': weatherConditions === 'Clear',
                    'i-snow': weatherConditions === 'Snow',
                    'i-sunny': weatherConditions === 'Sunny'}">
     </i>

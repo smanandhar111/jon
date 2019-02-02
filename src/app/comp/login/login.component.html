@@ -1,0 +1,35 @@
+<div class="LoginComponent container">
+  <div class="login-container">
+    <h3>Admin Login</h3>
+    <!--Login Form-->
+    <form #loginForm="ngForm" class="login-form">
+      <!--Username-->
+      <mat-form-field class="example-full-width">
+        <input matInput required
+               placeholder="Username"
+               name="username" type="text"
+               [(ngModel)]="username"/>
+        <a *ngIf="username" (click)="clearInput($event)"
+           class="clear-input fa fa-times">
+        </a>
+      </mat-form-field>
+
+      <!--Username-->
+      <mat-form-field class="example-full-width">
+        <input matInput required
+               placeholder="Password"
+               name="password" type="password"
+               [(ngModel)]="password"/>
+        <a *ngIf="password" (click)="clearInput($event)"
+           class="clear-input fa fa-times">
+        </a>
+      </mat-form-field>
+
+      <button type="submit"
+              mat-raised-button
+              color="accent"
+              class="login-btn">Login
+      </button>
+    </form>
+  </div>
+</div>

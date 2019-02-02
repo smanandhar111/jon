@@ -1,0 +1,27 @@
+.LoginComponent {
+  .login-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid darkorange;
+    padding: 20px 10px;
+
+    form.login-form {
+      .example-full-width {
+        display: block;
+
+      }
+      /deep/ mat-form-field {
+        .mat-form-field-infix {
+          display: flex;
+        }
+      }
+      button.login-btn {
+        width: 100%;
+      }
+    }
+  }
+
+}

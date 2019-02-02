@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   userData;
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+              public router: Router) {
   }
   ngOnInit() {
     this.authService.checkAuthState();
@@ -18,7 +20,7 @@ export class HeaderComponent implements OnInit {
     } else {
       console.log('not logged in');
     }
-    // this.authService.currentUser.subscribe(data => {
+    // this.authService.currentUser.subscribe(data =>  {
     //   this.userData = data;
     // });
     this.checkAuth();
@@ -35,6 +37,13 @@ export class HeaderComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+  navToAddProd() {
+    if (this.checkAuth()) {
+      this.router.navigate(['/add-product']);
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 }
