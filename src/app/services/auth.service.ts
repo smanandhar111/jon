@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs';
+import {AdminCredModel} from '../models/allModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,15 @@ export class AuthService {
     this.af.auth.signOut().then(() => {
       this.authenticated = false;
       sessionStorage.setItem('auth', 'false');
+    });
+  }
+  adminLogin(adminCredentials: AdminCredModel) {
+    const adminPromise = this.af.auth.signInWithEmailAndPassword(adminCredentials.username, adminCredentials.password);
+    adminPromise.catch(e => {
+      console.log('error', e);
+    });
+    adminPromise.then(data => {
+      sessionStorage.setItem('adminAuth', 'true');
     });
   }
 }

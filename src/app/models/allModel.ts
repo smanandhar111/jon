@@ -15,3 +15,8 @@ export interface ProductTypes {
   value: string;
   viewValue: string;
 }
+
+export interface AdminCredModel {
+  username: string;
+  password: string;
+}

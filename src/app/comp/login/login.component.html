@@ -2,14 +2,14 @@
   <div class="login-container">
     <h3>Admin Login</h3>
     <!--Login Form-->
-    <form #loginForm="ngForm" class="login-form">
+    <form #loginForm="ngForm" class="login-form" (ngSubmit)="onSubmit(loginForm)">
       <!--Username-->
       <mat-form-field class="example-full-width">
         <input matInput required
                placeholder="Username"
                name="username" type="text"
-               [(ngModel)]="username"/>
-        <a *ngIf="username" (click)="clearInput($event)"
+               [(ngModel)]="adminCredentials.username"/>
+        <a *ngIf="adminCredentials.username" (click)="clearInput($event)"
            class="clear-input fa fa-times">
         </a>
       </mat-form-field>
@@ -19,8 +19,8 @@
         <input matInput required
                placeholder="Password"
                name="password" type="password"
-               [(ngModel)]="password"/>
-        <a *ngIf="password" (click)="clearInput($event)"
+               [(ngModel)]="adminCredentials.password"/>
+        <a *ngIf="adminCredentials.password" (click)="clearInput($event)"
            class="clear-input fa fa-times">
         </a>
       </mat-form-field>
