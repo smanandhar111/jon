@@ -17,7 +17,7 @@
     <span class="user-name"
           *ngIf="authService.currentUser">{{authService.currentUser.displayName}}
     </span>
-    <button mat-button [matMenuTriggerFor]="menu">
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="authService.currentUser">
       <a class="user-img-cont">
         <img src="{{authService.currentUser.photoURL}}" alt="">
       </a>

@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatDialogModule,
   MatMenuModule, MatCheckboxModule, MatToolbarModule,
-  MatFormFieldModule, MatExpansionModule, MatInputModule, MatGridListModule, MatSelectModule , MatOptionModule
+  MatFormFieldModule, MatExpansionModule, MatInputModule, MatGridListModule, MatSelectModule , MatOptionModule, MatRadioModule
 } from '@angular/material';
 
 import 'hammerjs';
@@ -32,6 +32,7 @@ import {ProddisplayPricefilterPipe} from './comp/proddisplay/pipes/proddisplay-p
 import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails.component';
 import {ProddisplayColorfilterPipe} from './comp/proddisplay/pipes/proddisplay-colorfilter.pipe';
 import { LoginComponent } from './comp/login/login.component';
+import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill-info.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LoginComponent } from './comp/login/login.component';
     ProddisplayPricefilterPipe,
     ProddisplayColorfilterPipe,
     ProddetailsComponent,
-    LoginComponent
+    LoginComponent,
+    BillInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +64,7 @@ import { LoginComponent } from './comp/login/login.component';
     MatGridListModule,
     MatSelectModule,
     MatOptionModule,
+    MatRadioModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

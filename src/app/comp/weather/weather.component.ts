@@ -36,7 +36,6 @@ export class WeatherComponent implements OnInit {
     const url = `${this.rootUrl}q=${this.defaultCity}&APPID=${this.appId}&units=${this.unit}`;
     this.http.get<WeatherInfo>(url)
       .subscribe((data) => {
-        console.log(data);
           this.weatherInfo = data;
           this.temp = data.main.temp;
           this.weatherConditions = this.weatherInfo.weather[0].main;

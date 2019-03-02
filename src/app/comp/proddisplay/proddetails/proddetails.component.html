@@ -36,7 +36,30 @@
                  alt="{{prodSpData.title}}">
           </a>
         </div>
-      </div> 
+      </div>
+      <!--Text-->
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4 details-container" *ngIf="prodSpData">
+        <h3 class="title">{{prodSpData.title}}
+          <a class="atwl fa" [ngClass]="getWlClass()"  (click)="addToWishList(prodSpData)"></a>
+        </h3>
+
+        <div class="description">
+          {{prodSpData.description}}
+        </div>
+        <h4>
+          <span *ngIf="prodSpData.price">Rs.</span> {{prodSpData.price}}
+        </h4>
+
+        <button class="buy" (click)="buy(prodSpData.id)" mat-button>
+          <i class="fa fa-credit-card"></i><span>Buy</span>
+        </button>
+
+        <button class="atc" mat-button>
+          <i class="fa fa-shopping-cart"></i>
+          <span>Add to Cart</span>
+        </button>
+      </div>
     </div>
 </div>
 
