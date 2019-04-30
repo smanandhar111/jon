@@ -1,16 +1,26 @@
 .weather-billboard-con {
-
+  display: inline-flex;
+  * {
+    margin-right: 10px;
+  }
   h5 {
     margin: 0;
   }
   .weather-icon {
+
     i {
       font-size: 30px;
     }
   }
-  .temp-format {
-    font-size: 12px;
+  .temp-n-format {
+    position: relative;
+    top: 8px;
+
+    .temp-format {
+      font-size: 12px;
+    }
   }
+
   .city-name {
     width: 125px;
     margin-top: 10px;

@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./proddisplay.component.scss']
 })
 export class ProddisplayComponent implements OnInit {
-  proditemData: ProductInputModel[];
+  proditemData: ProductInputModel;
   filterType: string;
   filterPrice: string;
   filterColor: string;

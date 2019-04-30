@@ -27,11 +27,11 @@ export class ProddetailsComponent implements OnInit {
     this.prodItemService.items.subscribe(data => {
       // set data to component
       this.proditemData = data;
-      // looping thru data to get the prodSpData
-      this.proditemData.forEach( result => {
+      _.forEach(this.proditemData, (result) => {
+        console.log('res', result);
         if (result.id === this.uid) {
-          this.prodSpData = result;
-        }
+              this.prodSpData = result;
+            }
       });
     });
     // getting id from url param
