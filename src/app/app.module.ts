@@ -33,6 +33,7 @@ import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails
 import {ProddisplayColorfilterPipe} from './comp/proddisplay/pipes/proddisplay-colorfilter.pipe';
 import { LoginComponent } from './comp/login/login.component';
 import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill-info.component';
+import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill
     HttpClientModule,
     FormsModule,
   ],
-  providers: [AuthService, ProditemService],
+  providers: [AuthService, ProditemService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
