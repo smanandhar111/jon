@@ -5,12 +5,38 @@
 
   }
   .row {
-    justify-content: center;
+    //justify-content: center;
+    .filter-by {
+      font-size: 13px;
+    }
     .filter-container {
       /deep/ mat-form-field {
         margin-right: 20px;
 
+        &.mat-focused {
+          //z-index: 1123;
 
+          .mat-form-field-underline {
+            height: 0!important;
+
+            .mat-form-field-ripple {
+              background: transparent;
+            }
+          }
+        }
+
+    .mat-form-field-wrapper {
+
+      .mat-select-arrow-wrapper {
+        .mat-select-arrow{
+          color: transparent;
+        }
+      }
+
+      .mat-form-field-underline {
+        height: 0;
+      }
+    }
       }
       a.clear-input {
         position: relative;
