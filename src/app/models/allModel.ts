@@ -21,3 +21,8 @@ export interface AdminCredModel {
   password: string;
 }
 
+export interface UserInfo {
+  uid: string;
+  email: string
+}
+

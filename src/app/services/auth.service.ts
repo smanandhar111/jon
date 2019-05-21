@@ -3,6 +3,8 @@ import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs';
 import {AdminCredModel} from '../models/allModel';
+import {UserService} from './user.service';
+import { UserInfo} from '../models/allModel';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +12,12 @@ import {AdminCredModel} from '../models/allModel';
 export class AuthService {
   user: Observable<firebase.User>;
   currentUser;
-  // public authenticated: Observable <boolean>;
+  userInfo: UserInfo = {
+    uid: '',
+    email: ''
+  };
   public authenticated: boolean;
-  constructor(public af: AngularFireAuth) {}
+  constructor(public af: AngularFireAuth, public userService: UserService) {}
   checkAuthState() {
     this.af.authState.subscribe(
       (auth) => {
@@ -25,8 +30,11 @@ export class AuthService {
     );
   }
   login() {
-    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(() => {
+    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data) => {
       this.authenticated = true;
+      this.userInfo.uid = data.user.uid;
+      this.userInfo.email = data.user.email;
+     this.userService.addUser(this.userInfo);
     });
   }
   logout() {
