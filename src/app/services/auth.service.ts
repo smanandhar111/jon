@@ -32,9 +32,9 @@ export class AuthService {
   login() {
     this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data) => {
       this.authenticated = true;
-      this.userInfo.uid = data.user.uid;
-      this.userInfo.email = data.user.email;
-     this.userService.addUser(this.userInfo);
+     //  this.userInfo.uid = data.user.uid;
+     //  this.userInfo.email = data.user.email;
+     // this.userService.addUser(this.userInfo);
     });
   }
   logout() {

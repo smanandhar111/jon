@@ -3,6 +3,7 @@ import {ProditemService} from '../../../services/proditem.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ProductInputModel} from '../../../models/allModel';
 import * as _ from 'lodash';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-proddetails',
@@ -10,15 +11,19 @@ import * as _ from 'lodash';
   styleUrls: ['./proddetails.component.scss']
 })
 export class ProddetailsComponent implements OnInit {
-  proditemData: ProductInputModel;
+  proditemData: ProductInputModel[];
   prodSpData: ProductInputModel;
   target;
   uid: string;
   imgCaro = 1;
   wishlisted: boolean;
+  atcData = {
+    uid: ''
+  };
   constructor(private prodItemService: ProditemService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private userService: UserService) { }
 
   ngOnInit() {
     // call to get item from server
@@ -31,6 +36,7 @@ export class ProddetailsComponent implements OnInit {
       this.proditemData.forEach( result => {
         if (result.id === this.uid) {
           this.prodSpData = result;
+          this.atcData.uid = this.prodSpData.id;
         }
       });
     });
@@ -54,5 +60,8 @@ export class ProddetailsComponent implements OnInit {
   }
   buy(id: number) {
     this.router.navigate(['/bill-info', id]);
+  }
+  addToCart() {
+    this.userService.addUser(this.atcData);
   }
 }

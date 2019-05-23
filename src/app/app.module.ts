@@ -18,6 +18,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 
 import {AuthService} from './services/auth.service';
@@ -71,6 +72,7 @@ import {UserService} from './services/user.service';
     AngularFirestoreModule,
     HttpClientModule,
     FormsModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthService, ProditemService, UserService],
   bootstrap: [AppComponent]
