@@ -25,16 +25,6 @@ export class UserService {
       }
     });
   }
-
-  // getItemsList(): FirebaseListObservable<Item[]> {
-  //   if (!this.userId) {
-  //     return null;
-  //   } else {
-  //     this.items = this.db.list(`users/${this.userId}`);
-  //     console.log('items', this.items);
-  //     return this.items;
-  //   }
-  // }
   isUser() {
     const authCondition = sessionStorage.getItem('auth');
     if (authCondition === 'true') {
@@ -51,5 +41,13 @@ export class UserService {
       this.items.push(data);
     } else {
     }
+  }
+
+  getItemsList() {
+    const relative = this.db.object(`users/${this.userId}`).valueChanges();
+    console.log('userid', this.userId);
+    relative.subscribe(data => {
+      console.log('data', data);
+    });
   }
 }

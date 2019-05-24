@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProditemService} from '../../../services/proditem.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ProductInputModel} from '../../../models/allModel';
@@ -10,7 +10,7 @@ import {UserService} from '../../../services/user.service';
   templateUrl: './proddetails.component.html',
   styleUrls: ['./proddetails.component.scss']
 })
-export class ProddetailsComponent implements OnInit {
+export class ProddetailsComponent implements OnInit, AfterViewInit {
   proditemData: ProductInputModel[];
   prodSpData: ProductInputModel;
   target;
@@ -45,6 +45,14 @@ export class ProddetailsComponent implements OnInit {
       this.uid = params['id'];
     });
   }
+
+  ngAfterViewInit(): void {
+    // getting Cart Item
+    setTimeout(() => {
+      this.userService.getItemsList();
+    }, 1000);
+  }
+
   // toggle main image
   imgCaros(numb) {
     this.imgCaro = numb;
