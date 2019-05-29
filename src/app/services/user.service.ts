@@ -3,16 +3,17 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {Observable} from 'rxjs';
 
-export class Item {
-  body: string;
+export interface Item {
+  uid: string;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   usersCollection: AngularFirestoreCollection;
-  items: FirebaseListObservable<Item[]> = null; // list of objects
+  items: Observable<Item>; // list of objects
   userId: string;
   constructor(public afs: AngularFirestore,
               public db: AngularFireDatabase,
@@ -21,7 +22,6 @@ export class UserService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
-        console.log('uid', this.userId);
       }
     });
   }
@@ -45,9 +45,9 @@ export class UserService {
 
   getItemsList() {
     const relative = this.db.object(`users/${this.userId}`).valueChanges();
-    console.log('userid', this.userId);
     relative.subscribe(data => {
-      console.log('data', data);
+      this.items = data;
+      console.log('user', this.items);
     });
   }
 }

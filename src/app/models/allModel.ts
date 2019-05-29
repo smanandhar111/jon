@@ -23,6 +23,10 @@ export interface AdminCredModel {
 
 export interface UserInfo {
   uid: string;
-  email: string
+  email: string;
+}
+
+export interface AddToFavsModel {
+  uid: string;
 }
 

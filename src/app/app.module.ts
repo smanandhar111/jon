@@ -49,7 +49,7 @@ import {UserService} from './services/user.service';
     ProddisplayColorfilterPipe,
     ProddetailsComponent,
     LoginComponent,
-    BillInfoComponent
+    BillInfoComponent,
   ],
   imports: [
     BrowserModule,

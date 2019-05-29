@@ -2,15 +2,18 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProditemService} from '../../../services/proditem.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ProductInputModel} from '../../../models/allModel';
-import * as _ from 'lodash';
-import {UserService} from '../../../services/user.service';
+import {UserInformation} from '../../abstracts/users';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-proddetails',
   templateUrl: './proddetails.component.html',
   styleUrls: ['./proddetails.component.scss']
 })
-export class ProddetailsComponent implements OnInit, AfterViewInit {
+export class ProddetailsComponent extends UserInformation implements OnInit {
   proditemData: ProductInputModel[];
   prodSpData: ProductInputModel;
   target;
@@ -23,33 +26,31 @@ export class ProddetailsComponent implements OnInit, AfterViewInit {
   constructor(private prodItemService: ProditemService,
               private router: Router,
               private route: ActivatedRoute,
-              private userService: UserService) { }
+              private authService: AuthService,
+              afs: AngularFirestore,
+              db: AngularFireDatabase,
+              afAuth: AngularFireAuth) {
+    super(afs, db, afAuth);
+  }
 
   ngOnInit() {
-    // call to get item from server
-    this.prodItemService.getItems();
-    // after subscribing to item from server
-    this.prodItemService.items.subscribe(data => {
-      // set data to component
-      this.proditemData = data;
-      // looping thru data to get the prodSpData
-      this.proditemData.forEach( result => {
+    this.prodItemService.getItems(); // call to get item from server
+    this.prodItemService.items.subscribe(data => { // after subscribing to item from server
+      this.proditemData = data; // set data to component
+      this.proditemData.forEach( result => {  // looping thru data to get the prodSpData
         if (result.id === this.uid) {
           this.prodSpData = result;
           this.atcData.uid = this.prodSpData.id;
         }
       });
     });
-    // getting id from url param
-    this.target = this.route.params.subscribe(params => {
+
+    this.target = this.route.params.subscribe(params => { // getting id from url param
       this.uid = params['id'];
     });
-  }
 
-  ngAfterViewInit(): void {
-    // getting Cart Item
     setTimeout(() => {
-      this.userService.getItemsList();
+      this.getItemsList();
     }, 1000);
   }
 
@@ -62,14 +63,21 @@ export class ProddetailsComponent implements OnInit, AfterViewInit {
     return this.wishlisted ? 'fa-heart' : 'fa-heart-o';
   }
   addToWishList(prodData: ProductInputModel) {
-    alert(`${prodData.title} has been added to your Wish list :)`);
-    // Pass the product id to the users wish-list in the users object
-    this.wishlisted = true;
+    if (this.isUser()) {
+      this.addItemToWishlist(this.atcData);
+      this.wishlisted = true;
+    } else {
+      this.authService.login();
+    }
   }
   buy(id: number) {
     this.router.navigate(['/bill-info', id]);
   }
   addToCart() {
-    this.userService.addUser(this.atcData);
+    if (this.isUser()) {
+      this.addItemToCart(this.atcData);
+    } else {
+      this.authService.login();
+    }
   }
 }
