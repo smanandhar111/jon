@@ -1,9 +1,16 @@
 .ProdDisplayComp {
+  &.container.none {
+    max-width: 1441px;
+    z-index: 234;
+
+  }
   .row {
     justify-content: center;
     .filter-container {
       /deep/ mat-form-field {
         margin-right: 20px;
+
+
       }
       a.clear-input {
         position: relative;

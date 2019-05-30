@@ -34,14 +34,17 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   }
 
   ngOnInit() {
-    this.prodItemService.getItems(); // call to get item from server
-    this.prodItemService.items.subscribe(data => { // after subscribing to item from server
-      this.proditemData = data; // set data to component
-      this.proditemData.forEach( result => {  // looping thru data to get the prodSpData
+    // call to get item from server
+    this.prodItemService.getItems();
+    // after subscribing to item from server
+    this.prodItemService.items.subscribe(data => {
+      // set data to component
+      this.proditemData = data;
+      _.forEach(this.proditemData, (result) => {
+        console.log('res', result);
         if (result.id === this.uid) {
-          this.prodSpData = result;
-          this.atcData.uid = this.prodSpData.id;
-        }
+              this.prodSpData = result;
+            }
       });
     });
 

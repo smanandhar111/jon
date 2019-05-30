@@ -1,46 +1,57 @@
-<div class="ProdDisplayComp container">
+<div class="ProdDisplayComp container none">
   <div class="row">
-    <div class="col-sm filter-container">
-      <!--TYPE FILTER-->
-      <mat-form-field>
-        <mat-select placeholder="Filter by Type"
-                    name="type" [(ngModel)]="filterType">
-          <mat-option *ngFor="let type of prodTypes" [value]="type.value">
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <a *ngIf="filterType" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
+    <div class="col-sm-3">
+      <div class="row filter-view">
+        <div class="col-sm filter-container">
+          <!--TYPE FILTER-->
+          <mat-form-field>
+            <mat-select placeholder="Filter by Type"
+                        name="type" [(ngModel)]="filterType">
+              <mat-option *ngFor="let type of prodTypes" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <a *ngIf="filterType" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
 
-      <!--PRICE FILTER-->
-      <mat-form-field>
-        <mat-select placeholder="Filter by Price"
-                    name="price" [(ngModel)]="filterPrice">
-          <mat-option *ngFor="let type of prodPrices" [value]="type.value">
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <a *ngIf="filterPrice" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
+          <!--PRICE FILTER-->
+          <mat-form-field>
+            <mat-select placeholder="Filter by Price"
+                        name="price" [(ngModel)]="filterPrice">
+              <mat-option *ngFor="let type of prodPrices" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <a *ngIf="filterPrice" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
 
-      <!--COLOR FILTER-->
-      <mat-form-field>
-        <mat-select placeholder="Filter by Color"
-                    name="color" [(ngModel)]="filterColor">
-          <mat-option *ngFor="let type of prodColors" [value]="type.value">
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <a *ngIf="filterColor" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
+          <!--COLOR FILTER-->
+          <mat-form-field>
+            <mat-select placeholder="Filter by Color"
+                        name="color" [(ngModel)]="filterColor">
+              <mat-option *ngFor="let type of prodColors" [value]="type.value">
+                {{type.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <a *ngIf="filterColor" (click)="clearFilterType($event)" class="clear-input fa fa-times"></a>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter: filterPrice | prodColorFilter: filterColor">
-      <div class="circle" (click)="getProdDetails(item.id)">
-        <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
-        <h5>{{item.title}}</h5>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-8">
+      <!--Display-->
+      <div class="row display-view">
+        <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter: filterPrice | prodColorFilter: filterColor">
+          <div class="circle" (click)="getProdDetails(item.id)">
+            <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
+            <h5>{{item.title}}</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+
+
 </div>
