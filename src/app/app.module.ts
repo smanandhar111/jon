@@ -18,6 +18,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 
 import {AuthService} from './services/auth.service';
@@ -33,6 +34,7 @@ import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails
 import {ProddisplayColorfilterPipe} from './comp/proddisplay/pipes/proddisplay-colorfilter.pipe';
 import { LoginComponent } from './comp/login/login.component';
 import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill-info.component';
+import {UserService} from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill
     ProddisplayColorfilterPipe,
     ProddetailsComponent,
     LoginComponent,
-    BillInfoComponent
+    BillInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,8 +72,9 @@ import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill
     AngularFirestoreModule,
     HttpClientModule,
     FormsModule,
+    AngularFireDatabaseModule
   ],
-  providers: [AuthService, ProditemService],
+  providers: [AuthService, ProditemService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

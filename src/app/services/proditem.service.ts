@@ -9,7 +9,7 @@ import {ProductInputModel } from '../models/allModel';
 })
 export class ProditemService {
   itemsCollection: AngularFirestoreCollection<ProductInputModel>;
-  items: Observable<ProductInputModel>;
+  items: Observable<ProductInputModel[]>;
   prodItems;
   constructor(public afs: AngularFirestore) {
     this.itemsCollection = this.afs.collection('items');
@@ -17,7 +17,7 @@ export class ProditemService {
   getItems() {
     this.items = this.afs.collection('items').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
-        const data = a.payload.doc.data() as ProductInputModel[];
+        const data = a.payload.doc.data() as ProductInputModel;
         data.id = a.payload.doc.id;
         this.prodItems = data;
         return data;
