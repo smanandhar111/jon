@@ -7,10 +7,6 @@
                    'i-sunny': weatherConditions === 'Sunny'}">
     </i>
   </div>
-  <div class="temp-n-format">
-    <span class="temp">{{temp}}</span>
-    <span class="temp-format i-celcius"></span>
-  </div>
 
   <h5 class="city-name" (dblclick)="editCityActive()" *ngIf="!editCity">{{weatherInfo.name}}</h5>
 
@@ -22,6 +18,13 @@
          class="clear-input fa fa-times"></a>
     </mat-form-field>
   </form>
+
+  <div class="temp-n-format">
+    <span class="temp">{{temp}}</span>
+    <span class="temp-format i-celcius"></span>
+  </div>
+
+
 
 </div>
 

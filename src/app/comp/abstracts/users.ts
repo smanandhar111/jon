@@ -4,10 +4,11 @@ import {Item} from '../../services/user.service';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseListObservable} from '@angular/fire/database-deprecated';
+import {AddToFavsModel} from '../../models/allModel';
 
 export abstract class UserInformation {
   usersCollection: AngularFirestoreCollection;
-  items: FirebaseListObservable; // list of objects
+  items: FirebaseListObservable<AddToFavsModel>; // list of objects
   userId: string;
   userFavs;
   public constructor(public afs: AngularFirestore,
@@ -41,6 +42,7 @@ export abstract class UserInformation {
     relative.subscribe(data => {
       if (this.userId) {
         this.userFavs = data;
+        console.log('this', this.userFavs);
       } else {
         console.log('no user');
       }

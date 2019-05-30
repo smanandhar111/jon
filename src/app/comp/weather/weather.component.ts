@@ -25,12 +25,13 @@ export class WeatherComponent implements OnInit {
   private readonly appId: string = '641f2c4c590661bd176222ddd81e362f';
   editCity = false;
   weatherInfo;
-  constructor(private http: HttpClient) { }
+  localDate: Date;
+  constructor(private http: HttpClient) {
+    this.localDate = new Date();
+  }
 
   ngOnInit() {
     this.getWeather();
-
-    // console.log(navigator.geolocation.getCurrentPosition());
   }
   getWeather() {
     const url = `${this.rootUrl}q=${this.defaultCity}&APPID=${this.appId}&units=${this.unit}`;

@@ -7,6 +7,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AuthService} from '../../../services/auth.service';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-proddetails',
@@ -41,7 +42,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
       // set data to component
       this.proditemData = data;
       _.forEach(this.proditemData, (result) => {
-        console.log('res', result);
         if (result.id === this.uid) {
               this.prodSpData = result;
             }
