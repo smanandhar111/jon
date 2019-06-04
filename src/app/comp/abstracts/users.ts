@@ -1,6 +1,4 @@
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {Observable} from 'rxjs';
-import {Item} from '../../services/user.service';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseListObservable} from '@angular/fire/database-deprecated';
@@ -36,14 +34,13 @@ export abstract class UserInformation {
     this.items.push(data);
   }
 
-  getItemsList() {
-    const relative = this.db.object(`users/${this.userId}`).valueChanges();
-    relative.subscribe(data => {
-      if (this.userId) {
-        this.userFavs = data;
-      } else {
-        console.log('no user');
-      }
-    });
+  getWishList() {
+    this.items = this.db.list(`users/${this.userId}/wishlist`).valueChanges();
+    return this.items;
+  }
+
+  getCart() {
+    this.items = this.db.list(`users/${this.userId}/cart`).valueChanges();
+    return this.items;
   }
 }

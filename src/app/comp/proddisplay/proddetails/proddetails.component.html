@@ -41,7 +41,10 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-4 details-container" *ngIf="prodSpData">
         <h3 class="title">{{prodSpData.title}}
-          <a class="atwl fa" [ngClass]="getWlClass()"  (click)="addToWishList(prodSpData)"></a>
+          <a class="atwl fa"
+             [ngClass]="getWlClass()"
+             (click)="addToWishList(prodSpData)">
+          </a>
         </h3>
 
         <div class="description">
@@ -55,13 +58,15 @@
           <i class="fa fa-credit-card"></i><span>Buy</span>
         </button>
 
-        <button class="atc" mat-button (click)="addToCart(prodSpData)">
+        <button class="atc" mat-button
+                [ngClass]="getCartClass()"
+                [disabled]="addedToCart"
+                (click)="addToCart(prodSpData)">
           <i class="fa fa-shopping-cart"></i>
           <span>Add to Cart</span>
         </button>
       </div>
     </div>
-  <button mat-button (click)="getItemsList()">Data</button>
 </div>
 
 
