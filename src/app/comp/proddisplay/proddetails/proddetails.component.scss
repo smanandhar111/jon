@@ -50,6 +50,9 @@
       }
       &.atc {
         background: #47a6ff;
+        &.added-to-cart {
+          cursor: not-allowed;
+        }
       }
       i.fa {
         margin-right: 10px;
