@@ -1,4 +1,11 @@
 .weather-billboard-con {
+  &.day {
+    color: orangered;
+  }
+  &.night {
+    color: midnightblue;
+  }
+  margin-right: 25px;
   display: inline-flex;
   * {
     margin-right: 10px;
@@ -13,17 +20,20 @@
     }
   }
   .temp-n-format {
-    position: relative;
-    top: 8px;
 
+    .temp {
+      margin-right: 5px;
+    }
     .temp-format {
+      position: relative;
+      bottom: 2px;
       font-size: 12px;
     }
   }
 
   .city-name {
-    width: 125px;
-    margin-top: 10px;
+    font-size: 14px;
+    margin-right: 10px;
   }
   form.edit-city {
 

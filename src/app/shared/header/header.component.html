@@ -12,8 +12,10 @@
     </button>
   </div>
 
+
   <!--userInfo-->
   <div class="user-info" *ngIf="checkAuth()">
+    <app-weather></app-weather>
     <span class="user-name"
           *ngIf="authService.currentUser">{{authService.currentUser.displayName}}
     </span>
@@ -30,12 +32,6 @@
     </mat-menu>
   </div>
 </mat-toolbar>
-
-<div class="row justify-end">
-  <div class="right-corner">
-    <app-weather></app-weather>
-  </div>
-</div>
 
 
 

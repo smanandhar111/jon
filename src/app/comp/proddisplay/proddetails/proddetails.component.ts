@@ -8,6 +8,7 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AuthService} from '../../../services/auth.service';
 import _ from 'lodash';
+
 @Component({
   selector: 'app-proddetails',
   templateUrl: './proddetails.component.html',
