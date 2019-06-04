@@ -25,9 +25,9 @@ export class WeatherComponent implements OnInit {
   private readonly appId: string = '641f2c4c590661bd176222ddd81e362f';
   editCity = false;
   weatherInfo;
-  localDate: Date;
+  localHour: number;
   constructor(private http: HttpClient) {
-    this.localDate = new Date();
+    this.localHour = new Date().getHours();
   }
 
   ngOnInit() {
@@ -38,9 +38,9 @@ export class WeatherComponent implements OnInit {
     this.http.get<WeatherInfo>(url)
       .subscribe((data) => {
           this.weatherInfo = data;
+          console.log(this.weatherInfo);
           this.temp = data.main.temp;
           this.weatherConditions = this.weatherInfo.weather[0].main;
-
           this.roundUp();
         },
         (err: HttpErrorResponse) => {
@@ -65,5 +65,12 @@ export class WeatherComponent implements OnInit {
   }
   clearEdit() {
     this.editCity = false;
+  }
+  getDayOrNight(): string {
+    if (this.localHour >= 16) {
+      return 'night';
+    } else {
+      return 'day';
+    }
   }
 }

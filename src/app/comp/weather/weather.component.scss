@@ -1,4 +1,10 @@
 .weather-billboard-con {
+  &.day {
+    color: orangered;
+  }
+  &.night {
+    color: midnightblue;
+  }
   margin-right: 25px;
   display: inline-flex;
   * {

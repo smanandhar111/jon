@@ -1,5 +1,5 @@
 
-<div class="weather-billboard-con" *ngIf="weatherInfo">
+<div class="weather-billboard-con" [ngClass]="getDayOrNight()" *ngIf="weatherInfo">
   <div class="weather-icon">
     <i [ngClass]="{'i-cloudy': weatherConditions === 'Clouds' || weatherConditions === 'Haze' || weatherConditions === 'Mist',
                     'i-clear-night': weatherConditions === 'Clear',
@@ -8,7 +8,12 @@
     </i>
   </div>
 
-  <h5 class="city-name" (dblclick)="editCityActive()" *ngIf="!editCity">{{weatherInfo.name}}</h5>
+    <h5 class="city-name"
+        (dblclick)="editCityActive()"
+        *ngIf="!editCity">{{weatherInfo.name}}
+    </h5>
+
+
 
   <form #editCityForm="ngForm" class="edit-city" *ngIf="editCity" (ngSubmit)="updatelocation(inputCity)" >
     <mat-form-field class="example-full-width">
@@ -23,9 +28,6 @@
     <span class="temp">{{temp}}</span>
     <span class="temp-format i-celcius"></span>
   </div>
-
-
-
 </div>
 
 
