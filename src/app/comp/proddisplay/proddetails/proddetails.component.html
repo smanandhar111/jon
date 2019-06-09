@@ -63,7 +63,8 @@
                 [disabled]="addedToCart"
                 (click)="addToCart(prodSpData)">
           <i class="fa fa-shopping-cart"></i>
-          <span>Add to Cart</span>
+          <span *ngIf="!addedToCart">Add to Cart</span>
+          <span *ngIf="addedToCart">Added to Cart</span>
         </button>
       </div>
     </div>

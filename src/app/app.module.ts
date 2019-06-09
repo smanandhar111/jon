@@ -35,6 +35,7 @@ import {ProddisplayColorfilterPipe} from './comp/proddisplay/pipes/proddisplay-c
 import { LoginComponent } from './comp/login/login.component';
 import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill-info.component';
 import {UserService} from './services/user.service';
+import { WishlistComponent } from './shared/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {UserService} from './services/user.service';
     ProddetailsComponent,
     LoginComponent,
     BillInfoComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
