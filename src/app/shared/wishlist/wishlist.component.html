@@ -1,6 +1,6 @@
 <h1 style="text-align: center">Your Wish list</h1>
 
-<div class="row display-view">
+<div class="row display-view" *ngIf="result.length > 0">
   <div class="repeater" *ngFor="let item of result">
     <div class="circle" (click)="getProdDetails(item.id)">
       <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
@@ -8,4 +8,5 @@
     </div>
   </div>
 </div>
+<h4 *ngIf="result.length === 0">Your wish list is empty :(</h4>
 

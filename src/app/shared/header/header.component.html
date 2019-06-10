@@ -31,6 +31,11 @@
       <button mat-menu-item>Settings</button>
       <button mat-menu-item routerLink="/wish-list">Wish list</button>
     </mat-menu>
+    <div class="cart-container" *ngIf="wishlisted.length > 0">
+      <div class="cart-count">{{wishlisted.length}}</div>
+      <button routerLink="/cart" mat-button><i class="fa fa-shopping-basket"></i></button>
+    </div>
+
   </div>
 </mat-toolbar>
 

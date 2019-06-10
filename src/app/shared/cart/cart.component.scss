@@ -1,0 +1,25 @@
+.cart-container {
+  display: flex;
+  justify-content: center;
+  table {
+    th {
+      text-align: left;
+      margin-right: 20px;
+    }
+    tr td.flex-it {
+      display: flex;
+      .square {
+        margin-right: 25px;
+
+
+        img {
+          height: 75px;
+          width: 150px;
+        }
+      }
+      span.title {
+        align-self: center;
+      }
+    }
+  }
+}

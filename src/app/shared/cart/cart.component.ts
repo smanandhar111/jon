@@ -1,33 +1,33 @@
-import {Component, OnInit} from '@angular/core';
-import {AddToFavsModel, ProductInputModel} from '../../models/allModel';
+import { Component, OnInit } from '@angular/core';
+import {CartWish} from '../../comp/abstracts/cartWish';
 import {ProditemService} from '../../services/proditem.service';
-import _ from 'lodash';
-import {UserInformation} from '../../comp/abstracts/users';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
+import {UserInformation} from '../../comp/abstracts/users';
+import {AddToFavsModel, ProductInputModel} from '../../models/allModel';
 
 @Component({
-  selector: 'app-wishlist',
-  templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.scss']
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss']
 })
-export class WishlistComponent extends UserInformation implements OnInit {
+export class CartComponent extends UserInformation implements OnInit {
   proditemData: ProductInputModel[];
-  userWishList: AddToFavsModel;
+  addedToCart: AddToFavsModel;
   result = [];
-  constructor(private prodItemService: ProditemService,
-              afs: AngularFirestore,
+  constructor(afs: AngularFirestore,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth,
+              private prodItemService: ProditemService,
               private router: Router) {
     super(afs, db, afAuth);
   }
 
   ngOnInit() {
     this.getProdItems();
-    this.getUserWishList();
+    this.getCartItems();
   }
 
   getProdDetails(id: number) {
@@ -43,25 +43,27 @@ export class WishlistComponent extends UserInformation implements OnInit {
       this.proditemData = data;
     });
   }
-  getUserWishList() {
-    setTimeout(() => {
-      this.getWishList();
-      this.items.subscribe(data => {
-        this.userWishList = data;
 
-        const wl = this.userWishList; const pd = this.proditemData;
-        if(this.userWishList && this.proditemData) {
-          for (let i = 0; i < wl.length; i++) {
+  getCartItems() {
+    setTimeout(() => {
+      this.getCart();
+      this.items.subscribe(data => {
+        this.addedToCart = data;
+
+        const atc = this.addedToCart; const pd = this.proditemData;
+        if (pd && atc) {
+          for (let i = 0; i < atc.length; i++) {
             for (let j = 0; j < pd.length; j++) {
-              if (wl[i].uid === this.proditemData[j].id) {
+              if (atc[i].uid === this.proditemData[j].id) {
                 this.result.push(this.proditemData[j]);
               }
             }
           }
         } else {
-          alert('sums wrong');
+          alert('sums wrong @ cart.component get CartItems');
         }
       });
-      }, 1000);
+    }, 1000);
   }
+
 }
