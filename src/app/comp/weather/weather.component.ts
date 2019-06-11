@@ -38,7 +38,6 @@ export class WeatherComponent implements OnInit {
     this.http.get<WeatherInfo>(url)
       .subscribe((data) => {
           this.weatherInfo = data;
-          console.log(this.weatherInfo);
           this.temp = data.main.temp;
           this.weatherConditions = this.weatherInfo.weather[0].main;
           this.roundUp();
