@@ -36,7 +36,6 @@ export class UserService {
 
   addUser(data) {
     if (this.isUser()) {
-      console.log('>>>', data);
       this.items = this.db.list(`users/${this.userId}`);
       this.items.push(data);
     } else {

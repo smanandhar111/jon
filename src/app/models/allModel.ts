@@ -9,6 +9,7 @@ export interface ProductInputModel {
   imageUrlThree?: string;
   imageUrlFour?: string;
   primeColor: string;
+  uid?: string;
 }
 
 export interface ProductTypes {
@@ -28,5 +29,6 @@ export interface UserInfo {
 
 export interface AddToFavsModel {
   uid: string;
+  length: number;
 }
 

@@ -34,6 +34,22 @@
         border-radius: 99px;
       }
     }
+    .cart-container {
+      .cart-count {
+        color: #47a6ff;
+        position: absolute;
+        top: 15px;
+        margin-left: 44px;
+        font-size: 13px;
+      }
+      button {
+        padding: 0 13px;
+        i.fa-shopping-basket {
+          color: #47a6ff;
+          font-size: 18px;
+        }
+      }
+    }
   }
 }
 

@@ -5,6 +5,8 @@ import {ProddetailsComponent} from './comp/proddisplay/proddetails/proddetails.c
 import {PassComponent} from './comp/pass/pass.component';
 import {LoginComponent} from './comp/login/login.component';
 import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill-info.component';
+import {WishlistComponent} from './shared/wishlist/wishlist.component';
+import {CartComponent} from './shared/cart/cart.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'prod-details/:id', component: ProddetailsComponent },
   { path: 'bill-info/:id', component: BillInfoComponent},
   { path: 'add-product', component: PassComponent },
+  {path: 'wish-list', component: WishlistComponent},
+  {path: 'cart', component: CartComponent},
   { path: '', redirectTo: '/display', pathMatch: 'full'}
 ];
 

@@ -5,10 +5,9 @@ import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {AddToFavsModel} from '../../models/allModel';
 
 export abstract class UserInformation {
-  usersCollection: AngularFirestoreCollection;
-  items: FirebaseListObservable<AddToFavsModel>; // list of objects
+  items: FirebaseListObservable<AddToFavsModel>;
   userId: string;
-  userFavs;
+
   public constructor(public afs: AngularFirestore,
                      public db: AngularFireDatabase,
                      private afAuth: AngularFireAuth) {
@@ -34,6 +33,7 @@ export abstract class UserInformation {
     this.items = this.db.list(`users/${this.userId}/wishlist`);
     this.items.push(data);
   }
+
   getWishList() {
     this.items = this.db.list(`users/${this.userId}/wishlist`).valueChanges();
     return this.items;
