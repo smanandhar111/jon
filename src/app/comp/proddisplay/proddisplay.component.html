@@ -42,14 +42,11 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-8">
       <!--Display-->
-      <div class="row display-view">
-        <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter: filterPrice | prodColorFilter: filterColor">
-          <div class="circle" (click)="getProdDetails(item.id)">
-            <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
-            <h5>{{item.title}}</h5>
-          </div>
-        </div>
-      </div>
+      <app-gallerize [proditemData]="proditemData"
+                     [filterPrice]="filterPrice"
+                     [filterColor]="filterColor"
+                     [filterType]="filterType">
+      </app-gallerize>
     </div>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductInputModel, ProductTypes} from '../../models/allModel';
 import { ProditemService } from '../../services/proditem.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-proddisplay',
@@ -31,8 +30,7 @@ export class ProddisplayComponent implements OnInit {
     {value: 'blue', viewValue: 'Blue'},
     {value: 'pink', viewValue: 'Pink'}
   ];
-  constructor(private prodItemService: ProditemService,
-              private router: Router) { }
+  constructor(private prodItemService: ProditemService) { }
 
   ngOnInit() {
     this.prodItemService.getItems();
@@ -56,8 +54,6 @@ export class ProddisplayComponent implements OnInit {
     }
   }
 
-  getProdDetails(id: number) {
-    this.router.navigate(['/prod-details', id]);
-  }
+
 
 }

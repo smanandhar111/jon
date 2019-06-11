@@ -28,15 +28,16 @@ import { WeatherComponent } from './comp/weather/weather.component';
 import { FormsModule } from '@angular/forms';
 import {ProditemService} from './services/proditem.service';
 import { ProddisplayComponent } from './comp/proddisplay/proddisplay.component';
-import {ProddisplayFilterPipe} from './comp/proddisplay/pipes/proddisplay-filter.pipe';
-import {ProddisplayPricefilterPipe} from './comp/proddisplay/pipes/proddisplay-pricefilter.pipe';
+import {ProddisplayFilterPipe} from './shared/gallerize/pipes/proddisplay-filter.pipe';
+import {ProddisplayPricefilterPipe} from './shared/gallerize/pipes/proddisplay-pricefilter.pipe';
 import { ProddetailsComponent } from './comp/proddisplay/proddetails/proddetails.component';
-import {ProddisplayColorfilterPipe} from './comp/proddisplay/pipes/proddisplay-colorfilter.pipe';
+import {ProddisplayColorfilterPipe} from './shared/gallerize/pipes/proddisplay-colorfilter.pipe';
 import { LoginComponent } from './comp/login/login.component';
 import { BillInfoComponent } from './comp/proddisplay/proddetails/bill-info/bill-info.component';
 import {UserService} from './services/user.service';
 import { WishlistComponent } from './shared/wishlist/wishlist.component';
 import { CartComponent } from './shared/cart/cart.component';
+import { GallerizeComponent } from './shared/gallerize/gallerize.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CartComponent } from './shared/cart/cart.component';
     BillInfoComponent,
     WishlistComponent,
     CartComponent,
+    GallerizeComponent,
   ],
   imports: [
     BrowserModule,
