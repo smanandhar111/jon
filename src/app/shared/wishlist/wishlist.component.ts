@@ -15,14 +15,15 @@ import {Router} from '@angular/router';
 })
 export class WishlistComponent extends UserInformation implements OnInit {
   proditemData: ProductInputModel[];
-  userWishList: AddToFavsModel;
+  userWishList: AddToFavsModel[] = [];
+  userWishVal: AddToFavsModel[] = [];
   result = [];
+  itemKey: string;
   constructor(private prodItemService: ProditemService,
-              afs: AngularFirestore,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth,
               private router: Router) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
 
   ngOnInit() {
@@ -47,10 +48,13 @@ export class WishlistComponent extends UserInformation implements OnInit {
     setTimeout(() => {
       this.getWishList();
       this.items.subscribe(data => {
-        this.userWishList = data;
+        for (let h = 0; h < data.length; h++) {
+              this.userWishVal.push(data[h].payload.val());
+              this.userWishList.push(data[h]);
+            }
 
-        const wl = this.userWishList; const pd = this.proditemData;
-        if(this.userWishList && this.proditemData) {
+        const wl = this.userWishVal; const pd = this.proditemData;
+        if (this.userWishVal && this.proditemData) {
           for (let i = 0; i < wl.length; i++) {
             for (let j = 0; j < pd.length; j++) {
               if (wl[i].uid === this.proditemData[j].id) {
@@ -63,5 +67,14 @@ export class WishlistComponent extends UserInformation implements OnInit {
         }
       });
       }, 1000);
+  }
+  notifyWishList(id: string) {
+    // getting the key
+    for (let g = 0; g < this.userWishList.length; g++) {
+      if (id === this.userWishList[g].payload.val().uid) {
+        this.itemKey = this.userWishList[g].key;
+        this.removeWishItem(this.itemKey);
+      }
+    }
   }
 }

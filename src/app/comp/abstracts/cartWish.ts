@@ -9,11 +9,10 @@ import {AngularFireAuth} from '@angular/fire/auth';
 
 export abstract class CartWish extends UserInformation implements OnInit {
   public constructor(private prodItemService: ProditemService,
-                     afs: AngularFirestore,
                      db: AngularFireDatabase,
                      afAuth: AngularFireAuth,
                      private router: Router) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
   proditemData: ProductInputModel[];
   userWishList: AddToFavsModel;
@@ -43,7 +42,7 @@ export abstract class CartWish extends UserInformation implements OnInit {
         this.userWishList = data;
 
         const wl = this.userWishList; const pd = this.proditemData;
-        if(this.userWishList && this.proditemData) {
+        if (this.userWishList && this.proditemData) {
           for (let i = 0; i < wl.length; i++) {
             for (let j = 0; j < pd.length; j++) {
               if (wl[i].uid === this.proditemData[j].id) {

@@ -18,19 +18,15 @@ export class HeaderComponent extends UserInformation implements OnInit {
   wishlisted: AddToFavsModel[] = [];
   constructor(public authService: AuthService,
               public router: Router,
-              public afs: AngularFirestore,
               public db: AngularFireDatabase,
               afAuth: AngularFireAuth) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
   ngOnInit() {
     this.authService.checkAuthState();
     if (this.authService.user) {
     } else {
     }
-    // this.authService.currentUser.subscribe(data =>  {
-    //   this.userData = data;
-    // });
     this.checkAuth();
 
     // calling userService
@@ -46,14 +42,11 @@ export class HeaderComponent extends UserInformation implements OnInit {
   }
   logout() {
     this.authService.logout();
+    this.router.navigate(['/display']);
   }
   checkAuth() {
     const authCondition = sessionStorage.getItem('auth');
-    if (authCondition === 'true') {
-      return true;
-    } else {
-      return false;
-    }
+    return authCondition === 'true';
   }
   navToAddProd() {
     if (this.checkAuth()) {

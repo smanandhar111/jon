@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProditemService} from '../../../services/proditem.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AddToFavsModel, ProductInputModel} from '../../../models/allModel';
 import {UserInformation} from '../../abstracts/users';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -25,17 +25,17 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   atcData = {
     uid: ''
   };
-  userWishList: AddToFavsModel;
+  userWishList: AddToFavsModel[] = [];
   userCartData: AddToFavsModel;
   userID: string;
+
   constructor(private prodItemService: ProditemService,
               private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService,
-              afs: AngularFirestore,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
 
   ngOnInit() {
@@ -44,6 +44,7 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
     this.getUserWishList();
     this.getUserCart();
   }
+
   getProdItems() {
     // call to get item from server
     this.prodItemService.getItems();
@@ -58,25 +59,31 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
       });
     });
   }
+
   getParamId() {
     this.target = this.route.params.subscribe(params => { // getting id from url param
       this.uid = params['id'];
     });
   }
+
   getUserWishList() {
     setTimeout(() => {
       this.getWishList();
       this.items.subscribe(data => {
-        this.userWishList = data;
-        _.forEach(this.userWishList, (res) => {
-          if (res.uid === this.uid) {
+        for (let x = 0; x < data.length; x++) {
+          this.userWishList.push(data[x].payload.val());
+        }
+        for (let y = 0; y < this.userWishList.length; y++) {
+          if (this.uid === this.userWishList[y].uid) {
             this.wishlisted = true;
           }
-        });
+        }
+
       });
 
     }, 1000);
   }
+
   getUserCart() {
     setTimeout(() => {
       this.getCart();
@@ -88,7 +95,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
           }
         });
       });
-
     }, 1000);
   }
 
@@ -96,24 +102,29 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   imgCaros(numb) {
     this.imgCaro = numb;
   }
-  // toggle atwlist
+
   getWlClass() {
     return this.wishlisted ? 'fa-heart' : 'fa-heart-o';
   }
+
   getCartClass() {
     return this.addedToCart ? 'added-to-cart' : '';
   }
+
   addToWishList(prodData: ProductInputModel) {
     this.atcData.uid = prodData.id;
     if (this.isUser()) {
-      this.addItemToWishlist(this.atcData);
+      this.addItemToWishList(this.atcData);
+      this.wishlisted = true;
     } else {
       this.authService.login();
     }
   }
+
   buy(id: number) {
     this.router.navigate(['/bill-info', id]);
   }
+
   addToCart(prodData: ProductInputModel) {
     this.atcData.uid = prodData.id;
     if (this.isUser()) {

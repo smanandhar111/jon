@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductInputModel} from '../../models/allModel';
 import {Router} from '@angular/router';
 
@@ -12,12 +12,16 @@ export class GallerizeComponent implements OnInit {
   @Input() filterType: string;
   @Input() filterPrice: string;
   @Input() filterColor: string;
+  @Input() fromWishList: boolean;
+  @Output() notify: EventEmitter<string> = new EventEmitter();
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
   getProdDetails(id: number) {
     this.router.navigate(['/prod-details', id]);
+  }
+  removeItem(id: string) {
+    this.notify.emit(id);
   }
 }
