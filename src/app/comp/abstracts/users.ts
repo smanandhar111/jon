@@ -1,5 +1,5 @@
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import {AngularFireAction, AngularFireDatabase, AngularFireList, DatabaseSnapshot} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {AddToFavsModel} from '../../models/allModel';
@@ -10,6 +10,7 @@ export abstract class UserInformation {
   userId: string;
   cartRef: AngularFireList<any>;
   wishListRef:  AngularFireList<any>;
+  wishSnap: Observable<any>;
   protected constructor(public db: AngularFireDatabase,
                         private afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe(user => {
@@ -17,9 +18,8 @@ export abstract class UserInformation {
         this.userId = user.uid;
       }
     });
-
   }
-  public static isUser(): boolean {
+  public isUser(): boolean {
     const authCondition = sessionStorage.getItem('auth');
     return authCondition === 'true';
   }
@@ -35,12 +35,16 @@ export abstract class UserInformation {
   }
 
   getWishList() {
-    this.items = this.db.list(`users/${this.userId}/wishlist`).valueChanges();
+    this.items = this.db.list(`users/${this.userId}/wishlist`).snapshotChanges();
     return this.items;
   }
 
   getCart() {
     this.items = this.db.list(`users/${this.userId}/cart`).valueChanges();
     return this.items;
+  }
+  removeWishItem(itemKey: string) {
+    this.wishListRef = this.db.list(`users/${this.userId}/wishlist`);
+    this.wishListRef.remove(itemKey);
   }
 }
