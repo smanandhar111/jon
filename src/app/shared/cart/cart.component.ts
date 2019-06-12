@@ -17,12 +17,11 @@ export class CartComponent extends UserInformation implements OnInit {
   proditemData: ProductInputModel[];
   addedToCart: AddToFavsModel;
   result = [];
-  constructor(afs: AngularFirestore,
-              db: AngularFireDatabase,
+  constructor(db: AngularFireDatabase,
               afAuth: AngularFireAuth,
               private prodItemService: ProditemService,
               private router: Router) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
 
   ngOnInit() {

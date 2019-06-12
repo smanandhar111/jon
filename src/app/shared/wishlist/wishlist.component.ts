@@ -18,11 +18,10 @@ export class WishlistComponent extends UserInformation implements OnInit {
   userWishList: AddToFavsModel;
   result = [];
   constructor(private prodItemService: ProditemService,
-              afs: AngularFirestore,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth,
               private router: Router) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
 
   ngOnInit() {

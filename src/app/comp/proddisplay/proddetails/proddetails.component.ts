@@ -32,10 +32,9 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService,
-              afs: AngularFirestore,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth) {
-    super(afs, db, afAuth);
+    super(db, afAuth);
   }
 
   ngOnInit() {
@@ -105,8 +104,8 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   }
   addToWishList(prodData: ProductInputModel) {
     this.atcData.uid = prodData.id;
-    if (this.isUser()) {
-      this.addItemToWishlist(this.atcData);
+    if (UserInformation.isUser()) {
+      this.addItemToWishList(this.atcData);
     } else {
       this.authService.login();
     }
@@ -116,7 +115,7 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   }
   addToCart(prodData: ProductInputModel) {
     this.atcData.uid = prodData.id;
-    if (this.isUser()) {
+    if (UserInformation.isUser()) {
       this.addItemToCart(this.atcData);
     } else {
       this.authService.login();
