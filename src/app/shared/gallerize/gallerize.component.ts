@@ -24,4 +24,14 @@ export class GallerizeComponent implements OnInit {
   removeItem(id: string) {
     this.notify.emit(id);
   }
+  getDemClass(imgDem: string): string {
+    if (imgDem === 'port') {
+      return 'port';
+    } if (imgDem === 'wide') {
+      return 'wide';
+    } if (imgDem === 'cube') {
+      return 'cube';
+    }
+    return 'cube';
+  }
 }

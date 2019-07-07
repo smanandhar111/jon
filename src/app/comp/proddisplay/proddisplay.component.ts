@@ -36,6 +36,7 @@ export class ProddisplayComponent implements OnInit {
     this.prodItemService.getItems();
     this.prodItemService.items.subscribe(data => {
       this.proditemData = data;
+      console.log('prod', this.proditemData);
     });
   }
 

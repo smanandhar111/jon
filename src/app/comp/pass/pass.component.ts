@@ -18,13 +18,19 @@ export class PassComponent implements OnInit {
     imageUrlTwo: '',
     imageUrlThree: '',
     imageUrlFour: '',
-    primeColor: ''
+    primeColor: '',
+    imgDem: '',
   };
   prodTypes: ProductTypes[] = [
     {value: 'earring', viewValue: 'Earring'},
     {value: 'necklace', viewValue: 'Necklace'},
     {value: 'bracelet', viewValue: 'Bracelet'},
     {value: 'clothing', viewValue: 'Clothing'},
+  ];
+  imgDem: ProductTypes[] = [
+    {value: 'cube', viewValue: 'Cube'},
+    {value: 'wide', viewValue: 'Wide'},
+    {value: 'port', viewValue: 'Portrait'},
   ];
   imgCount =  1;
   constructor(private prodItemService: ProditemService) { }
@@ -42,6 +48,7 @@ export class PassComponent implements OnInit {
     this.item.description = 'To generate random number between two numbers is so simple.';
     this.item.price = Math.floor(Math.random() * 1000) + 1;
     this.item.primeColor = 'Blue';
+    this.item.imgDem = 'cube';
   }
   clearAll(addProdForm): any {
     addProdForm.resetForm();
@@ -71,6 +78,9 @@ export class PassComponent implements OnInit {
     }
     if (inputName === 'primeColor') {
       this.item.primeColor = '';
+    }
+    if (inputName === 'imgDem') {
+      this.item.imgDem = '';
     }
   }
   changeCount(val) {
