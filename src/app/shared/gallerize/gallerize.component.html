@@ -3,7 +3,9 @@
     <a *ngIf="fromWishList" class="remove-item" (click)="removeItem(item.id)"><i class="fa fa-times-circle"></i></a>
     <div class="circle" [ngClass]="getDemClass(item.imgDem)" (click)="getProdDetails(item.id)">
       <img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
-      <!--<h5>{{item.title}}</h5>-->
+      <div class="banner">
+        <span>{{item.title}}</span>
+      </div>
     </div>
   </div>
 </div>
