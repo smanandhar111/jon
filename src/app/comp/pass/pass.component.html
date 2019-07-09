@@ -92,6 +92,16 @@
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
+        <!--IMAGE DIMENSION-->
+        <mat-form-field class="example-full-width">
+          <mat-select required placeholder="Image Dimension"
+                      name="imgDem" [(ngModel)]="item.imgDem">
+            <mat-option *ngFor="let type of imgDem" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <!--Todo: For testing purposes only-->
         <a mat-raised-button class="auto-fill" *ngIf="addProdForm.pristine && !addProdForm.valid" (click)="autoFill()"><i class="fa fa-id-card-o"></i></a>
 
