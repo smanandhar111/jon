@@ -77,14 +77,8 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
 
   getUserData() {
     setTimeout(() => {
-      this.userData$ = this.prodItemService.getUsers();
-      this.cartData$ = this.userData$.pipe(
-        map(results => results.filter(
-          result => result.via.includes('cart'))));
-      this.wishData$ = this.userData$.pipe(
-        map(results => results.filter(
-          result => result.via.includes('wish'))));
-      this.cartData$.subscribe(data => {
+      this.prodItemService.getUsers();
+      this.prodItemService.cartData$.subscribe(data => {
         _.forEach(data, (res) => {
           if(this.productId == res.uid) {
             this.addedToCart = true;
@@ -92,14 +86,14 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
         })
       });
 
-      this.wishData$.subscribe(data => {
+      this.prodItemService.wishData$.subscribe(data => {
         _.forEach(data, (res) => {
           if(this.productId == res.uid) {
             this.wishlisted = true;
           }
         })
       })
-    },500)
+    },500);
   }
 
   // toggle main image

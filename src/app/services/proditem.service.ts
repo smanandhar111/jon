@@ -12,7 +12,9 @@ export class ProditemService {
   itemsCollection: AngularFirestoreCollection<ProductInputModel>;
   items: Observable<ProductInputModel[]>;
   prodItems;
-
+  userData$: Observable<AddToFavsModel[]>;
+  cartData$: Observable<AddToFavsModel[]>;
+  wishData$: Observable<AddToFavsModel[]>;
   userId: string;
   usersCollection: AngularFirestoreCollection<ProductInputModel>;
 
@@ -41,10 +43,10 @@ export class ProditemService {
   addItem(item: ProductInputModel) {
     this.itemsCollection.add(item);
   }
-  getUsers(): Observable<AddToFavsModel[]> {
+  getUsers(){
     //Todo: this.userId is undefined when calling this fun wihtout timeout
     // Fix using no Timeout
-    return this.afs.collection('userData',
+    this.userData$ = this.afs.collection('userData',
         ref => ref.where("userId", "==", `${this.userId}`))
       .snapshotChanges()
       .pipe(map(snaps => {
@@ -54,7 +56,13 @@ export class ProditemService {
             ...snap.payload.doc.data()
           };
         });
-      }))
+      }));
+    this.cartData$ = this.userData$.pipe(
+      map(results => results.filter(
+        result => result.via.includes('cart'))));
+    this.wishData$ = this.userData$.pipe(
+      map(results => results.filter(
+        result => result.via.includes('wish'))));
   }
 
   //todo: type needs to be AddToFavsModel
@@ -64,5 +72,13 @@ export class ProditemService {
   //todo: type needs to be AddToFavsModel
   addToWish(item: AddToFavsModel) {
     this.usersCollection.add(item);
+  }
+  removeItem(item: AddToFavsModel) {
+    console.log('item', item);
+    this.usersCollection.doc(`item`).delete().then(() => {
+      console.log('successfully deleted');
+    }).catch((err) => {
+      console.log('err', err);
+    })
   }
 }

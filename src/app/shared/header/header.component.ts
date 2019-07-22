@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {UserInformation} from '../../comp/abstracts/users';
-import _ from 'lodash';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AddToFavsModel} from '../../models/allModel';
 import {ProditemService} from '../../services/proditem.service';
-import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 
@@ -38,18 +36,13 @@ export class HeaderComponent extends UserInformation implements OnInit {
     this.checkAuth();
 
     setTimeout(() => {
-      this.userData$ = this.prodItemService.getUsers();
-      this.cartData$ = this.userData$.pipe(
-        map(results => results.filter(
-          result => result.via.includes('cart'))));
-      this.wishData$ = this.userData$.pipe(
-        map(results => results.filter(
-          result => result.via.includes('wish'))));
-      this.cartData$.subscribe(data => {
+      this.prodItemService.getUsers();
+
+      this.prodItemService.cartData$.subscribe(data => {
         this.cartItems = data;
       });
 
-      this.wishData$.subscribe(data => {
+      this.prodItemService.wishData$.subscribe(data => {
         this.wishItems = data;
       })
     },500)

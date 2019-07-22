@@ -25,7 +25,7 @@
         <span class="title">{{item.title}}</span>
       </td>
       <td>1</td>
-      <th><a href="">X</a></th>
+      <th><a style="cursor: pointer" (click)="removeCartItem(item.id)" >X</a></th>
       <th>{{item.price}}</th>
     </tr>
   </table>
