@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {UserInformation} from '../../comp/abstracts/users';
-import {AngularFirestore} from '@angular/fire/firestore';
+import _ from 'lodash';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AddToFavsModel} from '../../models/allModel';
+import {ProditemService} from '../../services/proditem.service';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -15,10 +18,15 @@ import {AddToFavsModel} from '../../models/allModel';
 })
 export class HeaderComponent extends UserInformation implements OnInit {
   userData;
-  wishlisted: AddToFavsModel[] = [];
+  cartItems: AddToFavsModel[];
+  wishItems: AddToFavsModel[];
+  userData$: Observable<AddToFavsModel[]>;
+  cartData$: Observable<AddToFavsModel[]>;
+  wishData$: Observable<AddToFavsModel[]>;
   constructor(public authService: AuthService,
               public router: Router,
               public db: AngularFireDatabase,
+              private prodItemService: ProditemService,
               afAuth: AngularFireAuth) {
     super(db, afAuth);
   }
@@ -29,13 +37,22 @@ export class HeaderComponent extends UserInformation implements OnInit {
     }
     this.checkAuth();
 
-    // calling userService
     setTimeout(() => {
-      this.getCart();
-      this.items.subscribe(data => {
-        this.wishlisted = data;
+      this.userData$ = this.prodItemService.getUsers();
+      this.cartData$ = this.userData$.pipe(
+        map(results => results.filter(
+          result => result.via.includes('cart'))));
+      this.wishData$ = this.userData$.pipe(
+        map(results => results.filter(
+          result => result.via.includes('wish'))));
+      this.cartData$.subscribe(data => {
+        this.cartItems = data;
       });
-    }, 1000);
+
+      this.wishData$.subscribe(data => {
+        this.wishItems = data;
+      })
+    },500)
   }
   login() {
     this.authService.login();

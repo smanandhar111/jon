@@ -35,18 +35,18 @@ export class UserService {
   }
 
   addUser(data) {
-    if (this.isUser()) {
-      this.items = this.db.list(`users/${this.userId}`);
-      this.items.push(data);
-    } else {
-    }
+    // if (this.isUser()) {
+    //   this.items = this.db.list(`users/${this.userId}`);
+    //   this.items.push(data);
+    // } else {
+    // }
   }
 
   getItemsList() {
-    const relative = this.db.object(`users/${this.userId}`).valueChanges();
-    relative.subscribe(data => {
-      this.items = data;
-      console.log('user', this.items);
-    });
+    // const relative = this.db.object(`users/${this.userId}`).valueChanges();
+    // relative.subscribe(data => {
+    //   this.items = data;
+    //   console.log('user', this.items);
+    // });
   }
 }

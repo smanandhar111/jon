@@ -30,6 +30,9 @@ export interface UserInfo {
 
 export interface AddToFavsModel {
   uid: string;
-  length: number;
+  userId: string;
+  via: string;
+  id?: string;
+  length?: number;
 }
 

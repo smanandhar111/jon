@@ -43,7 +43,7 @@
         <h3 class="title">{{prodSpData.title}}
           <a class="atwl fa"
              [ngClass]="getWlClass()"
-             (click)="addToWishList(prodSpData)">
+             (click)="addToWishList(prodSpData.id)">
           </a>
         </h3>
 
@@ -61,7 +61,7 @@
         <button class="atc" mat-button
                 [ngClass]="getCartClass()"
                 [disabled]="addedToCart"
-                (click)="addToCart(prodSpData)">
+                (click)="addToCart(prodSpData.id)">
           <i class="fa fa-shopping-cart"></i>
           <span *ngIf="!addedToCart">Add to Cart</span>
           <span *ngIf="addedToCart">Added to Cart</span>
