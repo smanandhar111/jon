@@ -8,6 +8,10 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AuthService} from '../../../services/auth.service';
 import _ from 'lodash';
+import {UserService} from '../../../services/user.service';
+import {Observable} from 'rxjs';
+import {forEach} from '@angular/router/src/utils/collection';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-proddetails',
@@ -22,27 +26,31 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   imgCaro = 1;
   wishlisted: boolean;
   addedToCart: boolean;
-  atcData = {
-    uid: ''
+  atcData: AddToFavsModel = {
+    uid: '',
+    userId: '',
+    via: ''
   };
-  userWishList: AddToFavsModel[] = [];
-  userCartData: AddToFavsModel;
-  userID: string;
-
+  userData: AddToFavsModel[];
+  userData$: Observable<AddToFavsModel[]>;
+  cartData$: Observable<AddToFavsModel[]>;
+  wishData$: Observable<AddToFavsModel[]>;
+  productId: string;
   constructor(private prodItemService: ProditemService,
+              private userService: UserService,
               private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth) {
     super(db, afAuth);
+    this.atcData.userId = this.prodItemService.getUserId;
   }
 
   ngOnInit() {
     this.getProdItems();
     this.getParamId();
-    this.getUserWishList();
-    this.getUserCart();
+    this.getUserData();
   }
 
   getProdItems() {
@@ -55,6 +63,7 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
       _.forEach(this.proditemData, (result) => {
         if (result.id === this.uid) {
           this.prodSpData = result;
+          this.productId = result.id;
         }
       });
     });
@@ -66,36 +75,25 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
     });
   }
 
-  getUserWishList() {
+  getUserData() {
     setTimeout(() => {
-      this.getWishList();
-      this.items.subscribe(data => {
-        for (let x = 0; x < data.length; x++) {
-          this.userWishList.push(data[x].payload.val());
-        }
-        for (let y = 0; y < this.userWishList.length; y++) {
-          if (this.uid === this.userWishList[y].uid) {
-            this.wishlisted = true;
-          }
-        }
-
-      });
-
-    }, 1000);
-  }
-
-  getUserCart() {
-    setTimeout(() => {
-      this.getCart();
-      this.items.subscribe(data => {
-        this.userCartData = data;
-        _.forEach(this.userCartData, (res) => {
-          if (res.uid === this.uid) {
+      this.prodItemService.getUsers();
+      this.prodItemService.cartData$.subscribe(data => {
+        _.forEach(data, (res) => {
+          if(this.productId == res.uid) {
             this.addedToCart = true;
           }
-        });
+        })
       });
-    }, 1000);
+
+      this.prodItemService.wishData$.subscribe(data => {
+        _.forEach(data, (res) => {
+          if(this.productId == res.uid) {
+            this.wishlisted = true;
+          }
+        })
+      })
+    },500);
   }
 
   // toggle main image
@@ -111,24 +109,28 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
     return this.addedToCart ? 'added-to-cart' : '';
   }
 
-  addToWishList(prodData: ProductInputModel) {
-    this.atcData.uid = prodData.id;
+  buy(id: string) {
+    this.router.navigate(['/bill-info', id]);
+  }
+
+  addToWishList(id:string) {
+    this.atcData.uid = id;
+    // this.atcData.userId = this.prodItemService.getUserId;
+    this.atcData.via = 'wish';
     if (this.isUser()) {
-      this.addItemToWishList(this.atcData);
+      this.prodItemService.addToWish(this.atcData);
       this.wishlisted = true;
     } else {
       this.authService.login();
     }
   }
 
-  buy(id: number) {
-    this.router.navigate(['/bill-info', id]);
-  }
-
-  addToCart(prodData: ProductInputModel) {
-    this.atcData.uid = prodData.id;
+  addToCart(id:string) {
+    this.atcData.uid = id;
+    this.atcData.via = 'cart';
     if (this.isUser()) {
-      this.addItemToCart(this.atcData);
+      this.prodItemService.addToCart(this.atcData);
+      this.addedToCart = true;
     } else {
       this.authService.login();
     }

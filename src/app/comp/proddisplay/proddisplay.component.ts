@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductInputModel, ProductTypes} from '../../models/allModel';
+import {AddToFavsModel, ProductInputModel, ProductTypes} from '../../models/allModel';
 import { ProditemService } from '../../services/proditem.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-proddisplay',
@@ -36,7 +37,6 @@ export class ProddisplayComponent implements OnInit {
     this.prodItemService.getItems();
     this.prodItemService.items.subscribe(data => {
       this.proditemData = data;
-      console.log('prod', this.proditemData);
     });
   }
 

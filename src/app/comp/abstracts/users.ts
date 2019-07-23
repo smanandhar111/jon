@@ -23,28 +23,28 @@ export abstract class UserInformation {
     const authCondition = sessionStorage.getItem('auth');
     return authCondition === 'true';
   }
-
-  addItemToCart(data) {
-    this.cartRef = this.db.list(`users/${this.userId}/cart`);
-    this.cartRef.push(data);
-  }
-
-  addItemToWishList(data) {
-    this.wishListRef = this.db.list(`users/${this.userId}/wishlist`);
-    this.wishListRef.push(data);
-  }
-
-  getWishList() {
-    this.items = this.db.list(`users/${this.userId}/wishlist`).snapshotChanges();
-    return this.items;
-  }
-
-  getCart() {
-    this.items = this.db.list(`users/${this.userId}/cart`).valueChanges();
-    return this.items;
-  }
-  removeWishItem(itemKey: string) {
-    this.wishListRef = this.db.list(`users/${this.userId}/wishlist`);
-    this.wishListRef.remove(itemKey);
-  }
+  //
+  // addItemToCart(data) {
+  //   this.cartRef = this.db.list(`users/${this.userId}/cart`);
+  //   this.cartRef.push(data);
+  // }
+  //
+  // addItemToWishList(data) {
+  //   this.wishListRef = this.db.list(`users/${this.userId}/wishlist`);
+  //   this.wishListRef.push(data);
+  // }
+  //
+  // getWishList() {
+  //   this.items = this.db.list(`users/${this.userId}/wishlist`).snapshotChanges();
+  //   return this.items;
+  // }
+  //
+  // getCart() {
+  //   this.items = this.db.list(`users/${this.userId}/cart`).valueChanges();
+  //   return this.items;
+  // }
+  // removeWishItem(itemKey: string) {
+  //   this.wishListRef = this.db.list(`users/${this.userId}/wishlist`);
+  //   this.wishListRef.remove(itemKey);
+  // }
 }
