@@ -15,10 +15,10 @@ import {Router} from '@angular/router';
 })
 export class WishlistComponent extends UserInformation implements OnInit {
   proditemData: ProductInputModel[];
-  userWishList: AddToFavsModel[] = [];
-  userWishVal: AddToFavsModel[] = [];
+  userWishList: AddToFavsModel[];
+  wishData: AddToFavsModel[] = [];
   result = [];
-  itemKey: string;
+  key: AddToFavsModel;
   constructor(private prodItemService: ProditemService,
               db: AngularFireDatabase,
               afAuth: AngularFireAuth,
@@ -46,35 +46,25 @@ export class WishlistComponent extends UserInformation implements OnInit {
   }
   getUserWishList() {
     setTimeout(() => {
-      this.getWishList();
-      this.items.subscribe(data => {
-        for (let h = 0; h < data.length; h++) {
-              this.userWishVal.push(data[h].payload.val());
-              this.userWishList.push(data[h]);
+      this.prodItemService.getUsers();
+      this.prodItemService.wishData$.subscribe(data => {
+        this.wishData = data;
+        _.forEach(data, (res) => {
+          _.forEach(this.proditemData, (prodRes) => {
+            if(res.uid === prodRes.id) {
+              this.result.push(prodRes);
             }
-
-        const wl = this.userWishVal; const pd = this.proditemData;
-        if (this.userWishVal && this.proditemData) {
-          for (let i = 0; i < wl.length; i++) {
-            for (let j = 0; j < pd.length; j++) {
-              if (wl[i].uid === this.proditemData[j].id) {
-                this.result.push(this.proditemData[j]);
-              }
-            }
-          }
-        } else {
-          alert('sums wrong');
-        }
-      });
-      }, 1000);
+          })
+        })
+      })
+    }, 500);
   }
   notifyWishList(id: string) {
-    // getting the key
-    for (let g = 0; g < this.userWishList.length; g++) {
-      if (id === this.userWishList[g].payload.val().uid) {
-        this.itemKey = this.userWishList[g].key;
-        this.removeWishItem(this.itemKey);
+    _.forEach(this.wishData, (res) => {
+      if(itemId === res.uid) {
+        this.key = res.id;
       }
-    }
+    });
+    this.prodItemService.removeItem(this.key);
   }
 }

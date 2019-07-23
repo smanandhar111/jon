@@ -32,7 +32,7 @@
       <button mat-menu-item routerLink="/wish-list">Wish list</button>
     </mat-menu>
     <div class="cart-container">
-      <div *ngIf="cartItems && cartItems.length > 0"
+      <div *ngIf="cartItems"
            class="cart-count">{{cartItems.length}}</div>
       <button routerLink="/cart" mat-button><i class="fa fa-shopping-basket"></i></button>
     </div>

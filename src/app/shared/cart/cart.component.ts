@@ -62,5 +62,6 @@ export class CartComponent extends UserInformation implements OnInit {
       }
     });
     this.prodItemService.removeItem(this.key);
+    //todo: reload Component
   }
 }

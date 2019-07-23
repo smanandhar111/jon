@@ -37,9 +37,9 @@ export class HeaderComponent extends UserInformation implements OnInit {
 
     setTimeout(() => {
       this.prodItemService.getUsers();
-
       this.prodItemService.cartData$.subscribe(data => {
         this.cartItems = data;
+        console.log(this.cartItems.length);
       });
 
       this.prodItemService.wishData$.subscribe(data => {

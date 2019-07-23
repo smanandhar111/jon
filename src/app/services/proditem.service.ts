@@ -74,11 +74,6 @@ export class ProditemService {
     this.usersCollection.add(item);
   }
   removeItem(item: AddToFavsModel) {
-    console.log('item', item);
-    this.usersCollection.doc(`item`).delete().then(() => {
-      console.log('successfully deleted');
-    }).catch((err) => {
-      console.log('err', err);
-    })
+    this.usersCollection.doc(`${item}`).delete();
   }
 }

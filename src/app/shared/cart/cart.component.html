@@ -1,13 +1,4 @@
 <h1 style="text-align: center">Your Shopping Cart</h1>
-
-<!--<div class="row display-view">-->
-  <!--<div class="repeater" *ngFor="let item of result">-->
-    <!--<div class="circle" (click)="getProdDetails(item.id)">-->
-      <!--<img class="prod-img" src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">-->
-      <!--<h5 style="text-align: center">{{item.title}}</h5>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
 <div class="cart-container">
   <table>
     <tr>
@@ -19,13 +10,14 @@
     <tr *ngFor="let item of result">
       <td class="flex-it">
         <div class="square">
-          <img src="../../../assets/img/{{item.imageUrl}}.jpg" alt="">
+          <img src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
         </div>
 
         <span class="title">{{item.title}}</span>
       </td>
       <td>1</td>
-      <th><a style="cursor: pointer" (click)="removeCartItem(item.id)" >X</a></th>
+      <th><a style="cursor: pointer"
+             (click)="removeCartItem(item.id)" >X</a></th>
       <th>{{item.price}}</th>
     </tr>
   </table>
