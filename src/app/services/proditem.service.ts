@@ -44,8 +44,6 @@ export class ProditemService {
     this.itemsCollection.add(item);
   }
   getUsers(){
-    //Todo: this.userId is undefined when calling this fun wihtout timeout
-    // Fix using no Timeout
     this.userData$ = this.afs.collection('userData',
         ref => ref.where("userId", "==", `${this.userId}`))
       .snapshotChanges()

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AddToFavsModel, ProductInputModel} from '../../models/allModel';
 import {ProditemService} from '../../services/proditem.service';
 import _ from 'lodash';
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
-export class WishlistComponent extends UserInformation implements OnInit {
+export class WishlistComponent extends UserInformation implements OnInit, AfterViewInit {
   proditemData: ProductInputModel[];
   userWishList: AddToFavsModel[];
   wishData: AddToFavsModel[] = [];
@@ -28,6 +28,9 @@ export class WishlistComponent extends UserInformation implements OnInit {
 
   ngOnInit() {
     this.getProdItems();
+  }
+
+  ngAfterViewInit(): void {
     this.getUserWishList();
   }
 
@@ -45,7 +48,6 @@ export class WishlistComponent extends UserInformation implements OnInit {
     });
   }
   getUserWishList() {
-    setTimeout(() => {
       this.prodItemService.getUsers();
       this.prodItemService.wishData$.subscribe(data => {
         this.wishData = data;
@@ -57,9 +59,8 @@ export class WishlistComponent extends UserInformation implements OnInit {
           })
         })
       })
-    }, 500);
   }
-  notifyWishList(id: string) {
+  notifyWishList(itemId: string) {
     _.forEach(this.wishData, (res) => {
       if(itemId === res.uid) {
         this.key = res.id;

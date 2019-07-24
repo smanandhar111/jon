@@ -35,11 +35,14 @@ export class HeaderComponent extends UserInformation implements OnInit {
     }
     this.checkAuth();
 
+    this.getUserData();
+  }
+
+  getUserData(): void {
     setTimeout(() => {
       this.prodItemService.getUsers();
       this.prodItemService.cartData$.subscribe(data => {
         this.cartItems = data;
-        console.log(this.cartItems.length);
       });
 
       this.prodItemService.wishData$.subscribe(data => {

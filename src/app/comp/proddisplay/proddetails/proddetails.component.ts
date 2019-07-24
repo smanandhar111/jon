@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProditemService} from '../../../services/proditem.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AddToFavsModel, ProductInputModel} from '../../../models/allModel';
@@ -18,7 +18,7 @@ import {map} from 'rxjs/operators';
   templateUrl: './proddetails.component.html',
   styleUrls: ['./proddetails.component.scss']
 })
-export class ProddetailsComponent extends UserInformation implements OnInit {
+export class ProddetailsComponent extends UserInformation implements OnInit, AfterViewInit {
   proditemData: ProductInputModel[];
   prodSpData: ProductInputModel;
   target;
@@ -50,6 +50,10 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   ngOnInit() {
     this.getProdItems();
     this.getParamId();
+
+  }
+
+  ngAfterViewInit(): void {
     this.getUserData();
   }
 
@@ -76,7 +80,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
   }
 
   getUserData() {
-    setTimeout(() => {
       this.prodItemService.getUsers();
       this.prodItemService.cartData$.subscribe(data => {
         _.forEach(data, (res) => {
@@ -93,7 +96,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit {
           }
         })
       })
-    },500);
   }
 
   // toggle main image
