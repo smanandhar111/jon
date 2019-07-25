@@ -1,18 +1,27 @@
 .mat-toolbar {
   justify-content: space-between;
-  box-shadow: 0 5px 21px -2px #cccccc;
+  box-shadow: 0 5px 21px -2px #99bdff;
   margin-bottom: 25px;
+  background: #ff8400;
+  color: #ffffff;
   nav {
     button.active {
-      border-bottom: 2px solid #ff4081;
+      border-bottom: 2px solid crimson;
       border-radius: 0;
     }
   }
-  .log-con {
-
+  .log-con  button {
+    background: crimson;
+    color: #ffffff;
   }
   .user-info {
     display: flex;
+
+    .user-name {
+      //text-shadow: 1px 2px midnightblue;
+      color: #ffffff;
+      align-self: center;
+    }
 
     .user-name {
       font-size: 14px;
@@ -24,20 +33,20 @@
     }
     .user-img-cont {
       border-radius: 94px;
-      border: 1.5px solid #ff4081;
-      width: 35px;
-      height: 35px;
+      border: 1.5px solid crimson;
+      width: 40px;
+      height: 40px;
       display: inline-block;
 
       img {
-        width: 35px;
+        width: 40px;
         border-radius: 99px;
       }
     }
     .cart-container {
       position: relative;
       .cart-count {
-        color: #47a6ff;
+        color: #ffffff;
         position: absolute;
         bottom: 10px;
         right: 2px;
@@ -47,7 +56,7 @@
         padding: 0 13px;
         min-width: 50px;
         i.fa-shopping-basket {
-          color: #47a6ff;
+          color: #ffffff;
           font-size: 18px;
         }
       }
