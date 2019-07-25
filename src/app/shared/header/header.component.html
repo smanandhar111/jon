@@ -6,9 +6,9 @@
   </nav>
 
   <!--loginBtn-->
+  <!--Todo: Use color="accent" to add theme to app and change it with time-->
   <div class="log-con">
-    <button *ngIf="!checkAuth()" mat-raised-button
-            color="accent" (click)="login()">Login
+    <button style="background:#dc2f37;" *ngIf="!checkAuth()" mat-raised-button (click)="login()">Login
     </button>
   </div>
 
