@@ -18,9 +18,6 @@ export class HeaderComponent extends UserInformation implements OnInit {
   userData;
   cartItems: AddToFavsModel[];
   wishItems: AddToFavsModel[];
-  userData$: Observable<AddToFavsModel[]>;
-  cartData$: Observable<AddToFavsModel[]>;
-  wishData$: Observable<AddToFavsModel[]>;
   constructor(public authService: AuthService,
               public router: Router,
               public db: AngularFireDatabase,
@@ -29,13 +26,14 @@ export class HeaderComponent extends UserInformation implements OnInit {
     super(db, afAuth);
   }
   ngOnInit() {
+    // Todo: Refactor this!
     this.authService.checkAuthState();
     if (this.authService.user) {
     } else {
     }
-    this.checkAuth();
-
-    this.getUserData();
+    if (this.checkAuth() === true) {
+      this.getUserData();
+    }
   }
 
   getUserData(): void {
@@ -43,6 +41,7 @@ export class HeaderComponent extends UserInformation implements OnInit {
       this.prodItemService.getUsers();
       this.prodItemService.cartData$.subscribe(data => {
         this.cartItems = data;
+        console.log(this.cartItems);
       });
 
       this.prodItemService.wishData$.subscribe(data => {
@@ -52,20 +51,26 @@ export class HeaderComponent extends UserInformation implements OnInit {
   }
   login() {
     this.authService.login();
+    this.authService.login$.then(() => {
+      this.getUserData();
+    })
   }
   logout() {
     this.authService.logout();
     this.router.navigate(['/display']);
   }
-  checkAuth() {
+  //Todo: Refactor this into the AuthService
+  checkAuth(): boolean {
     const authCondition = sessionStorage.getItem('auth');
     return authCondition === 'true';
   }
-  navToAddProd() {
-    if (this.checkAuth()) {
-      this.router.navigate(['/add-product']);
-    } else {
-      this.router.navigate(['/login']);
-    }
+
+  checkAdminAuth(): boolean {
+    const adminAuthCondition = sessionStorage.getItem('adminAuth');
+    return adminAuthCondition === 'true';
+  }
+  navToAddProd(): void {
+    this.checkAdminAuth() ? this.router.navigate(['/add-product'])
+      : this.router.navigate(['/login']);
   }
 }
