@@ -5,6 +5,8 @@ import {Observable} from 'rxjs';
 import {AdminCredModel} from '../models/allModel';
 import {UserService} from './user.service';
 import { UserInfo} from '../models/allModel';
+import {Router} from '@angular/router';
+import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +18,12 @@ export class AuthService {
     uid: '',
     email: ''
   };
+  login$: Promise<UserCredential>;
   public authenticated: boolean;
-  constructor(public af: AngularFireAuth, public userService: UserService) {}
+  constructor(public af: AngularFireAuth,
+              public userService: UserService,
+              public router: Router) {}
+
   checkAuthState() {
     this.af.authState.subscribe(
       (auth) => {
@@ -30,12 +36,10 @@ export class AuthService {
     );
   }
   login() {
-    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data) => {
-      this.authenticated = true;
-     //  this.userInfo.uid = data.user.uid;
-     //  this.userInfo.email = data.user.email;
-     // this.userService.addUser(this.userInfo);
-    });
+    // this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data) => {
+    //   this.authenticated = true;
+    // });
+    this.login$ = this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
   logout() {
     this.af.auth.signOut().then(() => {
@@ -47,9 +51,14 @@ export class AuthService {
     const adminPromise = this.af.auth.signInWithEmailAndPassword(adminCredentials.username, adminCredentials.password);
     adminPromise.catch(e => {
       console.log('error', e);
+      if (e.code === 'auth/wrong-password') {
+        alert(e.message);
+      }
     });
     adminPromise.then(data => {
+      console.log('logged in!', data);
       sessionStorage.setItem('adminAuth', 'true');
+      this.router.navigate(['/add-product']);
     });
   }
 }
