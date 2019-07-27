@@ -39,7 +39,7 @@ export class HeaderComponent extends UserInformation implements OnInit, AfterVie
   }
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    if(window.pageYOffset > 40) {
+    if(window.pageYOffset > 20) {
       this.letsGetSticky = true;
       //let proddisplay know that letsGetSticky is activated
       // this.prodItemService.conveyState(this.letsGetSticky);
