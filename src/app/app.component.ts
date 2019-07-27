@@ -10,14 +10,11 @@ export class AppComponent {
   title = 'app';
   stickStateApp:boolean = false;
 
-notifyWishList(stickState: boolean) {
-  console.log('S2. Chilling @Compo');
+  notifyStickyState(stickState: boolean) {
   if(stickState) {
     this.stickStateApp = true;
   } else {
     this.stickStateApp = false
   }
-
-
-}
+  }
 }

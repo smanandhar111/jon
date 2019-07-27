@@ -15,7 +15,7 @@ import { HostListener} from "@angular/core";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent extends UserInformation implements OnInit, AfterViewInit {
+export class HeaderComponent extends UserInformation implements OnInit{
   userData;
   cartItems: AddToFavsModel[];
   wishItems: AddToFavsModel[];
@@ -41,19 +41,11 @@ export class HeaderComponent extends UserInformation implements OnInit, AfterVie
   onWindowScroll() {
     if(window.pageYOffset > 20) {
       this.letsGetSticky = true;
-      //let proddisplay know that letsGetSticky is activated
-      // this.prodItemService.conveyState(this.letsGetSticky);
-
       this.notify.emit(this.letsGetSticky);
     } else {
       this.letsGetSticky = false;
       this.notify.emit(this.letsGetSticky);
     }
-  }
-
-  ngAfterViewInit(): void {
-    const scroll$ = fromEvent(window, 'scroll');
-    console.log(window.pageYOffset);
   }
 
   getUserData(): void {
