@@ -17,7 +17,7 @@ export class ProditemService {
   wishData$: Observable<AddToFavsModel[]>;
   userId: string;
   usersCollection: AngularFirestoreCollection<ProductInputModel>;
-
+  stickyState: boolean = false;
   constructor(public afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.itemsCollection = this.afs.collection('items');
     this.usersCollection = this.afs.collection('userData');
@@ -73,5 +73,13 @@ export class ProditemService {
   }
   removeItem(item: AddToFavsModel) {
     this.usersCollection.doc(`${item}`).delete();
+  }
+  //passing nav is sticky State
+  conveyState(letsGetSticky: boolean): void {
+    this.stickyState = true;
+    console.log('this', this.stickyState);
+  }
+  get getStickyState():boolean {
+    return this.stickyState;
   }
 }

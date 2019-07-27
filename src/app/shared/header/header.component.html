@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar [ngClass]="{'nav-stuck': letsGetSticky}">
   <!--navigation-->
   <nav>
     <button mat-button (click)="navToAddProd()" routerLinkActive="active">Add Product</button>

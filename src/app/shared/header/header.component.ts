@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {UserInformation} from '../../comp/abstracts/users';
@@ -6,21 +6,21 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AddToFavsModel} from '../../models/allModel';
 import {ProditemService} from '../../services/proditem.service';
-import {Observable} from 'rxjs';
+import {fromEvent, Observable} from 'rxjs';
 
+import { HostListener} from "@angular/core";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent extends UserInformation implements OnInit {
+export class HeaderComponent extends UserInformation implements OnInit, AfterViewInit {
   userData;
   cartItems: AddToFavsModel[];
   wishItems: AddToFavsModel[];
-  userData$: Observable<AddToFavsModel[]>;
-  cartData$: Observable<AddToFavsModel[]>;
-  wishData$: Observable<AddToFavsModel[]>;
+  letsGetSticky = false;
+  @Output() notify: EventEmitter<boolean> = new EventEmitter();
   constructor(public authService: AuthService,
               public router: Router,
               public db: AngularFireDatabase,
@@ -36,6 +36,24 @@ export class HeaderComponent extends UserInformation implements OnInit {
     this.checkAuth();
 
     this.getUserData();
+  }
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    if(window.pageYOffset > 40) {
+      this.letsGetSticky = true;
+      //let proddisplay know that letsGetSticky is activated
+      // this.prodItemService.conveyState(this.letsGetSticky);
+
+      this.notify.emit(this.letsGetSticky);
+    } else {
+      this.letsGetSticky = false;
+      this.notify.emit(this.letsGetSticky);
+    }
+  }
+
+  ngAfterViewInit(): void {
+    const scroll$ = fromEvent(window, 'scroll');
+    console.log(window.pageYOffset);
   }
 
   getUserData(): void {
