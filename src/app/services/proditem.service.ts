@@ -17,7 +17,6 @@ export class ProditemService {
   wishData$: Observable<AddToFavsModel[]>;
   userId: string;
   usersCollection: AngularFirestoreCollection<ProductInputModel>;
-
   constructor(public afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.itemsCollection = this.afs.collection('items');
     this.usersCollection = this.afs.collection('userData');

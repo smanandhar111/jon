@@ -1,6 +1,10 @@
 .flex-item {
   display: flex;
   justify-content: flex-end;
+
+  &.get-sticky {
+    margin-top: 107px;
+  }
 }
 body {
   z-index: 123123;

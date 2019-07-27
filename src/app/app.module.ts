@@ -38,6 +38,7 @@ import {UserService} from './services/user.service';
 import { WishlistComponent } from './shared/wishlist/wishlist.component';
 import { CartComponent } from './shared/cart/cart.component';
 import { GallerizeComponent } from './shared/gallerize/gallerize.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { GallerizeComponent } from './shared/gallerize/gallerize.component';
     WishlistComponent,
     CartComponent,
     GallerizeComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
