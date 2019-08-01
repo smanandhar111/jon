@@ -11,6 +11,7 @@ export interface ProductInputModel {
   primeColor: string;
   imgDem: string;
   uid?: string;
+  hovered?: boolean;
 }
 
 export interface ProductTypes {

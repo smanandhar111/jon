@@ -1,8 +1,8 @@
 <div class="ProdDisplayComp container none">
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-2 filter-fixed">
       <div class="row filter-view">
-        <span class="filter-by">Filter by:</span>
+        <span class="filter-by" (dblclick)="showInfo()">Filter by:</span>
         <div class="col-sm filter-container">
           <!--TYPE FILTER-->
           <mat-form-field>
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-1"></div>
+    <div class="col-sm-2"></div>
     <div class="col-sm-9">
       <!--Display-->
       <app-gallerize [proditemData]="proditemData"

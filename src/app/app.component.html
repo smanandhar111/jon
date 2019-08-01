@@ -1,15 +1,18 @@
-<app-header (notify)="notifyStickyState($event)"></app-header>
+<div class="app-component" [ngClass]="{'get-sticky': stickStateApp}">
+  <app-header (notify)="notifyStickyState($event)"></app-header>
 
 
 
 
-<div class="flex-item" [ngClass]="{'get-sticky': stickStateApp}">
-  <div class="weather-shell">
-    <!--<app-weather></app-weather>-->
+  <div class="flex-item" [ngClass]="{'get-sticky': stickStateApp}">
+    <div class="weather-shell">
+      <!--<app-weather></app-weather>-->
+    </div>
   </div>
+
+
+  <router-outlet></router-outlet>
+
+  <app-footer></app-footer>
 </div>
 
-
-<router-outlet></router-outlet>
-
-<app-footer></app-footer>

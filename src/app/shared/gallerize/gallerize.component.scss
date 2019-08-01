@@ -5,7 +5,7 @@
     right: 0;
     color: orangered;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 14px;
     opacity: .5;
     transition: opacity .5s ease;
     &:hover {
@@ -16,22 +16,52 @@
     &:hover {
       .banner {
         display: block;
-        top: -24px;
-        background: #ff9b21;
-        color: #0d0d0d;
+        font-size: 14px;
+        color: #ffffff;
+        opacity: 1;
+        top: -18px;
+        position: relative;
+
       }
     }
     .banner {
+      text-align: center;
       background: transparent;
-      position: relative;
-      bottom: 23px;
       color: transparent;
       transition: top .4s ease, background 1s ease, color 1s ease;
-      float: right;
-      width: 163px;
-      padding-left: 14px;
       border-bottom-right-radius: 8px;
       top: -4px;
+      opacity: 0.5;
+
+    }
+    &.port,&.cube {
+
+    }
+
+  }
+  .banner {
+    padding: 0 15px;
+    position: relative;
+    top: -33px;
+    .fa-heart-o {
+      float: right;
+    }
+    .title {
+      text-align: center;
     }
   }
+
+  //.prod-wiz {
+  //  position: relative;
+  //  bottom: 35px;
+  //  padding-left: 10px;
+  //  display: flex;
+  //  justify-content: space-between;
+  //
+  //  a.fa-heart-o {
+  //    padding-right: 10px;
+  //    font-size: 20px;
+  //    color: indianred;
+  //  }
+  //}
 }

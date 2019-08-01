@@ -14,6 +14,7 @@ export class GallerizeComponent implements OnInit {
   @Input() filterColor: string;
   @Input() fromWishList: boolean;
   @Output() notify: EventEmitter<string> = new EventEmitter();
+  cirHovered: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -33,5 +34,15 @@ export class GallerizeComponent implements OnInit {
       return 'cube';
     }
     return 'cube';
+  }
+  addToWishList() {
+    alert('some');
+  }
+  circleMEnter():void {
+    this.proditemData.hovered = true;
+    console.log(this.proditemData.hovered);
+  }
+  circleMOut():void {
+    this.proditemData.hovered = true;
   }
 }

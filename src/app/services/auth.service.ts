@@ -30,7 +30,9 @@ export class AuthService {
         if (auth != null) {
           this.user = this.af.authState;
           this.currentUser = this.af.auth.currentUser;
-          sessionStorage.setItem('auth', 'true');
+          if(this.currentUser.emailVerified ) {
+            sessionStorage.setItem('auth', 'true');
+          }
         }
       }
     );
@@ -45,6 +47,7 @@ export class AuthService {
     this.af.auth.signOut().then(() => {
       this.authenticated = false;
       sessionStorage.setItem('auth', 'false');
+      sessionStorage.setItem('adminAuth', 'false');
     });
   }
   adminLogin(adminCredentials: AdminCredModel) {
@@ -56,7 +59,7 @@ export class AuthService {
       }
     });
     adminPromise.then(data => {
-      console.log('logged in!', data);
+      // sessionStorage.setItem('auth', 'false');
       sessionStorage.setItem('adminAuth', 'true');
       this.router.navigate(['/add-product']);
     });
