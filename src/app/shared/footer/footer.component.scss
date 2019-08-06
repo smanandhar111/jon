@@ -4,4 +4,39 @@
 .footer {
   height: 200px;
   background: #ff8400;
+  background-image: linear-gradient(to bottom , #ff8500, #f5952c);
+  color: #fff;
+
+
+  img {
+    width: 75%;
+  }
+
+  .contact-info {
+    .contact,.address {
+      .label {
+        font-size: 12px;
+        margin-bottom: 5px;
+        color: #e5e5e5;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+    .contact {
+      margin-top: 20px;
+      div {
+        margin-bottom: 10px;
+      }
+      a {
+        font-size: 12px;
+        color: $link;
+        text-decoration: none;
+
+        i {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
 }

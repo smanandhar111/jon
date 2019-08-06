@@ -1,3 +1,4 @@
+@import './../../../app/styles/vars';
 .ProdDisplayComp {
   &.container.none {
     max-width: 1441px;
@@ -13,8 +14,16 @@
       /deep/ mat-form-field {
         margin-right: 20px;
 
+        .mat-select-value {
+          color: $appAccent;
+        }
+
         &.mat-focused {
-          //z-index: 1123;
+          z-index: 1123;
+
+          .mat-form-field-label {
+            color: #000;
+          }
 
           .mat-form-field-underline {
             height: 0!important;
