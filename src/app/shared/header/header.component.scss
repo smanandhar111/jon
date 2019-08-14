@@ -5,13 +5,15 @@
   background: #ff8400;
   color: #ffffff;
   margin-top: 20px;
+  border-radius: 3px;
   background-image: linear-gradient(to bottom , #ff8500, #f5952c);
 
   &.nav-stuck {
     position: fixed;
     top: 0;
     z-index: 2;
-    margin-top: 0
+    margin-top: 0;
+    border-radius: 0;
   }
 
   nav {

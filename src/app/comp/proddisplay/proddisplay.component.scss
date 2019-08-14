@@ -6,6 +6,10 @@
 
   }
   .row {
+    .filter-fixed {
+      position: fixed;
+      //margin-top: 13%;
+    }
     //justify-content: center;
     .filter-by {
       font-size: 13px;
@@ -19,11 +23,6 @@
         }
 
         &.mat-focused {
-          z-index: 1123;
-
-          .mat-form-field-label {
-            color: #000;
-          }
 
           .mat-form-field-underline {
             height: 0!important;

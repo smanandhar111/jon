@@ -1,12 +1,11 @@
 import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserInformation} from '../../comp/abstracts/users';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AddToFavsModel} from '../../models/allModel';
 import {ProditemService} from '../../services/proditem.service';
-import {fromEvent, Observable} from 'rxjs';
 
 import { HostListener} from "@angular/core";
 
@@ -19,7 +18,6 @@ export class HeaderComponent extends UserInformation implements OnInit{
   userData;
   cartItems: AddToFavsModel[];
   wishItems: AddToFavsModel[];
-
   letsGetSticky = false;
   @Output() notify: EventEmitter<boolean> = new EventEmitter();
 
@@ -27,6 +25,7 @@ export class HeaderComponent extends UserInformation implements OnInit{
               public router: Router,
               public db: AngularFireDatabase,
               private prodItemService: ProditemService,
+              private route: ActivatedRoute,
               afAuth: AngularFireAuth) {
     super(db, afAuth);
   }
@@ -84,8 +83,8 @@ export class HeaderComponent extends UserInformation implements OnInit{
     const adminAuthCondition = sessionStorage.getItem('adminAuth');
     return adminAuthCondition === 'true';
   }
-  navToAddProd(): void {
-    this.checkAdminAuth() ? this.router.navigate(['/add-product'])
-      : this.router.navigate(['/login']);
-  }
+  // navToAddProd(): void {
+  //   this.checkAdminAuth() ? this.router.navigate(['/add-product'])
+  //     : this.router.navigate(['/login']);
+  // }
 }
