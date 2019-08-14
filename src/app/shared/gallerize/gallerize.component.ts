@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductInputModel} from '../../models/allModel';
 import {Router} from '@angular/router';
+import {st} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-gallerize',
@@ -40,9 +41,29 @@ export class GallerizeComponent implements OnInit {
   }
   circleMEnter():void {
     this.proditemData.hovered = true;
-    console.log(this.proditemData.hovered);
+
   }
   circleMOut():void {
-    this.proditemData.hovered = true;
+    this.proditemData.hovered = false;
+  }
+  getActive() {
+    if(this.proditemData.hovered === true) {
+      return 'active'
+    } else {
+      return 'not';
+    }
+  }
+  heartHovered() {
+    this.proditemData.heartHovered = true;
+  }
+  heartHoveredNot() {
+    this.proditemData.heartHovered = false;
+  }
+  getHeartActive() {
+    if(this.proditemData.heartHovered === true) {
+      return 'hover'
+    } else {
+      return 'not';
+    }
   }
 }

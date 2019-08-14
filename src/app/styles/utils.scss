@@ -228,12 +228,12 @@ body {
   //margin: 20px 30px;
   outline: none;
   transition: transform 1s ease, box-shadow 0.8s ease, opacity 1s ease ;
-  transform: scale(0.92);
+  transform: scale(0.85);
   opacity: 0.8;
   border-radius: 8px;
 
   &:hover {
-    transform: scale(1);
+    transform: scale(.95);
     box-shadow: 3px 3px 8px #8e8e8e;
     opacity: 1;
   }

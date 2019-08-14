@@ -12,6 +12,7 @@ export interface ProductInputModel {
   imgDem: string;
   uid?: string;
   hovered?: boolean;
+  heartHovered? : boolean;
 }
 
 export interface ProductTypes {

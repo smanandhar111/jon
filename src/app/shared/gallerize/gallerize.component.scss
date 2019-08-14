@@ -1,5 +1,11 @@
 .display-view .repeater {
   position: relative;
+
+  &.active {
+    .circle {
+
+    }
+  }
   a.remove-item {
     position: absolute;
     right: 0;
@@ -13,6 +19,29 @@
     }
   }
   .circle {
+    position: relative;
+    //margin-bottom: 25px;
+    margin-right: 5px;
+
+    .price {
+      position: absolute;
+      bottom: 10px;
+      color: transparent;
+      left: -55px;
+      transition: left .5s ease-in-out,
+                  color 1.8s ease, background-color 1.5s ease, box-shadow 2s ease;
+      background: transparent;
+      padding: 2px 15px;
+      font-size: 14px;
+    }
+
+    .title {
+      position: absolute;
+      bottom: 0;
+      z-index: -1;
+      transition: bottom 1s ease;
+    }
+
     &:hover {
       .banner {
         display: block;
@@ -22,6 +51,15 @@
         top: -18px;
         position: relative;
 
+      }
+      .title {
+        bottom: -25px;
+      }
+      .price {
+        color: #ffffff;
+        left: -3px;
+        background-color: #ff8400;
+        box-shadow: 2px 4px 15px crimson;
       }
     }
     .banner {
@@ -34,10 +72,44 @@
       opacity: 0.5;
 
     }
-    &.port,&.cube {
+
+  }
+
+  span {
+    a.fa-heart-o {
+      position: relative;
+      float: right;
+      bottom: 46px;
+      transition: color 1s ease;
+      color: transparent;
+
+      &:hover {
+        color: #ff8400;
+      }
+
+      &.cube {
+        z-index: 11;
+        right: 30px;
+
+      }
+      &.port {
+        z-index: 33;
+        right: 30px;
+
+
+      }
+      &.wide {
+        z-index: 55;
+        right: 46px;
+
+      }
 
     }
-
+    &.active {
+      .fa-heart-o {
+        color: #ff8400;
+      }
+    }
   }
   .banner {
     padding: 0 15px;
@@ -50,18 +122,4 @@
       text-align: center;
     }
   }
-
-  //.prod-wiz {
-  //  position: relative;
-  //  bottom: 35px;
-  //  padding-left: 10px;
-  //  display: flex;
-  //  justify-content: space-between;
-  //
-  //  a.fa-heart-o {
-  //    padding-right: 10px;
-  //    font-size: 20px;
-  //    color: indianred;
-  //  }
-  //}
 }

@@ -1,6 +1,7 @@
 .app-component {
   margin-left: 19px;
   margin-right: 19px;
+  transition: margin 0.3s ease;
 
   &.get-sticky {
     margin: 0!important;
