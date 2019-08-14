@@ -1,3 +1,4 @@
+@import './../../../app/styles/vars';
 .ProdDisplayComp {
   &.container.none {
     max-width: 1441px;
@@ -16,6 +17,10 @@
     .filter-container {
       /deep/ mat-form-field {
         margin-right: 20px;
+
+        .mat-select-value {
+          color: $appAccent;
+        }
 
         &.mat-focused {
 
