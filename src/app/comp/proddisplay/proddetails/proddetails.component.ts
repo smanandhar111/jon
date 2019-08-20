@@ -76,7 +76,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   getParamId() {
     this.target = this.route.params.subscribe(params => { // getting id from url param
       this.uid = params['id'];
-      console.log('bbb',this.uid);
     });
   }
 

@@ -20,6 +20,8 @@ export class PassComponent implements OnInit {
     imageUrlFour: '',
     primeColor: '',
     imgDem: '',
+    hovered: false,
+    compProd: '',
   };
   prodTypes: ProductTypes[] = [
     {value: 'earring', viewValue: 'Earring'},
@@ -49,6 +51,7 @@ export class PassComponent implements OnInit {
     this.item.price = Math.floor(Math.random() * 1000) + 1;
     this.item.primeColor = 'Blue';
     this.item.imgDem = 'cube';
+    this.item.compProd = '';
   }
   clearAll(addProdForm): any {
     addProdForm.resetForm();
@@ -78,6 +81,10 @@ export class PassComponent implements OnInit {
     }
     if (inputName === 'primeColor') {
       this.item.primeColor = '';
+    }
+
+    if (inputName === 'compProd') {
+      this.item.compProd = '';
     }
     if (inputName === 'imgDem') {
       this.item.imgDem = '';
