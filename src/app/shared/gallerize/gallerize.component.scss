@@ -1,11 +1,5 @@
 .display-view .repeater {
   position: relative;
-
-  &.active {
-    .circle {
-
-    }
-  }
   a.remove-item {
     position: absolute;
     right: 0;
@@ -74,52 +68,14 @@
     }
 
   }
+  .fa-camera {
+    margin-left: 80%;
+    cursor: pointer;
+    color: #cccccc;
+    transition: color 0.6s ease-in-out;
 
-  span {
-    a.fa-heart-o {
-      position: relative;
-      float: right;
-      bottom: 46px;
-      transition: color 1s ease;
-      color: transparent;
-
-      &:hover {
-        color: #ff8400;
-      }
-
-      &.cube {
-        z-index: 11;
-        right: 30px;
-
-      }
-      &.port {
-        z-index: 33;
-        right: 30px;
-
-
-      }
-      &.wide {
-        z-index: 55;
-        right: 46px;
-
-      }
-
-    }
-    &.active {
-      .fa-heart-o {
-        color: #ff8400;
-      }
-    }
-  }
-  .banner {
-    padding: 0 15px;
-    position: relative;
-    top: -33px;
-    .fa-heart-o {
-      float: right;
-    }
-    .title {
-      text-align: center;
+    &:hover {
+      color: #ff8400;
     }
   }
 }

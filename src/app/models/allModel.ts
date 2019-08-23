@@ -13,6 +13,7 @@ export interface ProductInputModel {
   uid?: string;
   hovered?: boolean;
   heartHovered? : boolean;
+  compProd: string;
 }
 
 export interface ProductTypes {

@@ -1,6 +1,6 @@
 
 <div class="ProdDisplayComp container" *ngIf="prodSpData">
-    <div class="row">
+  <div class="row">
       <div class="col-sm-4 img-container row">
         <div class="primary-img">
           <img *ngIf="imgCaro === 1" class="prod-img" src="../../../assets/img/{{prodSpData.imageUrl}}.jpg"
@@ -68,6 +68,9 @@
         </button>
       </div>
     </div>
+  <div class="row related-prod">
+    <app-gallerize [proditemData]="resArr"></app-gallerize>
+  </div>
 </div>
 
 

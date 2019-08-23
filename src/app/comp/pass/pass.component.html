@@ -92,6 +92,15 @@
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
+        <!--Complementary-->
+        <mat-form-field class="example-full-width">
+          <input matInput required placeholder="Complementary Product"
+                 type="text" name="compProd"
+                 [(ngModel)]="item.compProd">
+          <a *ngIf="item.compProd" (click)="clearInput($event)"
+             class="clear-input fa fa-times"></a>
+        </mat-form-field>
+
         <!--IMAGE DIMENSION-->
         <mat-form-field class="example-full-width">
           <mat-select required placeholder="Image Dimension"

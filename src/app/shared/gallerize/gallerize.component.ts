@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductInputModel} from '../../models/allModel';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {st} from '@angular/core/src/render3';
 
 @Component({
@@ -15,10 +15,13 @@ export class GallerizeComponent implements OnInit {
   @Input() filterColor: string;
   @Input() fromWishList: boolean;
   @Output() notify: EventEmitter<string> = new EventEmitter();
+  public adminMode: boolean = false;
   cirHovered: boolean = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    (this.router.url === '/add-product') ? this.adminMode = true : this.adminMode = false;
   }
   getProdDetails(id: number) {
     this.router.navigate(['/prod-details', id]);
@@ -36,34 +39,19 @@ export class GallerizeComponent implements OnInit {
     }
     return 'cube';
   }
-  addToWishList() {
-    alert('some');
-  }
-  circleMEnter():void {
-    this.proditemData.hovered = true;
 
-  }
-  circleMOut():void {
-    this.proditemData.hovered = false;
-  }
-  getActive() {
-    if(this.proditemData.hovered === true) {
-      return 'active'
-    } else {
-      return 'not';
-    }
-  }
-  heartHovered() {
-    this.proditemData.heartHovered = true;
-  }
-  heartHoveredNot() {
-    this.proditemData.heartHovered = false;
-  }
-  getHeartActive() {
-    if(this.proditemData.heartHovered === true) {
-      return 'hover'
-    } else {
-      return 'not';
-    }
+  // Copy of Clipboard
+  copyId(val: string){
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }

@@ -36,6 +36,7 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   cartData$: Observable<AddToFavsModel[]>;
   wishData$: Observable<AddToFavsModel[]>;
   productId: string;
+  resArr = [];
   constructor(private prodItemService: ProditemService,
               private userService: UserService,
               private router: Router,
@@ -50,7 +51,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   ngOnInit() {
     this.getProdItems();
     this.getParamId();
-
   }
 
   ngAfterViewInit(): void {
@@ -64,11 +64,25 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
     this.prodItemService.items.subscribe(data => {
       // set data to component
       this.proditemData = data;
+
       _.forEach(this.proditemData, (result) => {
         if (result.id === this.uid) {
           this.prodSpData = result;
           this.productId = result.id;
         }
+      });
+      let compArr = this.prodSpData.compProd;
+      var array = compArr.split(",");
+      let x = array[0];
+      let y = array[1];
+      let z = array[2];
+      _.forEach(array, (d) => {
+        _.forEach(this.proditemData, (e) => {
+          if(d === e.id) {
+            this.resArr.push(e);
+
+          }
+        })
       });
     });
   }
@@ -76,7 +90,6 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   getParamId() {
     this.target = this.route.params.subscribe(params => { // getting id from url param
       this.uid = params['id'];
-      console.log('bbb',this.uid);
     });
   }
 
