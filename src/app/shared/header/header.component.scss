@@ -6,6 +6,7 @@
   color: #ffffff;
   margin-top: 20px;
   border-radius: 3px;
+  background-image: linear-gradient(to bottom , #ff8500, #f5952c);
 
   &.nav-stuck {
     position: fixed;
@@ -17,12 +18,12 @@
 
   nav {
     button.active {
-      border-bottom: 2px solid crimson;
+      border-bottom: 2px solid #e8480e;
       border-radius: 0;
     }
   }
   .log-con  button {
-    background: crimson;
+    background: #e8480e;
     color: #ffffff;
   }
   .user-info {
@@ -44,7 +45,7 @@
     }
     .user-img-cont {
       border-radius: 94px;
-      border: 1.5px solid crimson;
+      border: 1.5px solid #e8480e;
       width: 40px;
       height: 40px;
       display: inline-block;

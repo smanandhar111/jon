@@ -265,7 +265,7 @@ a.clear-input {
   transition: color 0.3s ease, border-color 0.8s ease;
   display: inline;
   &.fa-times {
-    color: #0d0d0d;
+    color: $appAccent;
   }
   &:hover {
     color: #f44336;
