@@ -37,6 +37,8 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   wishData$: Observable<AddToFavsModel[]>;
   productId: string;
   resArr = [];
+  public prodSpColor: string;
+  public prodSpType: string;
   constructor(private prodItemService: ProditemService,
               private userService: UserService,
               private router: Router,
@@ -68,6 +70,9 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
       _.forEach(this.proditemData, (result) => {
         if (result.id === this.uid) {
           this.prodSpData = result;
+          console.log(this.prodSpData);
+          this.prodSpColor = this.prodSpData.primeColor;
+          this.prodSpType = this.prodSpData.type;
           this.productId = result.id;
         }
       });
