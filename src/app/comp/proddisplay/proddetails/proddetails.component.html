@@ -69,10 +69,14 @@
       </div>
     </div>
   <div class="row related-prod">
+    <!--complementaryProd-->
     <app-gallerize [proditemData]="resArr"></app-gallerize>
+
+    <!--SubstituteProd-->
     <app-gallerize [proditemData]="proditemData"
                    [filterColor]="prodSpColor"
-                   [filterType]="prodSpType">
+                   [filterType]="prodSpType"
+                   [selfId]="selfId">
     </app-gallerize>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="row display-view">
-  <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter: filterPrice | prodColorFilter: filterColor">
+  <div class="repeater" *ngFor="let item of proditemData | prodFilter: filterType | prodPriceFilter: filterPrice | prodColorFilter: filterColor | notSelf: selfId">
     <a *ngIf="fromWishList" class="remove-item" (click)="removeItem(item.id)"><i class="fa fa-times-circle"></i></a>
     <div class="circle"
          [ngClass]="getDemClass(item.imgDem)" (click)="getProdDetails(item.id)">

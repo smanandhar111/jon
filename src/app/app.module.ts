@@ -39,6 +39,7 @@ import { WishlistComponent } from './shared/wishlist/wishlist.component';
 import { CartComponent } from './shared/cart/cart.component';
 import { GallerizeComponent } from './shared/gallerize/gallerize.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import {ProddisplayNotSelfPipe} from './shared/gallerize/pipes/proddisplay-notSelf.pipe';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     ProddisplayFilterPipe,
     ProddisplayPricefilterPipe,
     ProddisplayColorfilterPipe,
+    ProddisplayNotSelfPipe,
     ProddetailsComponent,
     LoginComponent,
     BillInfoComponent,

@@ -16,6 +16,33 @@
       margin-top: 25px;
       position: relative;
 
+      .prod-colors {
+        z-index: 11;
+
+        span {
+          position: relative;
+          right: 15px;
+        }
+
+        .mat-form-field {
+          display: inline-block;
+          width: 26%;
+          margin-right: 30px;
+        }
+      }
+
+      .img-urls.multiple {
+        span {
+          position: relative;
+          right: 20px ;
+        }
+        .mat-form-field {
+          display: inline-block;
+          width: 40%;
+          margin-right: 30px;
+        }
+      }
+
       /deep/ mat-form-field {
         .mat-form-field-infix {
           display: flex;
@@ -81,10 +108,7 @@
         min-width: 15px;
       }
       .image-count {
-        text-align: end;
-        position: absolute;
-        top: 45px;
-        left: 290px;
+
         label {
           font-family: Roboto, "Helvetica Neue", sans-serif;
           color: #515152;
@@ -116,7 +140,7 @@
 
       .prod-details {
         text-align: left;
-        padding-top: 20px;
+        //padding-top: 20px;
 
         h5.prod-name {
 

@@ -15,6 +15,7 @@ export class GallerizeComponent implements OnInit {
   @Input() filterColor: string;
   @Input() fromWishList: boolean;
   @Output() notify: EventEmitter<string> = new EventEmitter();
+  @Input() selfId: string;
   public adminMode: boolean = false;
   cirHovered: boolean = false;
   constructor(private router: Router,

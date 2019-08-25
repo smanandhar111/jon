@@ -6,45 +6,60 @@
       <form name="addProd" #addProdForm="ngForm"
             (ngSubmit)="onSubmit(addProdForm)" class="add-pass-form">
 
-        <!--IMAGE URL-->
-        <mat-form-field class="example-full-width">
-          <input matInput required placeholder="Image Url"
-                 name="imageUrl" [(ngModel)]="item.imageUrl">
-          <a *ngIf="item.imageUrl" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
-        <!--IMAGE COUNT INDICATOR-->
-        <div class="image-count">
-          <label>No.of images :</label>
-          <a class="img-count-link" (click)="changeCount(1)" [ngClass]="{'active': imgCount === 1}">1</a>
-          <a class="img-count-link" (click)="changeCount(2)" [ngClass]="{'active': imgCount === 2}">2</a>
-          <a class="img-count-link" (click)="changeCount(3)" [ngClass]="{'active': imgCount === 3}">3</a>
-          <a class="img-count-link" (click)="changeCount(4)" [ngClass]="{'active': imgCount === 4}">4</a>
+        <div class="img-urls" [ngClass]="{'multiple': imgCount > 1}" >
+
+          <div class="image-count">
+            <label>No.of images :</label>
+            <a class="img-count-link" (click)="changeCount(1)" [ngClass]="{'active': imgCount === 1}">1</a>
+            <a class="img-count-link" (click)="changeCount(2)" [ngClass]="{'active': imgCount === 2}">2</a>
+            <a class="img-count-link" (click)="changeCount(3)" [ngClass]="{'active': imgCount === 3}">3</a>
+            <a class="img-count-link" (click)="changeCount(4)" [ngClass]="{'active': imgCount === 4}">4</a>
+          </div>
+
+          <!--IMAGE URL-->
+          <mat-form-field class="example-full-width">
+            <input matInput required placeholder="Image Url"
+                   name="imageUrl" [(ngModel)]="item.imageUrl">
+            <a *ngIf="item.imageUrl" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
+          <span *ngIf="imgCount > 1">/</span>
+
+          <!--IMAGE URL-->
+          <mat-form-field class="example-full-width" *ngIf="imgCount > 1">
+            <input matInput required placeholder="2nd Image Url"
+                   name="imageUrl" [(ngModel)]="item.imageUrlTwo">
+            <a *ngIf="item.imageUrlTwo" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
+
         </div>
 
-        <!--IMAGE URL-->
-        <mat-form-field class="example-full-width" *ngIf="imgCount > 1">
-          <input matInput required placeholder="2nd Image Url"
-                 name="imageUrl" [(ngModel)]="item.imageUrlTwo">
-          <a *ngIf="item.imageUrlTwo" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
+        <div class="img-urls" [ngClass]="{'multiple': imgCount > 1}" >
 
-        <!--IMAGE URL-->
-        <mat-form-field class="example-full-width" *ngIf="imgCount > 2">
-          <input matInput required placeholder="3rd Image Url"
-                 name="imageUrl" [(ngModel)]="item.imageUrlThree">
-          <a *ngIf="item.imageUrlThree" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
+          <!--IMAGE URL-->
+          <mat-form-field class="example-full-width" *ngIf="imgCount > 2">
+            <input matInput required placeholder="3rd Image Url"
+                   name="imageUrl" [(ngModel)]="item.imageUrlThree">
+            <a *ngIf="item.imageUrlThree" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
 
-        <!--IMAGE URL-->
-        <mat-form-field class="example-full-width" *ngIf="imgCount > 3">
-          <input matInput required placeholder="4th Image Url"
-                 name="imageUrl" [(ngModel)]="item.imageUrlFour">
-          <a *ngIf="item.imageUrlFour" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
+
+          <span *ngIf="imgCount > 3">/</span>
+
+          <!--IMAGE URL-->
+          <mat-form-field class="example-full-width" *ngIf="imgCount > 3">
+            <input matInput required placeholder="4th Image Url"
+                   name="imageUrl" [(ngModel)]="item.imageUrlFour">
+            <a *ngIf="item.imageUrlFour" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
+        </div>
+
+
+
+
 
         <!--TYPE-->
         <mat-form-field>
@@ -83,14 +98,40 @@
              class="clear-input fa fa-times"></a>
         </mat-form-field>
 
-        <!--PRIME COLOR-->
-        <mat-form-field class="example-full-width">
-          <input matInput required placeholder="Prime Color"
-                 type="text" name="primeColor"
-                 [(ngModel)]="item.primeColor">
-          <a *ngIf="item.primeColor" (click)="clearInput($event)"
-             class="clear-input fa fa-times"></a>
-        </mat-form-field>
+        <div class="prod-colors">
+          <!--PRIME COLOR-->
+          <mat-form-field class="example-full-width">
+            <input matInput required placeholder="Prime Color"
+                   type="text" name="primeColor"
+                   [(ngModel)]="item.primeColor">
+            <a *ngIf="item.primeColor" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
+
+          <span>/</span>
+
+          <!--BASE COLOR-->
+          <mat-form-field class="example-full-width">
+            <input matInput required placeholder="Base Color"
+                   type="text" name="baseColor"
+                   [(ngModel)]="item.baseColor">
+            <a *ngIf="item.baseColor" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
+
+          <span>/</span>
+
+          <!--Other COLORs-->
+          <mat-form-field class="example-full-width">
+            <input matInput required placeholder="Other Colors"
+                   type="text" name="otherColors"
+                   [(ngModel)]="item.otherColors">
+            <a *ngIf="item.otherColors" (click)="clearInput($event)"
+               class="clear-input fa fa-times"></a>
+          </mat-form-field>
+          <!--<span>Enter all the colors in the product</span>-->
+
+        </div>
 
         <!--Complementary-->
         <mat-form-field class="example-full-width">

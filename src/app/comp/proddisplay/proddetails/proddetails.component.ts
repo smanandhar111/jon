@@ -10,8 +10,6 @@ import {AuthService} from '../../../services/auth.service';
 import _ from 'lodash';
 import {UserService} from '../../../services/user.service';
 import {Observable} from 'rxjs';
-import {forEach} from '@angular/router/src/utils/collection';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-proddetails',
@@ -39,6 +37,7 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   resArr = [];
   public prodSpColor: string;
   public prodSpType: string;
+  public selfId: string;
   constructor(private prodItemService: ProditemService,
               private userService: UserService,
               private router: Router,
@@ -73,14 +72,11 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
           console.log(this.prodSpData);
           this.prodSpColor = this.prodSpData.primeColor;
           this.prodSpType = this.prodSpData.type;
+          this.selfId = this.prodSpData.id;
           this.productId = result.id;
         }
       });
-      let compArr = this.prodSpData.compProd;
-      var array = compArr.split(",");
-      let x = array[0];
-      let y = array[1];
-      let z = array[2];
+      let array = this.prodSpData.compProd.split(",");
       _.forEach(array, (d) => {
         _.forEach(this.proditemData, (e) => {
           if(d === e.id) {
@@ -89,6 +85,11 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
           }
         })
       });
+
+      let colorArray = this.prodSpData.primeColor.split(',');
+      _.forEach(colorArray, (d) => {
+
+      })
     });
   }
 

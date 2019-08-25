@@ -9,6 +9,8 @@ export interface ProductInputModel {
   imageUrlThree?: string;
   imageUrlFour?: string;
   primeColor: string;
+  baseColor: string;
+  otherColors: string;
   imgDem: string;
   uid?: string;
   hovered?: boolean;
