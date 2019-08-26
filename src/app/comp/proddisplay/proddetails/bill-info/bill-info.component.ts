@@ -3,6 +3,7 @@ import {ProductInputModel, ProductTypes} from '../../../../models/allModel';
 import {ProditemService} from '../../../../services/proditem.service';
 import * as lo from 'lodash';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ProddisplayComponent} from '../../proddisplay.component';
 
 @Component({
   selector: 'app-bill-info',
@@ -10,7 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./bill-info.component.scss']
 })
 export class BillInfoComponent implements OnInit {
-  proditemData: ProductInputModel;
+  proditemData: ProductInputModel[];
   prodSpData: ProductInputModel;
   uid: string;
   target;

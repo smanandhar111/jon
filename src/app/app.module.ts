@@ -40,6 +40,7 @@ import { CartComponent } from './shared/cart/cart.component';
 import { GallerizeComponent } from './shared/gallerize/gallerize.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import {ProddisplayNotSelfPipe} from './shared/gallerize/pipes/proddisplay-notSelf.pipe';
+import {ProdItemsDataService} from './services/prod-items-data.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,7 @@ import {ProddisplayNotSelfPipe} from './shared/gallerize/pipes/proddisplay-notSe
     FormsModule,
     AngularFireDatabaseModule
   ],
-  providers: [AuthService, ProditemService, UserService],
+  providers: [AuthService, ProditemService, UserService, ProdItemsDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

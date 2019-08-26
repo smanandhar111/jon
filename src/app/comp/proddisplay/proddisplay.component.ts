@@ -14,6 +14,8 @@ export class ProddisplayComponent implements OnInit {
   filterType: string;
   filterPrice: string;
   filterColor: string;
+  testing = 'ProdDisplay ';
+
   prodTypes: ProductTypes[] = [
     {value: 'earring', viewValue: 'Earring'},
     {value: 'necklace', viewValue: 'Necklace'},
@@ -32,8 +34,8 @@ export class ProddisplayComponent implements OnInit {
     {value: 'blue', viewValue: 'Blue'},
     {value: 'pink', viewValue: 'Pink'}
   ];
-  constructor(private prodItemService: ProditemService,
-              private router: Router) { }
+  constructor(public prodItemService: ProditemService,
+              public router: Router) { }
 
   ngOnInit() {
     this.prodItemService.getItems();
