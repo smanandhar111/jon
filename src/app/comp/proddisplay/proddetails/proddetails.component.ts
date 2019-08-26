@@ -10,6 +10,7 @@ import {AuthService} from '../../../services/auth.service';
 import _ from 'lodash';
 import {UserService} from '../../../services/user.service';
 import {Observable} from 'rxjs';
+import {ProdItemsDataService} from '../../../services/prod-items-data.service';
 
 @Component({
   selector: 'app-proddetails',
@@ -17,7 +18,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./proddetails.component.scss']
 })
 export class ProddetailsComponent extends UserInformation implements OnInit, AfterViewInit {
-  proditemData: ProductInputModel[];
+  public proditemData: ProductInputModel[];
   prodSpData: ProductInputModel;
   target;
   uid: string;
@@ -38,60 +39,74 @@ export class ProddetailsComponent extends UserInformation implements OnInit, Aft
   public prodSpColor: string;
   public prodSpType: string;
   public selfId: string;
+
+
   constructor(private prodItemService: ProditemService,
               private userService: UserService,
               private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService,
               db: AngularFireDatabase,
-              afAuth: AngularFireAuth) {
+              afAuth: AngularFireAuth,
+              private prodItemDataService: ProdItemsDataService) {
     super(db, afAuth);
     this.atcData.userId = this.prodItemService.getUserId;
+    this.proditemData = this.prodItemService.result;
   }
 
   ngOnInit() {
-    this.getProdItems();
     this.getParamId();
+    this.getProdSpData();
+
+
+  }
+
+  getProdSpData(): void {
+    if(this.proditemData) {
+      this.handleData();
+    } else {
+      console.log('hello');
+      this.prodItemService.getItems();
+      this.prodItemService.items.subscribe(data => {
+        this.proditemData = data;
+        this.handleData();
+      });
+
+    }
+
+  }
+
+  handleData() {
+    _.forEach(this.proditemData, (result) => {
+      if (result.id === this.uid) {
+        this.prodSpData = result;
+        console.log('Y2K',this.prodSpData);
+        this.prodSpColor = this.prodSpData.primeColor;
+        this.prodSpType = this.prodSpData.type;
+        this.selfId = this.prodSpData.id;
+        this.productId = result.id;
+      }
+    });
+    let array = this.prodSpData.compProd.split(",");
+    _.forEach(array, (d) => {
+      _.forEach(this.proditemData, (e) => {
+        if(d === e.id) {
+          this.resArr.push(e);
+
+        }
+      })
+    });
   }
 
   ngAfterViewInit(): void {
     this.getUserData();
   }
 
-  getProdItems() {
-    // call to get item from server
-    this.prodItemService.getItems();
-    // after subscribing to item from server
-    this.prodItemService.items.subscribe(data => {
-      // set data to component
-      this.proditemData = data;
 
-      _.forEach(this.proditemData, (result) => {
-        if (result.id === this.uid) {
-          this.prodSpData = result;
-          console.log(this.prodSpData);
-          this.prodSpColor = this.prodSpData.primeColor;
-          this.prodSpType = this.prodSpData.type;
-          this.selfId = this.prodSpData.id;
-          this.productId = result.id;
-        }
-      });
-      let array = this.prodSpData.compProd.split(",");
-      _.forEach(array, (d) => {
-        _.forEach(this.proditemData, (e) => {
-          if(d === e.id) {
-            this.resArr.push(e);
+  // get prodData(): string {
+  //   return this.prodItemService.test;
+  // }
 
-          }
-        })
-      });
-
-      let colorArray = this.prodSpData.primeColor.split(',');
-      _.forEach(colorArray, (d) => {
-
-      })
-    });
-  }
 
   getParamId() {
     this.target = this.route.params.subscribe(params => { // getting id from url param
