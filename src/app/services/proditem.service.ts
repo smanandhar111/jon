@@ -17,6 +17,8 @@ export class ProditemService {
   wishData$: Observable<AddToFavsModel[]>;
   userId: string;
   usersCollection: AngularFirestoreCollection<ProductInputModel>;
+
+  result: ProductInputModel[];
   constructor(public afs: AngularFirestore, private afAuth: AngularFireAuth) {
     this.itemsCollection = this.afs.collection('items');
     this.usersCollection = this.afs.collection('userData');
@@ -30,6 +32,7 @@ export class ProditemService {
     return this.userId;
   }
   getItems() {
+    console.log('>>geting data');
     this.items = this.afs.collection('items').snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as ProductInputModel;
@@ -38,6 +41,9 @@ export class ProditemService {
         return data;
       });
     }));
+    this.items.subscribe((data) => {
+      this.result = data;
+    })
   }
   addItem(item: ProductInputModel) {
     this.itemsCollection.add(item);
