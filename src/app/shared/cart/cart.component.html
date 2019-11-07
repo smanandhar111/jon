@@ -1,24 +1,40 @@
-<h1 style="text-align: center">Your Shopping Cart</h1>
-<div class="cart-container">
-  <table>
-    <tr>
-      <th>Product</th>
-      <th>Quantity</th>
-      <th>Remove</th>
-      <th>Price</th>
-    </tr>
-    <tr *ngFor="let item of result">
-      <td class="flex-it">
-        <div class="square">
-          <img src="../../../assets/img/{{item.imageUrl}}.jpg" alt="{{item.title}}">
+<div class="container">
+  <div class="row">
+    <div class="cart col-sm-8">
+      <div class="box-outer">
+        <div class="panel">
+          <span>Your Cart</span>
+          <span> ({{result.length}})</span>
         </div>
+        <div class="product-container">
+          <div class="product-row row" *ngFor="let item of result">
+            <div class="square col-sm-2">
+              <img src="../../../assets/img/{{item.imageUrl}}.jpg"
+                   alt="{{item.title}}">
+            </div>
 
-        <span class="title">{{item.title}}</span>
-      </td>
-      <td>1</td>
-      <th><a style="cursor: pointer"
-             (click)="removeCartItem(item.id)" >X</a></th>
-      <th>{{item.price}}</th>
-    </tr>
-  </table>
+            <div class="description col-sm-4">
+              <div class="title">{{item.title}}</div>
+              <div class="type">Type: {{item.type}}</div>
+              <div class="price">Price: {{item.price}}</div>
+              <div class="row">
+                <div class="button-group">
+                  <button>Remove</button>
+                  <button>Edit</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="summary col-sm-4">
+
+    </div>
+  </div>
+
+
 </div>
+
