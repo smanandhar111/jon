@@ -1,11 +1,11 @@
 @import './../../../app/styles/vars';
 .ProdDisplayComp {
-  &.container.none {
-    max-width: 1441px;
-    z-index: 234;
-
-  }
+  margin-left: 25px;
+  margin-right: 25px;
   .row {
+    &.adjust {
+      margin-left: 0;
+    }
     .filter-fixed {
       position: fixed;
       //margin-top: 13%;

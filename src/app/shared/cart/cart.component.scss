@@ -1,24 +1,27 @@
-.cart-container {
-  display: flex;
-  justify-content: center;
-  table {
-    th {
-      text-align: left;
-      margin-right: 20px;
-    }
-    tr td.flex-it {
-      display: flex;
-      .square {
-        margin-right: 25px;
+.box-outer {
+  .square img {
+    height: 100px;
+    width: 100px;
+    border-radius: 8px;
+  }
+  .panel {
+    background: #f0f0f0;
+    padding: 15px 20px;
+    border-radius: 3px;
+    color: #0000008a;
+  }
+  .product-container {
+    padding: 25px 25px;
+    .product-row {
+      margin-bottom: 25px;
 
-
-        img {
-          height: 75px;
-          width: 150px;
+      .description {
+        .title {
+          margin-bottom: 10px;
         }
-      }
-      span.title {
-        align-self: center;
+        *:not(.title) {
+          font-size: 12px;
+        }
       }
     }
   }
